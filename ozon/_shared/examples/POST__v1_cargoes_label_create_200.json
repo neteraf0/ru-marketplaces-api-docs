@@ -1,0 +1,8 @@
+{
+  "operation_id": "string",
+  "errors": {
+    "error_reasons": [
+      "INVALID_STATE"
+    ]
+  }
+}

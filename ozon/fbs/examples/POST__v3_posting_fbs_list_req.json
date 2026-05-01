@@ -1,0 +1,32 @@
+{
+  "dir": "ASC",
+  "filter": {
+    "delivery_method_id": [
+      "21321684811000"
+    ],
+    "is_blr_traceable": true,
+    "is_quantum": false,
+    "last_changed_status_date": {
+      "from": "2023-11-03T11:47:39.878Z",
+      "to": "2023-11-03T11:47:39.878Z"
+    },
+    "order_id": 0,
+    "provider_id": [
+      "24"
+    ],
+    "since": "2023-11-03T11:47:39.878Z",
+    "status": "awaiting_packaging",
+    "to": "2023-11-03T11:47:39.878Z",
+    "warehouse_id": [
+      "21321684811000"
+    ]
+  },
+  "limit": 100,
+  "offset": 0,
+  "with": {
+    "analytics_data": true,
+    "barcodes": true,
+    "financial_data": true,
+    "translit": true
+  }
+}

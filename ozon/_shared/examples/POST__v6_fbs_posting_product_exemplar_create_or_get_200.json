@@ -1,0 +1,30 @@
+{
+  "multi_box_qty": 0,
+  "posting_number": "string",
+  "products": [
+    {
+      "exemplars": [
+        {
+          "exemplar_id": 0,
+          "gtd": "string",
+          "is_gtd_absent": false,
+          "is_rnpt_absent": false,
+          "marks": [],
+          "rnpt": "string",
+          "weight": 0.0
+        }
+      ],
+      "has_imei": false,
+      "is_gtd_needed": false,
+      "is_jw_uin_needed": false,
+      "is_mandatory_mark_needed": false,
+      "is_mandatory_mark_possible": false,
+      "is_rnpt_needed": false,
+      "product_id": 0,
+      "quantity": 0,
+      "is_weight_needed": false,
+      "weight_max": 0.0,
+      "weight_min": 0.0
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "cursor": "string",
+  "cutoff": "2024-01-01T00:00:00Z",
+  "postings": [
+    {
+      "assembly_code": "string",
+      "posting_number": "string",
+      "products": [
+        {
+          "offer_id": "string",
+          "picture_url": "string",
+          "product_name": "string",
+          "quantity": 0,
+          "sku": 0
+        }
+      ]
+    }
+  ]
+}

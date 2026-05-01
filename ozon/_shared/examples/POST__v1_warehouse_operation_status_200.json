@@ -1,0 +1,11 @@
+{
+  "error": {
+    "code": "string",
+    "message": "string"
+  },
+  "result": {
+    "warehouse_id": 1020005000219156
+  },
+  "status": "SUCCESS",
+  "type": "CREATE_FBS_WAREHOUSE"
+}

@@ -1,0 +1,11 @@
+{
+  "orders": [
+    {
+      "courierInfo": {
+        "mustBeAssigned": false,
+        "updatedAt": "2025-09-06T11:33:10+03:00"
+      },
+      "orderID": 2876979713
+    }
+  ]
+}

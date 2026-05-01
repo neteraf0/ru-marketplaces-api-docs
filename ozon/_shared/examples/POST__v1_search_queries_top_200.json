@@ -1,0 +1,15 @@
+{
+  "search_queries": [
+    {
+      "avg_price": 3786.6,
+      "conversion_to_cart": 0.163,
+      "client_count": 165418,
+      "items_views": 140.828,
+      "query": "куртка женская демисезон",
+      "add_to_cart": 26977,
+      "sellers_count": 63.833
+    }
+  ],
+  "offset": "1",
+  "total": "1"
+}

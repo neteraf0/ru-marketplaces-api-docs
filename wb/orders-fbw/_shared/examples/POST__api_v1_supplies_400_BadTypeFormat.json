@@ -1,0 +1,7 @@
+{
+  "status": 400,
+  "title": "bad request",
+  "detail": "Выберите значение параметра 'Type' из списка: 'factDate createDate supplyDate updatedDate'",
+  "requestId": "31aba083c7144409c3cbbb968e693f16",
+  "origin": "supply-api"
+}

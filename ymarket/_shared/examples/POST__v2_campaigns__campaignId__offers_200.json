@@ -1,0 +1,41 @@
+{
+  "status": "OK",
+  "result": {
+    "paging": {
+      "nextPageToken": "string"
+    },
+    "offers": [
+      {
+        "offerId": "string",
+        "quantum": {
+          "minQuantity": 1,
+          "stepQuantity": 1
+        },
+        "available": false,
+        "basicPrice": {
+          "updatedAt": "2024-01-01T00:00:00Z"
+        },
+        "campaignPrice": {
+          "value": 0,
+          "discountBase": 0,
+          "currencyId": "RUR",
+          "vat": 0,
+          "updatedAt": "2024-01-01T00:00:00Z"
+        },
+        "status": "PUBLISHED",
+        "errors": [
+          {
+            "message": "string",
+            "comment": "string"
+          }
+        ],
+        "warnings": [
+          {
+            "message": "string",
+            "comment": "string"
+          }
+        ]
+      }
+    ]
+  }
+}

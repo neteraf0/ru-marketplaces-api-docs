@@ -1,0 +1,17 @@
+{
+  "result": {
+    "items": [
+      {
+        "product_id": 3397917680,
+        "offer_id": "2026-01-13 16:56:03 PDF",
+        "has_fbo_stocks": false,
+        "has_fbs_stocks": false,
+        "archived": false,
+        "is_discounted": false,
+        "quants": []
+      }
+    ],
+    "total": 1,
+    "last_id": "WzMzOTc5MTc2ODAsMzM5NzkxNzY4MF0="
+  }
+}

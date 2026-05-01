@@ -1,0 +1,44 @@
+{
+  "supply_check_lists": [
+    {
+      "cargoes_presents_rule": {
+        "cargo_count_per_type": [],
+        "count": 0,
+        "satisfied": false
+      },
+      "edit_deadline_expire_rule": {
+        "is_applicable": false,
+        "is_required": false,
+        "satisfied": false
+      },
+      "expire_dates_presented_rule": {
+        "count_sku_with_expiration": 0,
+        "count_sku_with_expiration_filled": 0,
+        "is_applicable": false,
+        "is_required": false,
+        "satisfied": false
+      },
+      "is_valid_distribution_rule": {
+        "count_distributed_sku": 0,
+        "count_sku_total": 0,
+        "is_applicable": false,
+        "percents_int": 0,
+        "satisfied": false
+      },
+      "package_units_with_distribution_rule": {
+        "count_all": 0,
+        "count_with_distribution": 0,
+        "is_applicable": false,
+        "is_required": false,
+        "satisfied": false
+      },
+      "placement_zones_rule": {
+        "count_cargoes_all": 0,
+        "count_cargoes_with_mono_placement_zone": 0,
+        "is_applicable": false,
+        "satisfied": false
+      },
+      "supply_id": 0
+    }
+  ]
+}

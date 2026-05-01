@@ -1,0 +1,6 @@
+{
+  "title": "bad request",
+  "requestId": "cb4e8b210b4841ce9a3424946b497cb3",
+  "origin": "fbapi",
+  "detail": "not a json content-type: application/javascript"
+}

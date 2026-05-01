@@ -1,0 +1,15 @@
+{
+  "code": "BadRequest",
+  "detail": "Incorrect parameter",
+  "errors": [
+    {
+      "location": "query.next",
+      "message": "expected integer",
+      "value": "1w"
+    }
+  ],
+  "origin": "marketplace-public-api",
+  "requestId": "a0b5907c-2978-4db6-9a59-00666e8b8d54",
+  "status": 400,
+  "title": "IncorrectParameter"
+}

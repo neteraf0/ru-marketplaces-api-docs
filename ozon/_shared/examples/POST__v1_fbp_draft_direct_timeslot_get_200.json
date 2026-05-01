@@ -1,0 +1,12 @@
+{
+  "reasons": [
+    "EMPTY_TIMESLOTS_REASON_UNSPECIFIED"
+  ],
+  "timeslots": [
+    {
+      "timeslot_end": "2024-01-01T00:00:00Z",
+      "timeslot_start": "2024-01-01T00:00:00Z"
+    }
+  ],
+  "warehouse_timezone_name": "string"
+}

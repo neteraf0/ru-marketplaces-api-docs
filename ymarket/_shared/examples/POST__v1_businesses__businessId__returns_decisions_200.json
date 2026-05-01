@@ -1,0 +1,13 @@
+{
+  "status": "OK",
+  "result": {
+    "availableDecisions": [
+      {
+        "decisionType": "FAST_REFUND_MONEY",
+        "decisionReasonTypes": [
+          "ISSUE_WITH_THE_PRODUCT_WAS_NOT_CONFIRMED"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "status": "OK",
+  "result": {
+    "licenses": [
+      {
+        "id": 0,
+        "outletId": 1,
+        "licenseType": "ALCOHOL",
+        "number": "string",
+        "dateOfIssue": "2017-11-13T00:00:00+03:00",
+        "dateOfExpiry": "2022-11-20T00:00:00+03:00",
+        "checkStatus": "NEW",
+        "checkComment": "string"
+      }
+    ]
+  }
+}

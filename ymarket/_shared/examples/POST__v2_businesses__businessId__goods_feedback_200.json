@@ -1,0 +1,39 @@
+{
+  "status": "OK",
+  "result": {
+    "feedbacks": [
+      {
+        "feedbackId": 0,
+        "createdAt": "2024-01-01T00:00:00Z",
+        "needReaction": false,
+        "identifiers": {
+          "orderId": 0,
+          "offerId": "string"
+        },
+        "author": "string",
+        "description": {
+          "advantages": "string",
+          "disadvantages": "string",
+          "comment": "string"
+        },
+        "media": {
+          "photos": [
+            "string"
+          ],
+          "videos": [
+            "string"
+          ]
+        },
+        "statistics": {
+          "rating": 1,
+          "commentsCount": 0,
+          "recommended": false,
+          "paidAmount": 0
+        }
+      }
+    ],
+    "paging": {
+      "nextPageToken": "string"
+    }
+  }
+}

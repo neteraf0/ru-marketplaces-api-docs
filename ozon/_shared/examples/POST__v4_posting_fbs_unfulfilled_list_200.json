@@ -1,0 +1,162 @@
+{
+  "postings": [
+    {
+      "posting_number": "0208245774-0029-1",
+      "order_id": 33301885134,
+      "order_number": "0208245774-0029",
+      "pickup_code_verified_at": null,
+      "status": "awaiting_packaging",
+      "substatus": "posting_created",
+      "delivery_method": {
+        "id": 20605650762000,
+        "name": "Доставка Ozon самостоятельно",
+        "warehouse_id": 20605650762000,
+        "warehouse": "Склад Софьино",
+        "tpl_provider_id": 24,
+        "tpl_provider": "Доставка Ozon"
+      },
+      "delivery_schema": "fbs",
+      "tracking_number": "",
+      "tpl_integration_type": "ozon",
+      "in_process_at": "2025-12-19T05:50:26.000Z",
+      "shipment_date": "2025-12-19T18:00:00.000Z",
+      "shipment_date_without_delay": "2025-12-20T17:59:00.000Z",
+      "delivering_date": null,
+      "optional": {
+        "products_with_possible_mandatory_mark": []
+      },
+      "cancellation": {
+        "cancel_reason_id": 0,
+        "cancel_reason": "",
+        "cancellation_type": "",
+        "cancelled_after_ship": false,
+        "affect_cancellation_rating": false,
+        "cancellation_initiator": ""
+      },
+      "customer": null,
+      "products": [
+        {
+          "sku": 1904686181,
+          "name": "Сумка спортивная унисекс кожаная",
+          "quantity": 1,
+          "offer_id": "b4408110",
+          "price": {
+            "amount": 1200,
+            "currency": "RUB"
+          },
+          "is_blr_traceable": false,
+          "is_marketplace_buyout": false,
+          "imei": [],
+          "weight": 0.76,
+          "product_color": "зеленый"
+        }
+      ],
+      "addressee": null,
+      "barcodes": {
+        "upper_barcode": "601302481800000",
+        "lower_barcode": "601302481800000"
+      },
+      "analytics_data": {
+        "region": "",
+        "city": "",
+        "delivery_type": "PVZ",
+        "is_premium": false,
+        "payment_type_group_name": "Счёт для бизнеса",
+        "warehouse_id": 20605650762000,
+        "warehouse": "17023",
+        "tpl_provider_id": 24,
+        "tpl_provider": "Доставка Ozon",
+        "delivery_date_begin": "2025-12-23T17:00:00.000Z",
+        "delivery_date_end": "2025-12-23T18:00:00.000Z",
+        "is_legal": true,
+        "client_delivery_date_begin": null,
+        "client_delivery_date_end": null
+      },
+      "destination_place_id": 0,
+      "destination_place_name": "",
+      "financial_data": {
+        "products": [
+          {
+            "product_id": 1904686181,
+            "actions": [
+              "Округление"
+            ],
+            "commission": {
+              "amount": 0,
+              "percent": 0,
+              "currency": "RUB"
+            },
+            "customer_price": {
+              "amount": 300,
+              "currency": "RUB"
+            },
+            "payout": 0,
+            "old_price": 1215,
+            "price": 1215,
+            "total_discount_value": 0,
+            "total_discount_percent": 0,
+            "quantity": 1
+          }
+        ],
+        "cluster_from": "",
+        "cluster_to": "Казань"
+      },
+      "is_express": false,
+      "legal_info": {
+        "inn": "770123456789",
+        "kpp": "770101001",
+        "company_name": "ООО Покупатель"
+      },
+      "quantum_id": null,
+      "require_blr_traceable_attrs": false,
+      "requirements": {
+        "products_requiring_gtd": [
+          1904686181
+        ],
+        "products_requiring_country": [],
+        "products_requiring_mandatory_mark": [],
+        "products_requiring_rnpt": [],
+        "products_requiring_jw_uin": [],
+        "products_requiring_change_country": [],
+        "products_requiring_imei": [],
+        "products_requiring_weight": []
+      },
+      "tariffication": {
+        "current": {
+          "current_tariff_rate": 2,
+          "current_tariff_type": "commission",
+          "current_tariff_charge": {
+            "amount": 100,
+            "currency": "RUB"
+          },
+          "current_tariff_min_charge": {
+            "amount": 100,
+            "currency": "RUB"
+          }
+        },
+        "next": {
+          "next_tariff_rate": 2,
+          "next_tariff_type": "commission",
+          "next_tariff_charge": {
+            "amount": 150,
+            "currency": "RUB"
+          },
+          "next_tariff_starts_at": "2025-12-22T18:00:01.000Z",
+          "next_tariff_min_charge": {
+            "amount": 150,
+            "currency": "RUB"
+          }
+        }
+      },
+      "external_order": {
+        "is_external": false,
+        "platform_name": ""
+      },
+      "volume_weight": null,
+      "is_click_and_collect": false
+    }
+  ],
+  "count": 1,
+  "has_next": false,
+  "cursor": ""
+}

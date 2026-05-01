@@ -1,0 +1,10 @@
+{
+  "products": [
+    {
+      "required_attributes": [
+        "string"
+      ],
+      "sku": 0
+    }
+  ]
+}

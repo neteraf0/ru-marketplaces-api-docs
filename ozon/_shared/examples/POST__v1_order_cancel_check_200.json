@@ -1,0 +1,18 @@
+{
+  "cancellable": false,
+  "order_number": "string",
+  "posting_groups": [
+    {
+      "posting_numbers": [
+        "string"
+      ]
+    }
+  ],
+  "postings": [
+    {
+      "cancellable": false,
+      "posting_number": "string",
+      "why_not_cancellable": "string"
+    }
+  ]
+}

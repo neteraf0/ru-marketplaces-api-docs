@@ -1,0 +1,50 @@
+[
+  {
+    "interval": {
+      "begin": "2023-10-21",
+      "end": "2023-10-25"
+    },
+    "stats": [
+      {
+        "item_id": 62237,
+        "item_name": "Gloria Jeans",
+        "category_name": "Детям",
+        "advert_type": 1,
+        "place": 2,
+        "views": 11849,
+        "clicks": 209,
+        "cr": 0.48,
+        "ctr": 1.76,
+        "date_from": "2023-10-21T00:00:00+03:00",
+        "date_to": "2023-10-27T23:59:59+03:00",
+        "subject_name": "Одежда",
+        "atbs": 4,
+        "orders": 1,
+        "price": 175000,
+        "cpc": 837.32,
+        "status": 6,
+        "daily_stats": [
+          {
+            "date": "2023-10-21T00:00:00+03:00",
+            "app_type_stats": [
+              {
+                "app_type": 1,
+                "stats": [
+                  {
+                    "views": 2017,
+                    "clicks": 27,
+                    "atbs": 1,
+                    "ctr": 1.34
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "expenses": 175000,
+        "cr1": 1.91,
+        "cr2": 25
+      }
+    ]
+  }
+]

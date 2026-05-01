@@ -1,0 +1,21 @@
+{
+  "dir": "ASC",
+  "filter": {
+    "cutoff_from": "2021-08-24T14:15:22Z",
+    "cutoff_to": "2021-08-31T14:15:22Z",
+    "delivery_method_id": [],
+    "is_quantum": false,
+    "provider_id": [],
+    "status": "awaiting_packaging",
+    "warehouse_id": []
+  },
+  "limit": 100,
+  "offset": 0,
+  "with": {
+    "analytics_data": true,
+    "barcodes": true,
+    "financial_data": true,
+    "legal_info": false,
+    "translit": true
+  }
+}

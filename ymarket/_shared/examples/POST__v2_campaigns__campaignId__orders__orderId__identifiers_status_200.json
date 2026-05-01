@@ -1,0 +1,26 @@
+{
+  "status": "OK",
+  "result": {
+    "items": [
+      {
+        "id": 0,
+        "uin": [
+          {
+            "value": "string",
+            "status": "OK",
+            "substatus": "UIN_MERCHANT_MISMATCH"
+          }
+        ],
+        "cis": [
+          {
+            "value": "string",
+            "status": "OK",
+            "substatus": "WRONG_OWNER_INN",
+            "crptRequestId": "string",
+            "crptRequestDateTime": "2024-01-01T00:00:00Z"
+          }
+        ]
+      }
+    ]
+  }
+}

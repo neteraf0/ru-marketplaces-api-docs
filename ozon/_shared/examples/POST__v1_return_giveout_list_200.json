@@ -1,0 +1,14 @@
+{
+  "giveouts": [
+    {
+      "approved_articles_count": 0,
+      "created_at": "2024-01-01T00:00:00Z",
+      "giveout_id": 0,
+      "giveout_status": "string",
+      "total_articles_count": 0,
+      "warehouse_address": "string",
+      "warehouse_id": 0,
+      "warehouse_name": "string"
+    }
+  ]
+}

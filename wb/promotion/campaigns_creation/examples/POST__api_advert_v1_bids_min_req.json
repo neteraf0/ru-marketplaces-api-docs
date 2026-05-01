@@ -1,0 +1,13 @@
+{
+  "advert_id": 98765432,
+  "nm_ids": [
+    12345678,
+    87654321
+  ],
+  "payment_type": "cpm",
+  "placement_types": [
+    "combined",
+    "search",
+    "recommendation"
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "comments_amount": 0,
+  "dislikes_amount": 0,
+  "id": "string",
+  "is_rating_participant": false,
+  "likes_amount": 0,
+  "order_status": "DELIVERED",
+  "photos": [
+    {
+      "height": 0,
+      "url": "string",
+      "width": 0
+    }
+  ],
+  "photos_amount": 0,
+  "published_at": "2024-01-01T00:00:00Z",
+  "rating": 0,
+  "sku": 0,
+  "status": "NEW",
+  "text": "string",
+  "videos": [
+    {
+      "height": 0,
+      "preview_url": "string",
+      "short_video_preview_url": "string",
+      "url": "string",
+      "width": 0
+    }
+  ],
+  "videos_amount": 0
+}

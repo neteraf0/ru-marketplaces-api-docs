@@ -1,0 +1,9 @@
+{
+  "filter": {
+    "provider_id": 424,
+    "status": "ACTIVE",
+    "warehouse_id": 15588127982000
+  },
+  "limit": 100,
+  "offset": 0
+}

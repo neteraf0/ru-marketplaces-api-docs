@@ -1,0 +1,20 @@
+{
+  "prices": [
+    {
+      "customer_price": {
+        "amount": "string",
+        "currency": "string"
+      },
+      "discount_percent": 0.0,
+      "offer_id": "string",
+      "price": {
+        "amount": "string",
+        "currency": "string"
+      },
+      "price_indexes": [
+        {}
+      ],
+      "sku": 0
+    }
+  ]
+}

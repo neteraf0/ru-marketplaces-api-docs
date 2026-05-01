@@ -1,0 +1,38 @@
+{
+  "has_next": false,
+  "items": [
+    {
+      "attention_reasons": [
+        "ORDER_ATTENTION_TYPE_UNSPECIFIED"
+      ],
+      "bundle_summary": {
+        "rounded_total_volume_in_litres": 0.0,
+        "total_item_count": 0,
+        "total_quantity": 0
+      },
+      "can_be_cancelled": false,
+      "cancellation_state": {
+        "cancellation_error": {},
+        "cancellation_status": "STATUS_UNSPECIFIED"
+      },
+      "created_date": "2024-01-01T00:00:00Z",
+      "delivery_details": {
+        "direct_details": {},
+        "drop_off_point": {},
+        "pickup_details": {},
+        "supply_type": "SUPPLY_TYPE_UNSPECIFIED"
+      },
+      "has_consignment_note": false,
+      "has_label": false,
+      "id": 0,
+      "locked": false,
+      "order_number": "string",
+      "package_units_count": 0,
+      "receive_date": "2024-01-01T00:00:00Z",
+      "status": "ORDER_STATUS_UNSPECIFIED",
+      "supply_id": "string",
+      "warehouse_id": 0
+    }
+  ],
+  "last_id": 0
+}

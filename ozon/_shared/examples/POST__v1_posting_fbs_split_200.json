@@ -1,0 +1,22 @@
+{
+  "parent_posting": {
+    "posting_number": "string",
+    "products": [
+      {
+        "product_id": 0,
+        "quantity": 0
+      }
+    ]
+  },
+  "postings": [
+    {
+      "posting_number": "string",
+      "products": [
+        {
+          "product_id": 0,
+          "quantity": 0
+        }
+      ]
+    }
+  ]
+}

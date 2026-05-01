@@ -1,0 +1,11 @@
+{
+  "status": "OK",
+  "result": {
+    "status": "PENDING",
+    "subStatus": "NO_DATA",
+    "generationRequestedAt": "2024-01-01T00:00:00Z",
+    "generationFinishedAt": "2024-01-01T00:00:00Z",
+    "file": "string",
+    "estimatedGenerationTime": 0
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "status": "OK",
+  "result": {
+    "items": [
+      {
+        "offerId": "string",
+        "name": "string",
+        "price": {
+          "value": 0.0,
+          "currencyId": "RUR"
+        },
+        "counters": {
+          "planCount": 0,
+          "factCount": 0,
+          "surplusCount": 0,
+          "shortageCount": 0,
+          "defectCount": 0
+        }
+      }
+    ],
+    "paging": {
+      "nextPageToken": "string"
+    }
+  }
+}

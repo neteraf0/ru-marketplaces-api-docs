@@ -1,0 +1,18 @@
+{
+  "result": {
+    "strategy_name": "стратегия_от_CID7",
+    "enabled": true,
+    "update_type": "strategyItemsListChanged",
+    "type": "COMP_PRICE",
+    "competitors": [
+      {
+        "competitor_id": 204,
+        "coefficient": 1
+      },
+      {
+        "competitor_id": 1008426,
+        "coefficient": 1
+      }
+    ]
+  }
+}

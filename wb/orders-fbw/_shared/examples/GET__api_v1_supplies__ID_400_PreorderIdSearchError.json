@@ -1,0 +1,7 @@
+{
+  "status": 400,
+  "title": "bad request",
+  "detail": "fail to get supply details: по заказу 123456789 найдена поставка 987654321. Используйте поиск по ID поставки",
+  "requestId": "bc28456e85d5590c74decbcd9f63cd91",
+  "origin": "supply-api"
+}

@@ -1,0 +1,41 @@
+{
+  "status": "OK",
+  "result": {
+    "promos": [
+      {
+        "id": "string",
+        "name": "string",
+        "period": {
+          "dateTimeFrom": "2024-01-01T00:00:00Z",
+          "dateTimeTo": "2024-01-01T00:00:00Z"
+        },
+        "participating": false,
+        "assortmentInfo": {
+          "activeOffers": 0,
+          "potentialOffers": 0,
+          "processing": false
+        },
+        "mechanicsInfo": {
+          "type": "DIRECT_DISCOUNT",
+          "promocodeInfo": {
+            "promocode": "string",
+            "discount": 0
+          }
+        },
+        "bestsellerInfo": {
+          "bestseller": false,
+          "entryDeadline": "2024-01-01T00:00:00Z",
+          "renewalEnabled": false
+        },
+        "channels": [
+          "PUSH"
+        ],
+        "constraints": {
+          "warehouseIds": [
+            0
+          ]
+        }
+      }
+    ]
+  }
+}

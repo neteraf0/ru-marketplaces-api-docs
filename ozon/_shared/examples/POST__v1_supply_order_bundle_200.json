@@ -1,0 +1,48 @@
+{
+  "items": [
+    {
+      "icon_path": "https://example.com/icons/book_icon_12345.png",
+      "sku": 160249683,
+      "name": "Так говорил Омар Хайям. Жизнеописание. Афоризмы и рубайят",
+      "offer_id": "978-5-906864-56-7",
+      "quantity": 5,
+      "barcode": "9785906864567",
+      "product_id": 160249683,
+      "quant": 5,
+      "is_quant_editable": true,
+      "volume_in_litres": 0.5,
+      "total_volume_in_litres": 2.5,
+      "contractor_item_code": "CONTRACT_56789",
+      "sfbo_attribute": "ITEM_SFBO_ATTRIBUTE_STANDARD",
+      "shipment_type": "BUNDLE_ITEM_SHIPMENT_TYPE_PICKUP",
+      "tags": [
+        "EVSD_REQUIRED",
+        "FRAGILE"
+      ],
+      "placement_zone": "ZONE_A"
+    },
+    {
+      "icon_path": "https://example.com/icons/toy_icon_67890.png",
+      "sku": 123456789,
+      "name": "Конструктор LEGO Classic 11019",
+      "offer_id": "LEGO_11019",
+      "quantity": 10,
+      "barcode": "5702017115689",
+      "product_id": 123456789,
+      "quant": 10,
+      "is_quant_editable": true,
+      "volume_in_litres": 1.2,
+      "total_volume_in_litres": 12,
+      "contractor_item_code": "CONTRACT_12345",
+      "sfbo_attribute": "ITEM_SFBO_ATTRIBUTE_LARGE",
+      "shipment_type": "BUNDLE_ITEM_SHIPMENT_TYPE_DELIVERY",
+      "tags": [
+        "EVSD_REQUIRED"
+      ],
+      "placement_zone": "SORT"
+    }
+  ],
+  "total_count": 2,
+  "has_next": false,
+  "last_id": "item_123456789"
+}

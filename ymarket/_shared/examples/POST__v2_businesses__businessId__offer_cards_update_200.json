@@ -1,0 +1,22 @@
+{
+  "status": "OK",
+  "results": [
+    {
+      "offerId": "string",
+      "errors": [
+        {
+          "type": "OFFER_NOT_FOUND",
+          "parameterId": 0,
+          "message": "string"
+        }
+      ],
+      "warnings": [
+        {
+          "type": "OFFER_NOT_FOUND",
+          "parameterId": 0,
+          "message": "string"
+        }
+      ]
+    }
+  ]
+}

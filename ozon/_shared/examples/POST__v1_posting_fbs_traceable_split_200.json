@@ -1,0 +1,14 @@
+{
+  "postings": [
+    {
+      "posting_number": "string",
+      "potential_blr_traceable": false,
+      "products": [
+        {
+          "quantity": 0,
+          "sku": 0
+        }
+      ]
+    }
+  ]
+}

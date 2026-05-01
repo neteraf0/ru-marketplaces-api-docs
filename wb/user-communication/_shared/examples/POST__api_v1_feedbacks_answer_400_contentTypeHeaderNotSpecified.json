@@ -1,0 +1,6 @@
+{
+  "title": "bad request",
+  "requestId": "e6c4100223db8bf5818b2e5f12705891",
+  "origin": "fbapi",
+  "detail": "content-type header not specified"
+}

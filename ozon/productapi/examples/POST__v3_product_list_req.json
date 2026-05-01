@@ -1,0 +1,13 @@
+{
+  "filter": {
+    "offer_id": [
+      "136748"
+    ],
+    "product_id": [
+      "223681945"
+    ],
+    "visibility": "ALL"
+  },
+  "last_id": "",
+  "limit": 100
+}

@@ -1,0 +1,8 @@
+{
+  "status": 400,
+  "title": "Bad Request",
+  "origin": "proxy-chats",
+  "detail": "4A9F2544E29: \"video_2023-07-25_10-54-09.mp4\" has unsupported mime type",
+  "requestId": "1b21cad4833a0c9244dc294a000f6149",
+  "error": "4A9F2544E29: \"video_2023-07-25_10-54-09.mp4\" has unsupported mime type"
+}

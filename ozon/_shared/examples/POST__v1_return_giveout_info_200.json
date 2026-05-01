@@ -1,0 +1,14 @@
+{
+  "articles": [
+    {
+      "approved": false,
+      "delivery_schema": "string",
+      "name": "string",
+      "seller_id": 0
+    }
+  ],
+  "giveout_id": 0,
+  "giveout_status": "string",
+  "warehouse_address": "string",
+  "warehouse_name": "string"
+}

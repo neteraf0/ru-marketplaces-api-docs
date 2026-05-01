@@ -1,0 +1,7 @@
+{
+  "status": 400,
+  "title": "bad request",
+  "detail": "Выберите значение параметра 'StatusIDs[0]' из списка: '1 2 3 4 5 6'",
+  "requestId": "52d7410a596b40cecfeb70c41ae5ac99",
+  "origin": "supply-api"
+}

@@ -1,0 +1,7 @@
+{
+  "status": 400,
+  "title": "bad request",
+  "detail": "id выходит за рамки int64",
+  "requestId": "0e35ac7fdbb94695db4004cb4c4ca12b",
+  "origin": "supply-api"
+}

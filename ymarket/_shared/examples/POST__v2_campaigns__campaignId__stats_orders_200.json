@@ -1,0 +1,100 @@
+{
+  "status": "OK",
+  "result": {
+    "orders": [
+      {
+        "id": 0,
+        "creationDate": "2024-01-01",
+        "statusUpdateDate": "2024-01-01T00:00:00Z",
+        "status": "CANCELLED_BEFORE_PROCESSING",
+        "partnerOrderId": "string",
+        "paymentType": "POSTPAID",
+        "fake": false,
+        "deliveryRegion": {
+          "id": 0,
+          "name": "string"
+        },
+        "items": [
+          {
+            "offerName": "string",
+            "marketSku": 1,
+            "shopSku": "string",
+            "count": 0,
+            "prices": [
+              {}
+            ],
+            "warehouse": {
+              "id": 0,
+              "name": "string"
+            },
+            "details": [
+              {}
+            ],
+            "cisList": [
+              "string"
+            ],
+            "initialCount": 0,
+            "bidFee": 570,
+            "cofinanceThreshold": 0.0,
+            "cofinanceValue": 0.0
+          }
+        ],
+        "initialItems": [
+          {
+            "offerName": "string",
+            "marketSku": 1,
+            "shopSku": "string",
+            "count": 0,
+            "prices": [
+              {}
+            ],
+            "warehouse": {
+              "id": 0,
+              "name": "string"
+            },
+            "details": [
+              {}
+            ],
+            "cisList": [
+              "string"
+            ],
+            "initialCount": 0,
+            "bidFee": 570,
+            "cofinanceThreshold": 0.0,
+            "cofinanceValue": 0.0
+          }
+        ],
+        "payments": [
+          {
+            "id": "string",
+            "date": "2024-01-01",
+            "type": "PAYMENT",
+            "source": "BUYER",
+            "total": 0.0,
+            "paymentOrder": {
+              "id": "string",
+              "date": "2024-01-01"
+            }
+          }
+        ],
+        "commissions": [
+          {
+            "type": "FEE",
+            "actual": 0.0
+          }
+        ],
+        "subsidies": [
+          {
+            "operationType": "ACCRUAL",
+            "type": "YANDEX_CASHBACK",
+            "amount": 0.0
+          }
+        ],
+        "currency": "RUR"
+      }
+    ],
+    "paging": {
+      "nextPageToken": "string"
+    }
+  }
+}

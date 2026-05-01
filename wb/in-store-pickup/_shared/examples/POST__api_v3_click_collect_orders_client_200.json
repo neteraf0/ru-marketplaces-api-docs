@@ -1,0 +1,10 @@
+{
+  "orders": [
+    {
+      "phone": "+71111111111",
+      "firstName": "Иван",
+      "orderID": 1234567,
+      "phoneCode": 1234567
+    }
+  ]
+}

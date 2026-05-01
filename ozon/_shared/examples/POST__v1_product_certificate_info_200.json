@@ -1,0 +1,15 @@
+{
+  "result": {
+    "certificate_id": 54321,
+    "certificate_number": "CERT-2026-MSK-789456",
+    "certificate_name": "Сертификат безопасности продукции",
+    "type_code": "SAFETY_2026",
+    "status_code": "PENDING",
+    "accordance_type_code": "PARTIAL",
+    "rejection_reason_code": "DOCS_MISSING",
+    "verification_comment": "Требуются дополнительные документы от производителя для полного подтверждения",
+    "issue_date": "2025-11-01T08:00:00Z",
+    "expire_date": "2027-11-01T08:00:00Z",
+    "products_count": 15
+  }
+}

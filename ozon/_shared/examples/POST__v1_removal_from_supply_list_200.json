@@ -1,0 +1,33 @@
+{
+  "returns_summary_report_rows": [
+    {
+      "name": "Шурупы",
+      "offer_id": "Шуруп-0001",
+      "sku": "12314324",
+      "barcode": "",
+      "quantity_for_return": 1,
+      "quant_count": 0,
+      "box_id": "202501272",
+      "return_id": "934457",
+      "stock_type": "Излишек",
+      "return_created_at": "2025-03-13T06:49:37.591Z",
+      "is_auto_return": false,
+      "clearing_warehouse_name": "ХОРУГВИНО_РФЦ",
+      "return_state": "Отклонено складом",
+      "delivery_type": "Вывоз с ПВЗ/СЦ",
+      "preliminary_delivery_price": 15,
+      "box_length": 0.1,
+      "box_width": 0.1,
+      "box_height": 0.1,
+      "box_volume": 34,
+      "box_weight": 0.01,
+      "box_state": "Доступно к вывозу",
+      "destination_warehouse_name": "РАЗДОРЫ_4",
+      "destination_warehouse_address": "Россия, 143082, обл. Московская, р-н Одинцовский, д. Раздоры, Россия, Московская область, Красногорск, улица Липовой Рощи, 2к1",
+      "delivery_date": "2025-03-13T06:49:37.591Z",
+      "given_out_date": "2025-03-13T06:49:37.591Z",
+      "utilization_date": "2025-03-13T06:49:37.591Z"
+    }
+  ],
+  "last_id": "whcReturnId:934457_boxId:202501272_itemIndex:0"
+}

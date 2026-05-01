@@ -1,0 +1,33 @@
+{
+  "sort_dir": "asc",
+  "limit": 100,
+  "filter": {
+    "cutoff_from": "2026-01-21T07:13:56.042Z",
+    "cutoff_to": "2026-01-21T07:13:56.042Z",
+    "delivering_date_from": "2026-01-21T07:13:56.042Z",
+    "delivering_date_to": "2026-01-21T07:13:56.042Z",
+    "delivery_method_id": [
+      123456
+    ],
+    "status": [
+      "awaiting_packaging",
+      "awaiting_deliver",
+      "delivering"
+    ],
+    "warehouse_id": [
+      3092889984
+    ],
+    "provider_id": [
+      57
+    ],
+    "last_change_status_date_from": "2026-01-21T07:13:56.042Z",
+    "last_change_status_date_to": "2026-01-21T07:13:56.042Z"
+  },
+  "cursor": "",
+  "with": {
+    "barcodes": true,
+    "analytics_data": true,
+    "financial_data": true,
+    "legal_info": true
+  }
+}

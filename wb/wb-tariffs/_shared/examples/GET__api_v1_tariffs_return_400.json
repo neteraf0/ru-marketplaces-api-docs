@@ -1,0 +1,6 @@
+{
+  "detail": "parameter \"date\" in query has an error: empty value is not allowed",
+  "origin": "tariffs",
+  "requestId": "e8096bddcfe5e3ff75f1afd26755364c",
+  "title": "Bad Request"
+}

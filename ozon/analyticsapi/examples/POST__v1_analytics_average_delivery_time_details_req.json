@@ -1,0 +1,9 @@
+{
+  "cluster_id": 154,
+  "filters": {
+    "delivery_schema": "ALL",
+    "supply_period": "EIGHT_WEEKS"
+  },
+  "limit": 1000,
+  "offset": 0
+}

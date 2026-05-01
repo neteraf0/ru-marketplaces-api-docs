@@ -1,0 +1,56 @@
+{
+  "cursor": "string",
+  "has_next": false,
+  "methods": [
+    {
+      "carriage_postings_count": 0,
+      "carriages": [
+        {
+          "all_blr_traceable": false,
+          "available_actions": [],
+          "carriage_volume": 0.0,
+          "id": 0,
+          "postings_count": 0,
+          "quantum_count": 0,
+          "status": "string"
+        }
+      ],
+      "cut_in": "string",
+      "cutoff_at": "string",
+      "delivery_method_id": 0,
+      "delivery_method_name": "string",
+      "delivery_method_status": "string",
+      "departure_date": "string",
+      "dropoff_address": "string",
+      "dropoff_change_availability": "string",
+      "dropoff_point_id": 0,
+      "dropoff_point_type": "string",
+      "errors": [
+        {
+          "code": "string",
+          "description": "string",
+          "status": "string"
+        }
+      ],
+      "first_mile_changing": false,
+      "first_mile_type": "string",
+      "has_entrusted_acceptance": false,
+      "integration_type": "string",
+      "is_optional_carriage": false,
+      "is_presort": false,
+      "is_rfbs": false,
+      "mandatory_packaged_count": 0,
+      "mandatory_postings_count": 0,
+      "optional_packaged_count": 0,
+      "recommended_time_local": "string",
+      "recommended_time_utc_offset_in_minutes": 0,
+      "timeslot_from": "string",
+      "timeslot_to": "string",
+      "tpl_provider_icon_url": "string",
+      "tpl_provider_name": "string",
+      "warehouse_city": "string",
+      "warehouse_id": 0,
+      "warehouse_name": "string"
+    }
+  ]
+}

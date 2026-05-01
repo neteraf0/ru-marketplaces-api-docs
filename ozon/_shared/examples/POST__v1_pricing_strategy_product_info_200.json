@@ -1,0 +1,10 @@
+{
+  "result": {
+    "strategy_id": "b7cd30e6-5667-424d-b105-fbec30a52477",
+    "is_enabled": true,
+    "strategy_product_price": 500,
+    "price_downloaded_at": "2022-11-17T15:33:53.936Z",
+    "strategy_competitor_id": "b7cd30e6-5667-424d-b105-fbec30a524778",
+    "strategy_competitor_product_url": "http://primerurl/pricing-strategy/product/info.ru"
+  }
+}

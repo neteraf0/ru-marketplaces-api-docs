@@ -1,0 +1,7 @@
+{
+  "title": "bad request",
+  "status": 400,
+  "detail": "missing sort",
+  "requestId": "94b52fca-8403-49fb-85dd-95dfb73160ad",
+  "origin": "banreportsvc-api"
+}

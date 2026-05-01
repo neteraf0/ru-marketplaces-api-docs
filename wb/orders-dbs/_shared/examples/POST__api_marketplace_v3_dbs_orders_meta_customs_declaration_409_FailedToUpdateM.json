@@ -1,0 +1,3 @@
+{
+  "message": "Failed to update order metadata. Ensure that the order meets all necessary requirements (the order exists, is in the \"In Assembly\" status, and has accessible metadata; see the description of the **Get order metadata** method)"
+}

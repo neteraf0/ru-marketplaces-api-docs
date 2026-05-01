@@ -1,0 +1,22 @@
+{
+  "analytics_period": {
+    "date_from": "string",
+    "date_to": "string"
+  },
+  "page_count": 0,
+  "queries": [
+    {
+      "currency": "string",
+      "gmv": 0.0,
+      "order_count": 0,
+      "position": 0.0,
+      "query": "string",
+      "query_index": 0,
+      "sku": 0,
+      "unique_search_users": 0,
+      "unique_view_users": 0,
+      "view_conversion": 0.0
+    }
+  ],
+  "total": 0
+}

@@ -1,0 +1,13 @@
+{
+  "items": [
+    {
+      "sku": 298789742,
+      "name": "Кружка",
+      "offer_id": "91132",
+      "currency_code": "RUB",
+      "old_price": "2590",
+      "price": "2300",
+      "vat": "0.1"
+    }
+  ]
+}

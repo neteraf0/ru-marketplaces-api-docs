@@ -1,0 +1,11 @@
+{
+  "status": "OK",
+  "result": {
+    "boxes": [
+      {
+        "id": 0,
+        "fulfilmentId": "string"
+      }
+    ]
+  }
+}

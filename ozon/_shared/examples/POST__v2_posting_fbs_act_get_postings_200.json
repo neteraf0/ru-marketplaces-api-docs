@@ -1,0 +1,22 @@
+{
+  "result": [
+    {
+      "id": 0,
+      "multi_box_qty": 0,
+      "posting_number": "string",
+      "status": "string",
+      "seller_error": "string",
+      "updated_at": "2024-01-01T00:00:00Z",
+      "created_at": "2024-01-01T00:00:00Z",
+      "products": [
+        {
+          "name": "string",
+          "offer_id": "string",
+          "price": "string",
+          "quantity": 0,
+          "sku": 0
+        }
+      ]
+    }
+  ]
+}

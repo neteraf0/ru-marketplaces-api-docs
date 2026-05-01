@@ -1,0 +1,13 @@
+{
+  "error": {
+    "bundle_errors": [
+      {
+        "errors": [],
+        "sku": 0
+      }
+    ],
+    "order_error": "ORDER_ERROR_TYPE_UNSPECIFIED"
+  },
+  "is_error": false,
+  "row_version": 0
+}

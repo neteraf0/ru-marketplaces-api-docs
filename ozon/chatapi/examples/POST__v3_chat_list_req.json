@@ -1,0 +1,8 @@
+{
+  "filter": {
+    "chat_status": "OPENED",
+    "unread_only": true
+  },
+  "limit": 1,
+  "cursor": "304000402034"
+}

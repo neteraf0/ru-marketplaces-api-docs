@@ -1,0 +1,13 @@
+{
+  "id": "WB-GI-1234567",
+  "isB2b": false,
+  "done": false,
+  "createdAt": "2022-05-04T07:56:29Z",
+  "closedAt": "2022-05-04T07:56:29Z",
+  "scanDt": "2022-05-04T07:56:29Z",
+  "name": "My test supply",
+  "cargoType": 0,
+  "crossBorderType": 1,
+  "destinationOfficeId": 123,
+  "recommendedWhId": 123569
+}

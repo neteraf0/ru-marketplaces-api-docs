@@ -1,0 +1,16 @@
+{
+  "min_price": {
+    "amount": "string",
+    "currency": "string"
+  },
+  "utilization_settings": {
+    "utilization_price": {
+      "amount": "string",
+      "currency": "string"
+    },
+    "utilization_price_defects": {
+      "amount": "string",
+      "currency": "string"
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "act_type": "string",
+  "all_blr_traceable": false,
+  "is_waybill_enabled": false,
+  "is_econom": false,
+  "arrival_pass_ids": [
+    "string"
+  ],
+  "available_actions": [
+    "string"
+  ],
+  "cancel_availability": {
+    "is_cancel_available": false,
+    "reason": "string"
+  },
+  "carriage_id": 0,
+  "company_id": 0,
+  "containers_count": 0,
+  "created_at": "2024-01-01T00:00:00Z",
+  "delivery_method_id": 0,
+  "departure_date": "string",
+  "first_mile_type": "string",
+  "has_postings_for_next_carriage": false,
+  "integration_type": "string",
+  "is_container_label_printed": false,
+  "is_partial": false,
+  "partial_num": 0,
+  "retry_count": 0,
+  "status": "string",
+  "tpl_provider_id": 0,
+  "updated_at": "2024-01-01T00:00:00Z",
+  "warehouse_id": 0
+}

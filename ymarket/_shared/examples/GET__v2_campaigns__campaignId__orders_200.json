@@ -1,0 +1,203 @@
+{
+  "pager": {
+    "total": 0,
+    "from": 0,
+    "to": 0,
+    "currentPage": 0,
+    "pagesCount": 0,
+    "pageSize": 0
+  },
+  "orders": [
+    {
+      "id": 0,
+      "externalOrderId": "string",
+      "status": "PLACING",
+      "substatus": "RESERVATION_EXPIRED",
+      "creationDate": "23-09-2022 09:12:41",
+      "updatedAt": "23-09-2022 09:12:41",
+      "currency": "RUR",
+      "itemsTotal": 0.0,
+      "deliveryTotal": 0.0,
+      "buyerItemsTotal": 0.0,
+      "buyerTotal": 0.0,
+      "buyerItemsTotalBeforeDiscount": 0.0,
+      "buyerTotalBeforeDiscount": 0.0,
+      "paymentType": "PREPAID",
+      "paymentMethod": "CASH_ON_DELIVERY",
+      "fake": false,
+      "items": [
+        {
+          "id": 0,
+          "offerId": "string",
+          "offerName": "string",
+          "price": 0.0,
+          "buyerPrice": 0.0,
+          "buyerPriceBeforeDiscount": 0.0,
+          "priceBeforeDiscount": 0.0,
+          "count": 0,
+          "vat": "NO_VAT",
+          "shopSku": "string",
+          "subsidy": 0.0,
+          "partnerWarehouseId": "string",
+          "promos": [
+            {
+              "type": "DIRECT_DISCOUNT",
+              "discount": 0.0,
+              "subsidy": 0.0,
+              "shopPromoId": "string",
+              "marketPromoId": "string"
+            }
+          ],
+          "instances": [
+            {
+              "cis": "string",
+              "cisFull": "string",
+              "uin": "string",
+              "rnpt": "string",
+              "gtd": "string",
+              "countryCode": "RU"
+            }
+          ],
+          "details": [
+            {
+              "itemCount": 0,
+              "itemStatus": "REJECTED",
+              "updateDate": "23-09-2022"
+            }
+          ],
+          "subsidies": [
+            {
+              "type": "YANDEX_CASHBACK",
+              "amount": 0.0
+            }
+          ],
+          "requiredInstanceTypes": [
+            "CIS"
+          ],
+          "tags": [
+            "ULTIMA"
+          ]
+        }
+      ],
+      "subsidies": [
+        {
+          "type": "YANDEX_CASHBACK",
+          "amount": 0.0
+        }
+      ],
+      "delivery": {
+        "id": "string",
+        "type": "DELIVERY",
+        "serviceName": "string",
+        "price": 0.0,
+        "deliveryPartnerType": "SHOP",
+        "courier": {
+          "fullName": "string",
+          "phone": "string",
+          "phoneExtension": "string",
+          "vehicleNumber": "string",
+          "vehicleDescription": "string"
+        },
+        "dates": {
+          "fromDate": "23-09-2022",
+          "toDate": "23-09-2022",
+          "fromTime": "string",
+          "toTime": "string",
+          "realDeliveryDate": "23-09-2022"
+        },
+        "region": {
+          "id": 0,
+          "name": "string",
+          "type": "OTHER",
+          "parent": {
+            "id": 0,
+            "name": "string",
+            "type": "OTHER",
+            "parent": {
+              "id": 0,
+              "name": "string",
+              "type": "OTHER",
+              "parent": {
+                "id": 0,
+                "name": "string",
+                "type": "OTHER",
+                "parent": {}
+              }
+            }
+          }
+        },
+        "address": {
+          "country": "string",
+          "postcode": "string",
+          "city": "string",
+          "district": "string",
+          "subway": "string",
+          "street": "string",
+          "house": "string",
+          "estate": "string",
+          "block": "string",
+          "building": "string",
+          "entrance": "string",
+          "entryphone": "string",
+          "floor": "string",
+          "apartment": "string",
+          "phone": "string",
+          "recipient": "string",
+          "gps": {
+            "latitude": 0.0,
+            "longitude": 0.0
+          }
+        },
+        "vat": "NO_VAT",
+        "deliveryServiceId": 0,
+        "liftType": "NOT_NEEDED",
+        "liftPrice": 0.0,
+        "outletCode": "string",
+        "outletStorageLimitDate": "23-09-2022",
+        "dispatchType": "UNKNOWN",
+        "tracks": [
+          {
+            "trackCode": "string",
+            "deliveryServiceId": 0
+          }
+        ],
+        "shipments": [
+          {
+            "id": 0,
+            "shipmentDate": "23-09-2022",
+            "shipmentTime": "string",
+            "tracks": [
+              {
+                "trackCode": "string",
+                "deliveryServiceId": 0
+              }
+            ],
+            "boxes": [
+              {
+                "id": 0,
+                "fulfilmentId": "string"
+              }
+            ]
+          }
+        ],
+        "estimated": false,
+        "eacType": "MERCHANT_TO_COURIER",
+        "eacCode": "string"
+      },
+      "buyer": {
+        "id": "string",
+        "lastName": "string",
+        "firstName": "string",
+        "middleName": "string",
+        "type": "PERSON"
+      },
+      "notes": "string",
+      "taxSystem": "OSN",
+      "cancelRequested": false,
+      "expiryDate": "23-09-2022 09:12:41"
+    }
+  ],
+  "paging": {
+    "nextPageToken": "string"
+  }
+}

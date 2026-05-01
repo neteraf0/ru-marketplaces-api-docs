@@ -1,0 +1,14 @@
+{
+  "status": "OK",
+  "result": {
+    "paging": {
+      "nextPageToken": "string",
+      "prevPageToken": "string"
+    },
+    "hiddenOffers": [
+      {
+        "offerId": "string"
+      }
+    ]
+  }
+}

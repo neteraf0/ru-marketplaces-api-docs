@@ -1,0 +1,19 @@
+{
+  "cursor": "string",
+  "errors": [
+    {
+      "charge_percent": 0.0,
+      "charge_price": 0.0,
+      "charge_price_currency_code": "string",
+      "delivery_schema": "string",
+      "error_at": "2024-01-01T00:00:00Z",
+      "has_grace_status": false,
+      "index": 0.0,
+      "posting_error_type": "UNSPECIFIED",
+      "posting_number": "string",
+      "product_price": 0.0,
+      "product_price_currency_code": "string"
+    }
+  ],
+  "has_next": false
+}

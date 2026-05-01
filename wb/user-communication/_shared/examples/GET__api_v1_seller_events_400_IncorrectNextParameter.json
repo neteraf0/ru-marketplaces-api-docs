@@ -1,0 +1,8 @@
+{
+  "status": 400,
+  "title": "Bad Request",
+  "origin": "proxy-chats",
+  "detail": "Invalid number",
+  "requestId": "62f59a4ce21064f20b1bbc28c85f38d8",
+  "error": "Invalid number"
+}

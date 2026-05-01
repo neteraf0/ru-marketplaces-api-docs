@@ -1,0 +1,11 @@
+{
+  "error_messages": [
+    "string"
+  ],
+  "result": {
+    "order_ids": [
+      "string"
+    ]
+  },
+  "status": "DraftSupplyCreateStatusUnknown"
+}

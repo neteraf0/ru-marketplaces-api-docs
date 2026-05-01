@@ -1,0 +1,20 @@
+{
+  "status": "OK",
+  "result": {
+    "offers": [
+      {
+        "offerId": "string",
+        "price": {
+          "value": 0,
+          "discountBase": 0,
+          "currencyId": "RUR",
+          "vat": 0
+        },
+        "updatedAt": "2024-01-01T00:00:00Z"
+      }
+    ],
+    "paging": {
+      "nextPageToken": "string"
+    }
+  }
+}

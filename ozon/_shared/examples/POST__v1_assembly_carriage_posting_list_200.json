@@ -1,0 +1,20 @@
+{
+  "can_print_mass_label": false,
+  "cursor": "string",
+  "postings": [
+    {
+      "assembly_code": "string",
+      "can_print_label": false,
+      "posting_number": "string",
+      "products": [
+        {
+          "offer_id": "string",
+          "picture_url": "string",
+          "product_name": "string",
+          "quantity": 0,
+          "sku": 0
+        }
+      ]
+    }
+  ]
+}

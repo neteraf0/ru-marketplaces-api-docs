@@ -1,0 +1,17 @@
+{
+  "dir": "ASC",
+  "filter": {
+    "since": "2021-09-01T00:00:00.000Z",
+    "posting_number": [
+      "string"
+    ],
+    "to": "2021-11-17T10:44:12.828Z"
+  },
+  "limit": 5,
+  "offset": 0,
+  "with": {
+    "analytics_data": true,
+    "financial_data": true,
+    "legal_info": false
+  }
+}

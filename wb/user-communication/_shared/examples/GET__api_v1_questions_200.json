@@ -1,0 +1,28 @@
+{
+  "data": {
+    "countUnanswered": 24,
+    "countArchive": 508,
+    "questions": [
+      {
+        "id": "2ncBtX4B9I0UHoornoqG",
+        "text": "Question text",
+        "createdDate": "2022-02-01T11:18:08.769513469Z",
+        "state": "suppliersPortalSynch",
+        "answer": null,
+        "productDetails": {
+          "imtId": 11157265,
+          "nmId": 14917842,
+          "productName": "Coffee",
+          "supplierArticle": "123401",
+          "supplierName": " ГП Реклама и услуги",
+          "brandName": "Nescafe"
+        },
+        "wasViewed": false,
+        "isWarned": false
+      }
+    ]
+  },
+  "error": false,
+  "errorText": "",
+  "additionalErrors": null
+}

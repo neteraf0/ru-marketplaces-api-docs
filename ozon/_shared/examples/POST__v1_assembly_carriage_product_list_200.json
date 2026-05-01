@@ -1,0 +1,15 @@
+{
+  "cursor": "string",
+  "products": [
+    {
+      "offer_id": "string",
+      "picture_url": "string",
+      "posting_numbers": [
+        "string"
+      ],
+      "product_name": "string",
+      "quantity": 0,
+      "sku": 0
+    }
+  ]
+}

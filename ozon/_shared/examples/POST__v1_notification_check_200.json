@@ -1,0 +1,9 @@
+{
+  "errors": [
+    {
+      "description": "string",
+      "type": "REQUEST_ERROR"
+    }
+  ],
+  "is_active": false
+}

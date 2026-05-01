@@ -1,0 +1,11 @@
+{
+  "status": "OK",
+  "result": {
+    "rejectedOffers": [
+      {
+        "offerId": "string",
+        "reason": "OFFER_DOES_NOT_EXIST"
+      }
+    ]
+  }
+}

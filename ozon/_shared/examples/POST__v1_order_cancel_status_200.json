@@ -1,0 +1,7 @@
+{
+  "order_number": "string",
+  "posting_number": [
+    "string"
+  ],
+  "state": "string"
+}

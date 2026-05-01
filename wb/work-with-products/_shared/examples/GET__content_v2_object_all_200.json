@@ -1,0 +1,19 @@
+{
+  "data": [
+    {
+      "subjectID": 2560,
+      "parentID": 479,
+      "subjectName": "3D очки",
+      "parentName": "Электроника"
+    },
+    {
+      "subjectID": 1152,
+      "parentID": 858,
+      "subjectName": "3D-принтеры",
+      "parentName": "Оргтехника"
+    }
+  ],
+  "error": false,
+  "errorText": "",
+  "additionalErrors": null
+}

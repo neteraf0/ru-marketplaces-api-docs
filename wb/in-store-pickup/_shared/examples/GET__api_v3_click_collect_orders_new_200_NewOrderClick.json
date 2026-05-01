@@ -1,0 +1,32 @@
+{
+  "orders": [
+    {
+      "ddate": "29.10.2024",
+      "salePrice": 14000,
+      "requiredMeta": [
+        "sgtin"
+      ],
+      "article": "wb1702fyjh",
+      "rid": "1234567673554519872.0.0",
+      "createdAt": "2024-10-29T10:19:30Z",
+      "warehouseAddress": "Москва, район Якиманка, Софийская набережная, 4 с1",
+      "orderCode": "23457822-6667",
+      "payMode": "prepaid",
+      "skus": [
+        "2041546265353"
+      ],
+      "id": 1234567890,
+      "warehouseId": 1234567,
+      "nmId": 123456789,
+      "chrtId": 987654321,
+      "price": 14000,
+      "finalPrice": 14000,
+      "convertedPrice": 14000,
+      "convertedFinalPrice": 14000,
+      "currencyCode": 643,
+      "convertedCurrencyCode": 643,
+      "cargoType": 1,
+      "isZeroOrder": false
+    }
+  ]
+}

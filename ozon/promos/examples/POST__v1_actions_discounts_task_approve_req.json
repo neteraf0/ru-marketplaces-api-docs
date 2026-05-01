@@ -1,0 +1,11 @@
+{
+  "tasks": [
+    {
+      "id": 78901,
+      "approved_price": 12500,
+      "seller_comment": "ok",
+      "approved_quantity_min": 3,
+      "approved_quantity_max": 7
+    }
+  ]
+}

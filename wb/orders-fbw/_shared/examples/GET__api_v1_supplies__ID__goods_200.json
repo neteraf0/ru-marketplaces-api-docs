@@ -1,0 +1,16 @@
+[
+  {
+    "barcode": "1234567891234",
+    "vendorCode": "wb4sewt0vg",
+    "nmID": 987456654,
+    "needKiz": true,
+    "tnved": "6204430000",
+    "techSize": "C",
+    "color": "красный",
+    "supplierBoxAmount": 10,
+    "quantity": 10,
+    "readyForSaleQuantity": 0,
+    "unloadingQuantity": 0,
+    "acceptedQuantity": 0
+  }
+]

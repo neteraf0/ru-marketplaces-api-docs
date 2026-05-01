@@ -1,0 +1,17 @@
+{
+  "return_mile_settings": [
+    {
+      "is_return_mile_required": false,
+      "return_point": {
+        "address": "string",
+        "coordinates": {},
+        "id": 0,
+        "name": "string",
+        "type": "UNSPECIFIED",
+        "utc_offset": 0,
+        "working_days": []
+      },
+      "warehouse_id": 0
+    }
+  ]
+}

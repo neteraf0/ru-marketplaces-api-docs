@@ -1,0 +1,52 @@
+{
+  "status": "OK",
+  "result": {
+    "offerCards": [
+      {
+        "offerId": "string",
+        "mapping": {
+          "marketSku": 1,
+          "marketSkuName": "string",
+          "marketModelName": "string",
+          "marketCategoryId": 0,
+          "marketCategoryName": "string"
+        },
+        "parameterValues": [
+          {
+            "parameterId": 1,
+            "unitId": 0,
+            "valueId": 0,
+            "value": "string"
+          }
+        ],
+        "cardStatus": "HAS_CARD_CAN_NOT_UPDATE",
+        "contentRating": 0,
+        "averageContentRating": 0,
+        "contentRatingStatus": "UPDATING",
+        "recommendations": [
+          {
+            "type": "HAS_VIDEO",
+            "percent": 0,
+            "remainingRatingPoints": 1
+          }
+        ],
+        "groupId": "string",
+        "errors": [
+          {
+            "message": "string",
+            "comment": "string"
+          }
+        ],
+        "warnings": [
+          {
+            "message": "string",
+            "comment": "string"
+          }
+        ]
+      }
+    ],
+    "paging": {
+      "nextPageToken": "string"
+    }
+  }
+}

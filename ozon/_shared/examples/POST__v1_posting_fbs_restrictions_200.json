@@ -1,0 +1,12 @@
+{
+  "result": {
+    "posting_number": "76673629-0020-1",
+    "max_posting_weight": 40000,
+    "min_posting_weight": 0,
+    "width": 500,
+    "height": 500,
+    "length": 500,
+    "max_posting_price": 500000,
+    "min_posting_price": 0
+  }
+}

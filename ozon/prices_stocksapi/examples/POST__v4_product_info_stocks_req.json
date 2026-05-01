@@ -1,0 +1,17 @@
+{
+  "cursor": "",
+  "filter": {
+    "offer_id": [
+      "1233213232"
+    ],
+    "product_id": [
+      "313455276"
+    ],
+    "visibility": "ALL",
+    "with_quant": {
+      "created": true,
+      "exists": true
+    }
+  },
+  "limit": 100
+}

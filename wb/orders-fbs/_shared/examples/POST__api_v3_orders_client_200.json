@@ -1,0 +1,13 @@
+{
+  "orders": [
+    {
+      "firstName": "Иван",
+      "fullName": "Андреев Иван Васильевич",
+      "lastName": "Андреев",
+      "middleName": "Васильевич",
+      "orderID": 134567,
+      "phone": "79871234567",
+      "phoneCode": "0"
+    }
+  ]
+}

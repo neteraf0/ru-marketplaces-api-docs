@@ -1,0 +1,70 @@
+{
+  "postings": [
+    {
+      "order_id": 29137896277,
+      "order_number": "42776709-0200",
+      "posting_number": "42776709-0200-5",
+      "status": "delivered",
+      "cancel_reason_id": 0,
+      "created_at": "2025-05-10T06:49:31.474Z",
+      "in_process_at": "2025-05-10T06:49:29.108Z",
+      "legal_info": {
+        "company_name": "ООО Покупатель",
+        "inn": "770123456789",
+        "kpp": "770101001"
+      },
+      "products": [
+        {
+          "sku": 1624109204,
+          "name": "Слипоны демисезонные для мальчиков",
+          "offer_id": "S5257022-30",
+          "price": {
+            "amount": "1461.00",
+            "currency": "RUB"
+          },
+          "quantity": 1
+        }
+      ],
+      "analytics_data": {
+        "city": "",
+        "delivery_type": "",
+        "is_premium": false,
+        "payment_type_group_name": "",
+        "warehouse_id": null,
+        "warehouse_name": "",
+        "is_legal": false
+      },
+      "financial_data": {
+        "products": [
+          {
+            "product_id": 1624109204,
+            "commission": {
+              "amount": 0,
+              "percent": 0,
+              "currency": "RUB"
+            },
+            "payout": 0,
+            "old_price": 1461,
+            "price": 1461,
+            "total_discount_value": 0,
+            "actions": [],
+            "quantity": 1
+          }
+        ],
+        "cluster_from": "Екатеринбург",
+        "cluster_to": "Екатеринбург"
+      },
+      "cancellation": {
+        "cancellation_type": "Client",
+        "cancellation_initiator": "Клиент"
+      },
+      "external_order": {
+        "is_external": false,
+        "platform_name": ""
+      },
+      "additional_data": []
+    }
+  ],
+  "has_next": false,
+  "cursor": ""
+}

@@ -1,0 +1,18 @@
+{
+  "orders": [
+    {
+      "replacementPhone": "79871234567",
+      "phone": "+79871234567",
+      "firstName": "Иван",
+      "fullName": "Иванов Иван Иванович",
+      "additionalPhones": [
+        "1234554321"
+      ],
+      "additionalPhoneCodes": [
+        12345
+      ],
+      "orderId": 1345678910,
+      "phoneCode": 0
+    }
+  ]
+}

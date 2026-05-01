@@ -1,0 +1,12 @@
+{
+  "stairways": [
+    {
+      "enabled": false,
+      "sku": 0,
+      "stairway": {
+        "steps": []
+      },
+      "status": "IN_PROCESS"
+    }
+  ]
+}

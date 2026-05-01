@@ -1,0 +1,37 @@
+{
+  "items": [
+    {
+      "ads": 0.0,
+      "ads_cluster": 0.0,
+      "available_stock_count": 0,
+      "cluster_id": 0,
+      "cluster_name": "string",
+      "days_without_sales": 0,
+      "days_without_sales_cluster": 0,
+      "excess_stock_count": 0,
+      "expiring_stock_count": 0,
+      "idc": 0.0,
+      "idc_cluster": 0.0,
+      "item_tags": [
+        "ITEM_ATTRIBUTE_NONE"
+      ],
+      "macrolocal_cluster_id": 0,
+      "name": "string",
+      "offer_id": "string",
+      "other_stock_count": 0,
+      "requested_stock_count": 0,
+      "return_from_customer_stock_count": 0,
+      "return_to_seller_stock_count": 0,
+      "sku": 0,
+      "stock_defect_stock_count": 0,
+      "transit_defect_stock_count": 0,
+      "transit_stock_count": 0,
+      "turnover_grade": "UNSPECIFIED",
+      "turnover_grade_cluster": "UNSPECIFIED",
+      "valid_stock_count": 0,
+      "waiting_docs_stock_count": 0,
+      "warehouse_id": 0,
+      "warehouse_name": "string"
+    }
+  ]
+}

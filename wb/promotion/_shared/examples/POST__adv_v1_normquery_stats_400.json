@@ -1,0 +1,7 @@
+{
+  "detail": "incorrect request body, please check API documentation",
+  "origin": "camp-api-public-cache",
+  "request_id": "33e7d9f3fc221648cdf096bf8e62e482",
+  "status": 400,
+  "title": "invalid request body"
+}

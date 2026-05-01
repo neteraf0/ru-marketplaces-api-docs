@@ -1,0 +1,8 @@
+{
+  "data": null,
+  "error": true,
+  "errorText": "All cards are in the same group",
+  "additionalErrors": {
+    "error": "All cards are in the same group"
+  }
+}

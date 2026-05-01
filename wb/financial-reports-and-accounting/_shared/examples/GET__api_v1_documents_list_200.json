@@ -1,0 +1,16 @@
+{
+  "data": {
+    "documents": [
+      {
+        "serviceName": "redeem-notification-44841941",
+        "name": "redeem-notification",
+        "category": "Уведомление о выкупе",
+        "extensions": [
+          "zip"
+        ],
+        "creationTime": "2023-10-03T00:18:06.879Z",
+        "viewed": false
+      }
+    ]
+  }
+}

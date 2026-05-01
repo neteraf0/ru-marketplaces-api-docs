@@ -1,0 +1,7 @@
+{
+  "status": 400,
+  "title": "Bad Request",
+  "detail": "state must be one of the values 'pinned', 'unpinned'",
+  "requestId": "7b64у8ffc3523450d613723fwу61873e",
+  "origin": "pin-open-api"
+}

@@ -1,0 +1,15 @@
+{
+  "result": {
+    "rows": [
+      {
+        "free_to_sell_amount": 0,
+        "item_code": "string",
+        "item_name": "string",
+        "promised_amount": 0,
+        "reserved_amount": 0,
+        "sku": 0,
+        "warehouse_name": "string"
+      }
+    ]
+  }
+}

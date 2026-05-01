@@ -1,0 +1,32 @@
+{
+  "items": [
+    {
+      "product_id": 100500,
+      "primary_photo": [
+        "https://test-test.ru/images/products/100500/primary.jpg"
+      ],
+      "photo": [
+        "https://test-test.ru/images/products/100500/photo1.jpg",
+        "https://test-test.ru/images/products/100500/photo2.jpg"
+      ],
+      "color_photo": [
+        "https://test-test.ru/images/products/100500/color_red.jpg",
+        "https://test-test.ru/images/products/100500/color_blue.jpg"
+      ],
+      "photo_360": [
+        "https://test-test.ru/images/products/100500/360_view1.jpg",
+        "https://test-test.ru/images/products/100500/360_view2.jpg"
+      ],
+      "errors": [
+        {
+          "message": "Не удалось загрузить дополнительное изображение: превышен размер файла",
+          "url": "https://test-test.ru/api/v1/products/100500/errors/12345"
+        },
+        {
+          "message": "Отсутствует описание для цвета 'зелёный'",
+          "url": "https://test-test.ru/api/v1/products/100500/errors/12346"
+        }
+      ]
+    }
+  ]
+}

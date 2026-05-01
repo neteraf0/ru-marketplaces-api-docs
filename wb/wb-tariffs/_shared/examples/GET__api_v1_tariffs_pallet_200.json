@@ -1,0 +1,11 @@
+{
+  "response": {
+    "data": {
+      "dtNextPallet": "2024-02-01",
+      "dtTillMax": "2024-03-31",
+      "warehouseList": [
+        {}
+      ]
+    }
+  }
+}

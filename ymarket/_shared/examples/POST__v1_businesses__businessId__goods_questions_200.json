@@ -1,0 +1,29 @@
+{
+  "status": "OK",
+  "result": {
+    "questions": [
+      {
+        "questionIdentifiers": {
+          "id": 1,
+          "categoryId": 0,
+          "offerId": "string"
+        },
+        "businessId": 1,
+        "text": "string",
+        "createdAt": "2024-01-01T00:00:00Z",
+        "votes": {
+          "likes": 0,
+          "dislikes": 0
+        },
+        "author": {
+          "type": "USER",
+          "name": "string"
+        }
+      }
+    ],
+    "paging": {
+      "nextPageToken": "string"
+    },
+    "totalCount": 0
+  }
+}

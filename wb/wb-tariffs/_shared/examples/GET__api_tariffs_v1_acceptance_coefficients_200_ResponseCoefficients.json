@@ -1,0 +1,17 @@
+[
+  {
+    "date": "2024-04-11T00:00:00Z",
+    "coefficient": -1,
+    "warehouseID": 217081,
+    "warehouseName": "Сц Брянск 2",
+    "allowUnload": false,
+    "boxTypeID": 6,
+    "storageCoef": null,
+    "deliveryCoef": null,
+    "deliveryBaseLiter": null,
+    "deliveryAdditionalLiter": null,
+    "storageBaseLiter": null,
+    "storageAdditionalLiter": null,
+    "isSortingCenter": true
+  }
+]

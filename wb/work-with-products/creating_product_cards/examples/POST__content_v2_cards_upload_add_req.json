@@ -1,0 +1,84 @@
+{
+  "imtID": 987654321,
+  "cardsToAdd": [
+    {
+      "vendorCode": "myVariant1",
+      "kizMarked": true,
+      "wholesale": {
+        "enabled": true,
+        "quantum": 243
+      },
+      "title": "Наименование товара",
+      "description": "Описание товара",
+      "brand": "Бренд",
+      "dimensions": {
+        "length": 9,
+        "width": 6,
+        "height": 3,
+        "weightBrutto": 0.893
+      },
+      "characteristics": [
+        {
+          "id": 12,
+          "value": [
+            "Russian flag"
+          ]
+        },
+        {
+          "id": 25471,
+          "value": 1300
+        },
+        {
+          "id": 14177449,
+          "value": [
+            "blue"
+          ]
+        }
+      ],
+      "sizes": [
+        {
+          "skus": [
+            "12345678"
+          ]
+        }
+      ]
+    },
+    {
+      "vendorCode": "myVariant2",
+      "title": "Наименование товара",
+      "description": "Описание товаров",
+      "brand": "Бренд",
+      "dimensions": {
+        "length": 8,
+        "width": 8,
+        "height": 8,
+        "weightBrutto": 1.04
+      },
+      "characteristics": [
+        {
+          "id": 12,
+          "value": [
+            "Russian flag"
+          ]
+        },
+        {
+          "id": 25471,
+          "value": 1300
+        },
+        {
+          "id": 14177449,
+          "value": [
+            "blue"
+          ]
+        }
+      ],
+      "sizes": [
+        {
+          "skus": [
+            "222222222222"
+          ]
+        }
+      ]
+    }
+  ]
+}

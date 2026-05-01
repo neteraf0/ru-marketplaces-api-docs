@@ -1,0 +1,19 @@
+{
+  "products": [
+    {
+      "error": "string",
+      "exemplars": [
+        {
+          "errors": [],
+          "gtd": "string",
+          "marks": [],
+          "rnpt": "string",
+          "valid": false,
+          "weight": 0.0
+        }
+      ],
+      "product_id": 0,
+      "valid": false
+    }
+  ]
+}

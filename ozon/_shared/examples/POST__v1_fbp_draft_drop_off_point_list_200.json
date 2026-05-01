@@ -1,0 +1,11 @@
+{
+  "drop_off_points": [
+    {
+      "city": "string",
+      "drop_off_point_id": 0,
+      "nearest_drop_off_date": "2024-01-01T00:00:00Z",
+      "point_address": "string",
+      "province_uuid": "string"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "status": "OK",
+  "result": {
+    "inn": "string",
+    "kpp": "string",
+    "organizationName": "string",
+    "organizationJurAddress": "string"
+  }
+}

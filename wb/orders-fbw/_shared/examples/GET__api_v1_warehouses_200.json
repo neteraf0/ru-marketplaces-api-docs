@@ -1,0 +1,10 @@
+[
+  {
+    "ID": 300461,
+    "name": "Гомель 2",
+    "address": "Гомель, Могилёвская улица 1/А",
+    "workTime": "24/7",
+    "isActive": false,
+    "isTransitActive": true
+  }
+]

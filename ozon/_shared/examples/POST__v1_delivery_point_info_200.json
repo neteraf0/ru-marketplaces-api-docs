@@ -1,0 +1,27 @@
+{
+  "points": [
+    {
+      "delivery_method": {
+        "address": "string",
+        "address_details": {},
+        "coordinates": {},
+        "delivery_type": {},
+        "description": "string",
+        "fitting_rooms_count": 0,
+        "holidays": [],
+        "holidays_filled": false,
+        "images": [
+          "string"
+        ],
+        "location_id": "string",
+        "map_point_id": 0,
+        "name": "string",
+        "properties": [],
+        "pvz_rating": 0,
+        "storage_period": 0,
+        "working_hours": []
+      },
+      "enabled": false
+    }
+  ]
+}

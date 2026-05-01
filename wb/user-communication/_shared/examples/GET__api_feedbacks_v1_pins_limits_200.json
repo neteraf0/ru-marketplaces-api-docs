@@ -1,0 +1,18 @@
+{
+  "data": {
+    "subscription": {
+      "perUnitLimit": 2,
+      "remaining": 5,
+      "totalLimit": 15,
+      "unlimited": false,
+      "used": 10
+    },
+    "tariff": {
+      "perUnitLimit": 2,
+      "remaining": 5,
+      "totalLimit": 15,
+      "unlimited": false,
+      "used": 10
+    }
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "cards": [
+    {
+      "nmID": 1234567,
+      "vendorCode": "wb5xsy5ftj",
+      "kizMarked": true,
+      "subjectID": 1436,
+      "subjectName": "Ведра хозяйственные",
+      "photos": [
+        {
+          "big": "https://basket-10.wbbasket.ru/vol1592/part159206/159206280/images/big/1.webp",
+          "c246x328": "https://basket-10.wbbasket.ru/vol1592/part159206/159206280/images/c246x328/1.webp",
+          "c516x688": "https://basket-10.wbbasket.ru/vol1592/part159206/159206280/images/c516x688/1.webp",
+          "square": "https://basket-10.wbbasket.ru/vol1592/part159206/159206280/images/square/1.webp",
+          "tm": "https://basket-10.wbbasket.ru/vol1592/part159206/159206280/images/tm/1.webp"
+        }
+      ],
+      "video": "https://videonme-basket-12.wbbasket.ru/vol137/part22557/225577433/hls/1440p/index.m3u8",
+      "wholesale": {
+        "enabled": true,
+        "quantum": 114
+      },
+      "sizes": [
+        {
+          "chrtID": 111111111,
+          "techSize": "0",
+          "skus": [
+            "xxxxxxxxxxxx"
+          ]
+        }
+      ],
+      "dimensions": {
+        "length": 35,
+        "width": 40,
+        "height": 15,
+        "weightBrutto": 2.9,
+        "isValid": false
+      },
+      "createdAt": "2023-12-05T14:55:09.323462Z",
+      "trashedAt": "2023-12-06T10:57:42.193028Z"
+    }
+  ],
+  "cursor": {
+    "trashedAt": "2023-12-06T10:57:42.193028Z",
+    "nmID": 194128521,
+    "total": 1
+  }
+}

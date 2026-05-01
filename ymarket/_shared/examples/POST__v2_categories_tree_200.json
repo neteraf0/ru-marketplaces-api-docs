@@ -1,0 +1,22 @@
+{
+  "status": "OK",
+  "result": {
+    "id": 0,
+    "name": "string",
+    "children": [
+      {
+        "id": 0,
+        "name": "string",
+        "children": [
+          {
+            "id": 0,
+            "name": "string",
+            "children": [
+              {}
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "detail": "nomenclature 13335157 cannot be both added and deleted for advert 27247695",
+  "origin": "camp-api-public-cache",
+  "request_id": "6023d2950af564838f9b44a279d2140c",
+  "status": 400,
+  "title": "invalid payload"
+}

@@ -1,0 +1,9 @@
+{
+  "orders": [
+    {
+      "supplierStatus": "confirm",
+      "wbStatus": "waiting",
+      "id": 1234567
+    }
+  ]
+}

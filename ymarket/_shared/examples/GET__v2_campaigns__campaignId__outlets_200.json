@@ -1,0 +1,77 @@
+{
+  "outlets": [
+    {
+      "name": "string",
+      "type": "DEPOT",
+      "coords": "string",
+      "isMain": false,
+      "shopOutletCode": "string",
+      "visibility": "HIDDEN",
+      "address": {
+        "regionId": 0,
+        "street": "string",
+        "number": "string",
+        "building": "string",
+        "estate": "string",
+        "block": "string",
+        "additional": "string",
+        "km": 0,
+        "city": "string"
+      },
+      "phones": [
+        "string"
+      ],
+      "workingSchedule": {
+        "workInHoliday": false,
+        "scheduleItems": [
+          {
+            "startDay": "MONDAY",
+            "endDay": "MONDAY",
+            "startTime": "09:59",
+            "endTime": "23:59"
+          }
+        ]
+      },
+      "deliveryRules": [
+        {
+          "minDeliveryDays": 0,
+          "maxDeliveryDays": 0,
+          "deliveryServiceId": 1,
+          "orderBefore": 0,
+          "priceFreePickup": 0.0,
+          "unspecifiedDeliveryInterval": false
+        }
+      ],
+      "storagePeriod": 0,
+      "id": 0,
+      "status": "AT_MODERATION",
+      "region": {
+        "id": 0,
+        "name": "string",
+        "type": "OTHER",
+        "parent": {
+          "id": 0,
+          "name": "string",
+          "type": "OTHER",
+          "parent": {
+            "id": 0,
+            "name": "string",
+            "type": "OTHER",
+            "parent": {
+              "id": 0,
+              "name": "string",
+              "type": "OTHER",
+              "parent": {}
+            }
+          }
+        }
+      },
+      "shopOutletId": "string",
+      "workingTime": "string",
+      "moderationReason": "string"
+    }
+  ],
+  "paging": {
+    "nextPageToken": "string"
+  }
+}

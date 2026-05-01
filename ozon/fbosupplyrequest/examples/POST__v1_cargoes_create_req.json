@@ -1,0 +1,21 @@
+{
+  "cargoes": [
+    {
+      "key": "string",
+      "value": {
+        "items": [
+          {
+            "barcode": "string",
+            "expires_at": "2025-12-25T29:59:99Z",
+            "offer_id": "string",
+            "quant": 1,
+            "quantity": 0
+          }
+        ],
+        "type": "BOX"
+      }
+    }
+  ],
+  "delete_current_version": true,
+  "supply_id": 0
+}

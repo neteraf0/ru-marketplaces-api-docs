@@ -1,0 +1,47 @@
+{
+  "result": [
+    {
+      "barcode": "Seller",
+      "warehouses": null,
+      "error": {
+        "title": "barcode validation error",
+        "detail": "barcode Seller is not found"
+      },
+      "isError": true
+    },
+    {
+      "barcode": "123456789",
+      "warehouses": [
+        {
+          "warehouseID": 205349,
+          "canBox": true,
+          "canMonopallet": false,
+          "canSupersafe": false,
+          "isBoxOnPallet": false
+        },
+        {
+          "warehouseID": 211622,
+          "canBox": false,
+          "canMonopallet": true,
+          "canSupersafe": false,
+          "isBoxOnPallet": true
+        },
+        {
+          "warehouseID": 214951,
+          "canBox": true,
+          "canMonopallet": false,
+          "canSupersafe": false,
+          "isBoxOnPallet": true
+        },
+        {
+          "warehouseID": 206319,
+          "canBox": true,
+          "canMonopallet": false,
+          "canSupersafe": false,
+          "isBoxOnPallet": true
+        }
+      ]
+    }
+  ],
+  "requestId": "kr53d2bRKYmkK2N6zaNKHs"
+}

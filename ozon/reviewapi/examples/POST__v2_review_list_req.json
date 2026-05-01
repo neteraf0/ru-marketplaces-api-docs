@@ -1,0 +1,14 @@
+{
+  "filters": {
+    "sku": [
+      0
+    ],
+    "order_status": "NEW",
+    "status": "DELIVERED",
+    "published_from": "2026-03-10T14:08:00.257Z",
+    "published_to": "2026-03-10T14:08:00.257Z"
+  },
+  "last_id": "string",
+  "limit": 0,
+  "sort_dir": "ASC"
+}

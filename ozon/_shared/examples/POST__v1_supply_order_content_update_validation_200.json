@@ -1,0 +1,49 @@
+{
+  "editing_errors": [
+    "UNSPECIFIED"
+  ],
+  "validated_assortment": {
+    "approved_items": [
+      {
+        "barcode": "string",
+        "item_link": "string",
+        "name": "string",
+        "offer_id": "string",
+        "origin_quantity": 0,
+        "origin_total_volume_in_litres": 0,
+        "quant": 0,
+        "quantity": 0,
+        "sku": 0,
+        "sku_quantity_limit": 0,
+        "total_volume_in_litres": 0
+      }
+    ],
+    "rejected_items": [
+      {
+        "barcode": "string",
+        "name": "string",
+        "offer_id": "string",
+        "origin_quantity": 0,
+        "origin_total_volume_in_litres": 0,
+        "quantity": 0,
+        "rejection_reason": [
+          "UNSPECIFIED"
+        ],
+        "restrictions": {
+          "reasons_restrictions": [
+            "UNKNOWN"
+          ],
+          "sku_has_no_sales_in_days": 0,
+          "sku_quantity_limit": 0
+        },
+        "sku": 0,
+        "total_volume_in_litres": 0
+      }
+    ],
+    "total_approved_item_count": 0,
+    "total_approved_quantity": 0,
+    "total_approved_volume_in_litres": 0,
+    "total_rejected_item_count": 0,
+    "total_restricted_item_count": 0
+  }
+}

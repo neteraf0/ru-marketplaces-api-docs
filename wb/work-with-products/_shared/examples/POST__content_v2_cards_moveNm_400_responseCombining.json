@@ -1,0 +1,8 @@
+{
+  "data": null,
+  "error": true,
+  "errorText": "You can not merge products with different subjects",
+  "additionalErrors": {
+    "error": "You can not merge products with different subjects"
+  }
+}

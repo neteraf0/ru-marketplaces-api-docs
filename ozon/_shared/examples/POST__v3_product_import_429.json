@@ -1,0 +1,4 @@
+{
+  "code": "RESOURCE_EXHAUSTED",
+  "message": "You have reached operation items limits. Retry after 120 seconds. Remaining 10 items"
+}

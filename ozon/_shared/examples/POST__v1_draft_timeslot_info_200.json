@@ -1,0 +1,17 @@
+{
+  "drop_off_warehouse_timeslots": [
+    {
+      "current_time_in_timezone": "2024-01-01T00:00:00Z",
+      "days": [
+        {
+          "date_in_timezone": "2024-01-01T00:00:00Z",
+          "timeslots": []
+        }
+      ],
+      "drop_off_warehouse_id": 0,
+      "warehouse_timezone": "string"
+    }
+  ],
+  "requested_date_from": "2024-01-01T00:00:00Z",
+  "requested_date_to": "2024-01-01T00:00:00Z"
+}

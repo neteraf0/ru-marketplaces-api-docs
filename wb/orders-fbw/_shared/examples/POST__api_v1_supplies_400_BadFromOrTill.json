@@ -1,0 +1,7 @@
+{
+  "status": 400,
+  "title": "bad request",
+  "detail": "ошибка при считывании даты \"11-03-2019\". Дата должна быть в формате ISO Date: 2006-01-02",
+  "requestId": "7916f0258e363ad2b6663e980903818d",
+  "origin": "supply-api"
+}

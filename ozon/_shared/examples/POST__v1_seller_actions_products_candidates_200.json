@@ -1,0 +1,23 @@
+{
+  "cursor": 0,
+  "has_next": false,
+  "products": [
+    {
+      "action_price": 0.0,
+      "base_price": 0.0,
+      "currency": "string",
+      "discount_percent": 0.0,
+      "is_active": false,
+      "min_seller_price": 0.0,
+      "name": "string",
+      "offer_id": "string",
+      "price": 0.0,
+      "product_id": 0,
+      "quant_size": 0,
+      "quant_type": "UNSPECIFIED",
+      "sku": [
+        "string"
+      ]
+    }
+  ]
+}

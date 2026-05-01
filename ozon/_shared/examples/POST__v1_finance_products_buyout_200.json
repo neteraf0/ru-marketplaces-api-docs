@@ -1,0 +1,28 @@
+{
+  "products": [
+    {
+      "name": "Футболка Daniele Patrici",
+      "offer_id": "y9604060-S",
+      "sku": "985111329",
+      "posting_number": "0208194185-0001-1",
+      "seller_price_per_instance": 95,
+      "deduction_by_category_percent": "3.13",
+      "buyout_price": 92.3,
+      "vat_percent": 20,
+      "quantity": 1,
+      "amount": 92.3
+    },
+    {
+      "name": "Сабо T.TACCARDI",
+      "offer_id": "W1496390-41",
+      "sku": "1505091950",
+      "posting_number": "84189625-0009-3",
+      "seller_price_per_instance": 2086,
+      "deduction_by_category_percent": "3.01",
+      "buyout_price": 2023.3,
+      "vat_percent": 20,
+      "quantity": 1,
+      "amount": 2023.3
+    }
+  ]
+}

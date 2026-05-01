@@ -1,0 +1,14 @@
+{
+  "result": {
+    "warehouses": [
+      {
+        "can_modify_pickup_plan": false,
+        "has_postings_to_be_planned": false,
+        "is_pickup_planned": false,
+        "last_pickup_plan_date_at": "2024-01-01T00:00:00Z",
+        "warehouse_id": 0,
+        "warehouse_name": "string"
+      }
+    ]
+  }
+}

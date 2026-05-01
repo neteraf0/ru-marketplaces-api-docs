@@ -1,0 +1,67 @@
+{
+  "pager": {
+    "total": 0,
+    "from": 0,
+    "to": 0,
+    "currentPage": 0,
+    "pagesCount": 0,
+    "pageSize": 0
+  },
+  "paging": {
+    "nextPageToken": "string"
+  },
+  "regions": {
+    "id": 0,
+    "name": "string",
+    "type": "OTHER",
+    "parent": {
+      "id": 0,
+      "name": "string",
+      "type": "OTHER",
+      "parent": {
+        "id": 0,
+        "name": "string",
+        "type": "OTHER",
+        "parent": {
+          "id": 0,
+          "name": "string",
+          "type": "OTHER",
+          "parent": {
+            "id": 0,
+            "name": "string",
+            "type": "OTHER",
+            "parent": {
+              "id": 0,
+              "name": "string",
+              "type": "OTHER",
+              "parent": {}
+            }
+          }
+        }
+      }
+    },
+    "children": [
+      {
+        "id": 0,
+        "name": "string",
+        "type": "OTHER",
+        "parent": {
+          "id": 0,
+          "name": "string",
+          "type": "OTHER",
+          "parent": {
+            "id": 0,
+            "name": "string",
+            "type": "OTHER",
+            "parent": {
+              "id": 0,
+              "name": "string",
+              "type": "OTHER",
+              "parent": {}
+            }
+          }
+        }
+      }
+    ]
+  }
+}

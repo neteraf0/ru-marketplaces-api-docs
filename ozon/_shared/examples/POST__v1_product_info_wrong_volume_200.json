@@ -1,0 +1,15 @@
+{
+  "cursor": "string",
+  "products": [
+    {
+      "height": 0,
+      "length": 0,
+      "name": "string",
+      "offer_id": "string",
+      "product_id": 0,
+      "sku": 0,
+      "weight": 0,
+      "width": 0
+    }
+  ]
+}

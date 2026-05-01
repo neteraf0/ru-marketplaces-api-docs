@@ -1,0 +1,5 @@
+{
+  "data": null,
+  "error": true,
+  "errorText": "You can't sort items by price and discount at the same time"
+}

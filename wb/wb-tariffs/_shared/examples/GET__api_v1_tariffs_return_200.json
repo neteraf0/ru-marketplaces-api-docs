@@ -1,0 +1,12 @@
+{
+  "response": {
+    "data": {
+      "dtNextDeliveryDumpKgt": "2024-02-01",
+      "dtNextDeliveryDumpSrg": "2024-02-01",
+      "dtNextDeliveryDumpSup": "2024-02-01",
+      "warehouseList": [
+        {}
+      ]
+    }
+  }
+}

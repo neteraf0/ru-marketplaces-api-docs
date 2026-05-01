@@ -1,0 +1,6 @@
+{
+  "detail": "parameter \"dateFrom\" in query has an error: value is required but missing",
+  "origin": "api-statistics",
+  "requestId": "320ce05be8ed69060fe4c359a8e77ed6",
+  "title": "Bad Request"
+}

@@ -1,0 +1,6 @@
+{
+  "title": "bad request",
+  "requestId": "e3676d061de748d9beaaa752d53e1670",
+  "origin": "fbapi",
+  "detail": "content-type is not a valid mime-type: u"
+}

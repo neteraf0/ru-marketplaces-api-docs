@@ -1,0 +1,12 @@
+[
+  {
+    "code": "CargoWarehouseRestrictionSGTKGTPlus",
+    "message": "The selected warehouse is not suitable for goods with the type \"ODC/CD+\". Upload the balances to the warehouse with the label - ODC or CD+",
+    "data": [
+      {
+        "sku": "skuTest3",
+        "amount": 10
+      }
+    ]
+  }
+]

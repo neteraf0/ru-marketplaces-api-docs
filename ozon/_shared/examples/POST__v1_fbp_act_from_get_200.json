@@ -1,0 +1,5 @@
+{
+  "cdn_url": "string",
+  "error": "ERROR_REASON_UNSPECIFIED",
+  "status": "STATUS_UNSPECIFIED"
+}

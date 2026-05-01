@@ -1,0 +1,15 @@
+{
+  "exemplars_by_sku": [
+    {
+      "sku": 123456,
+      "received_qty": 3,
+      "rejected_qty": 1,
+      "failed_exemplars": [
+        {
+          "key": "23434252345",
+          "message": "Некорректный формат кода"
+        }
+      ]
+    }
+  ]
+}

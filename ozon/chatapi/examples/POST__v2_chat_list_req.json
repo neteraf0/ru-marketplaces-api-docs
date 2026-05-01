@@ -1,0 +1,8 @@
+{
+  "filter": {
+    "chat_status": "Opened",
+    "unread_only": true
+  },
+  "limit": 1,
+  "offset": 0
+}

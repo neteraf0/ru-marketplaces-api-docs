@@ -1,0 +1,19 @@
+{
+  "status": "OK",
+  "result": {
+    "campaignRatings": [
+      {
+        "campaignId": 1,
+        "ratings": [
+          {
+            "rating": 0,
+            "calculationDate": "2024-01-01",
+            "components": [
+              {}
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

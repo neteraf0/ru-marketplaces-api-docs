@@ -1,0 +1,9 @@
+{
+  "title": "request body too long",
+  "detail": "https://openapi.wildberries.ru/content/api/ru/",
+  "code": "71d3de1b-001e-488f-bbf5-55c31254fbeb",
+  "requestId": "MN8usr6RfrzWHZfucSvNgb",
+  "origin": "s2s-api-auth-content",
+  "status": 413,
+  "statusText": "Request Entity Too Large"
+}

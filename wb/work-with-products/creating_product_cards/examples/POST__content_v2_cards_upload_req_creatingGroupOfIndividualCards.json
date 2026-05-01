@@ -1,0 +1,94 @@
+[
+  {
+    "subjectID": 3091,
+    "variants": [
+      {
+        "vendorCode": "АртикулПродавца1",
+        "kizMarked": true,
+        "wholesale": {
+          "enabled": true,
+          "quantum": 211
+        },
+        "title": "Наименование товара 1",
+        "description": "Описание товара 1",
+        "brand": "Бренд",
+        "dimensions": {
+          "length": 55,
+          "width": 40,
+          "height": 15,
+          "weightBrutto": 6
+        },
+        "characteristics": [
+          {
+            "id": 12,
+            "value": [
+              "Turkish flag"
+            ]
+          },
+          {
+            "id": 25471,
+            "value": 1200
+          },
+          {
+            "id": 14177449,
+            "value": [
+              "red"
+            ]
+          }
+        ],
+        "sizes": [
+          {
+            "skus": [
+              "1111111111111"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "subjectID": 105,
+    "variants": [
+      {
+        "vendorCode": "Артикул продавца 2",
+        "title": "Наименование товара 2",
+        "description": "Описание товара 2",
+        "brand": "Бренд",
+        "dimensions": {
+          "length": 14,
+          "width": 5,
+          "height": 4,
+          "weightBrutto": 0.94
+        },
+        "characteristics": [
+          {
+            "id": 12,
+            "value": [
+              "Turkish flag"
+            ]
+          },
+          {
+            "id": 25471,
+            "value": 1200
+          },
+          {
+            "id": 14177449,
+            "value": [
+              "red"
+            ]
+          }
+        ],
+        "sizes": [
+          {
+            "techSize": "S",
+            "wbSize": "42",
+            "price": 5000,
+            "skus": [
+              "2222222222222"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

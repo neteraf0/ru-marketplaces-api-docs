@@ -1,0 +1,50 @@
+{
+  "clusters": [
+    {
+      "cluster_id": 0,
+      "cluster_name": "string",
+      "warehouses": [
+        {
+          "bundle_ids": [
+            {
+              "bundle_id": "string",
+              "is_docless": true
+            }
+          ],
+          "restricted_bundle_id": "string",
+          "status": {
+            "invalid_reason": "WAREHOUSE_SCORING_INVALID_REASON_UNSPECIFIED",
+            "is_available": true,
+            "state": "WAREHOUSE_SCORING_STATUS_FULL_AVAILABLE"
+          },
+          "supply_warehouse": {
+            "address": "string",
+            "name": "string",
+            "warehouse_id": 0
+          },
+          "total_rank": 0,
+          "total_score": 0,
+          "travel_time_days": 0
+        }
+      ]
+    }
+  ],
+  "draft_id": 30957724,
+  "errors": [
+    {
+      "error_message": "string",
+      "items_validation": [
+        {
+          "reasons": [
+            "string"
+          ],
+          "sku": 0
+        }
+      ],
+      "unknown_cluster_ids": [
+        "string"
+      ]
+    }
+  ],
+  "status": "CALCULATION_STATUS_FAILED"
+}

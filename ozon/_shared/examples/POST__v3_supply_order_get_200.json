@@ -1,0 +1,58 @@
+{
+  "orders": [
+    {
+      "order_id": 84882285,
+      "order_number": "2111140905880",
+      "created_date": "2026-01-23T00:00:00Z",
+      "state": "READY_TO_SUPPLY",
+      "state_updated_date": "2026-02-03T11:32:41.613489Z",
+      "data_filling_deadline_utc": "2026-02-14T23:59:59Z",
+      "dropoff_warehouse": {
+        "warehouse_id": 23843917228000,
+        "address": "г. Москва, ул. Летняя, д. 12, стр. 5",
+        "name": "Центральный логистический комплекс"
+      },
+      "order_tags": {
+        "is_econom": false,
+        "is_virtual": false,
+        "original_supply_id": 2111140905880,
+        "is_super_fbo": false,
+        "product_super_fbo": false,
+        "is_quant": false
+      },
+      "timeslot": {
+        "timeslot": {
+          "from": "2026-02-15T09:00:00Z",
+          "to": "2026-02-15T10:00:00Z"
+        },
+        "timezone_info": {
+          "offset": "+03:00",
+          "iana_name": "Europe/Moscow"
+        }
+      },
+      "supplies": [
+        {
+          "supply_id": 2111140905880,
+          "storage_warehouse": {
+            "warehouse_id": 23843917228000,
+            "arrival_date": "2026-02-15T00:00:00Z",
+            "address": "г. Москва, ул. Летняя, д. 12, стр. 5",
+            "name": "Центральный логистический комплекс"
+          },
+          "supply_tags": {
+            "is_ettn_required": false,
+            "is_evsd_required": false,
+            "is_jewelry": false,
+            "is_marking_possible": true,
+            "is_marking_required": false,
+            "is_utd": false,
+            "freeze_stock_for_marking": false
+          },
+          "is_crossdock": false,
+          "bundle_id": "019c5755-8768-7a00-9582-7c1f2c81681f",
+          "state": "READY_TO_SUPPLY"
+        }
+      ]
+    }
+  ]
+}

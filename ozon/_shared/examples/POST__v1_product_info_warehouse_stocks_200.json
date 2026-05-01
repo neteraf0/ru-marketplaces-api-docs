@@ -1,0 +1,16 @@
+{
+  "stocks": [
+    {
+      "sku": 147035011,
+      "product_id": 28743,
+      "offer_id": "02105020-35",
+      "warehouse_id": 1020003080073000,
+      "present": 1000,
+      "reserved": 0,
+      "free_stock": 1000,
+      "updated_at": "2025-09-15T10:36:24.417498Z"
+    }
+  ],
+  "has_next": false,
+  "cursor": "147035011"
+}

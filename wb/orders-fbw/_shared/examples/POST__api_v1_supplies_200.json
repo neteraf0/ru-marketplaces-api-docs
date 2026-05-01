@@ -1,0 +1,36 @@
+[
+  {
+    "phone": "+7 916 *** 44 44",
+    "supplyID": null,
+    "preorderID": 34597755,
+    "createDate": "2024-12-29T16:58:26+03:00",
+    "supplyDate": null,
+    "factDate": null,
+    "updatedDate": null,
+    "statusID": 1,
+    "boxTypeID": 1
+  },
+  {
+    "phone": "+7 916 *** 33 33",
+    "supplyID": 26596368,
+    "preorderID": 34601223,
+    "createDate": "2024-12-29T16:57:59+03:00",
+    "supplyDate": "2024-12-29T00:00:00+03:00",
+    "factDate": null,
+    "updatedDate": null,
+    "statusID": 2,
+    "boxTypeID": 5
+  },
+  {
+    "phone": "+7 000 *** 36 76",
+    "supplyID": 22677736,
+    "preorderID": 27363170,
+    "createDate": "2024-08-22T18:10:59+03:00",
+    "supplyDate": "2024-08-22T00:00:00+03:00",
+    "factDate": "2024-08-22T12:24:14+03:00",
+    "updatedDate": "2024-08-22T18:33:45+03:00",
+    "statusID": 6,
+    "boxTypeID": 2,
+    "isBoxOnPallet": false
+  }
+]

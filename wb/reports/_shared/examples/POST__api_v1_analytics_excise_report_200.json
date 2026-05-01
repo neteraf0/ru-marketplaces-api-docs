@@ -1,0 +1,20 @@
+{
+  "response": {
+    "data": [
+      {
+        "name": "Россия",
+        "price": 100,
+        "currency_name_short": "AMD",
+        "excise_short": "0102900254680370215_Re/=lSbNiGD",
+        "barcode": "2038893425820",
+        "nm_id": 169085355,
+        "operation_type_id": 1,
+        "fiscal_doc_number": 12345678,
+        "fiscal_dt": "2024-01-01",
+        "fiscal_drive_number": "string",
+        "rid": 606217433440,
+        "srid": "7513432034713632943.1.0"
+      }
+    ]
+  }
+}

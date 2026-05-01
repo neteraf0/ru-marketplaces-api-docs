@@ -1,0 +1,6 @@
+{
+  "detail": "parameter \"brand\" in query has an error: value is required but missing",
+  "origin": "api-statistics",
+  "requestId": "e358b83254107a12f4bd39361379b9a0",
+  "title": "Bad Request"
+}

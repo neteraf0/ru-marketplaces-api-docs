@@ -1,0 +1,16 @@
+{
+  "filters": {
+    "cancellation_initiator": [
+      "CLIENT"
+    ],
+    "posting_number": [
+      "34009011-0094-1"
+    ],
+    "state": "ALL"
+  },
+  "limit": 500,
+  "last_id": 0,
+  "with": {
+    "counter": true
+  }
+}

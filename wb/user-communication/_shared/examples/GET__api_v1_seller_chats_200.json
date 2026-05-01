@@ -1,0 +1,21 @@
+{
+  "result": [
+    {
+      "chatID": "1:4019cd7d-cca8-4e90-8b11-f78afbea42e3",
+      "replySign": "1:4019cd7d-cca8-4e90-8b11-f78afbea42e3:54828159:bc3a4c04079f5956cff170b25e73523aa1208b5c0bd7aea1e520a64ae3e212b1ebae6712661f3afd27520fa785fa3042254e8a3100ce00644322054ae7cfcd0e",
+      "clientName": "Иван",
+      "goodCard": {
+        "date": "string",
+        "nmID": 0,
+        "price": 0,
+        "priceCurrency": "string",
+        "rid": "string",
+        "size": "string"
+      },
+      "lastMessage": {
+        "text": "Можно заказать 100 штук?",
+        "addTimestamp": 1766138234889
+      }
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1036666,
+    "date": "2022-02-04T09:06:47.985843Z",
+    "sum": 600,
+    "type": 0,
+    "statusId": 1,
+    "cardStatus": ""
+  },
+  {
+    "id": 55261296,
+    "date": "2023-04-13T10:07:42",
+    "sum": 1500,
+    "type": 3,
+    "statusId": 1,
+    "cardStatus": "succeeded"
+  }
+]

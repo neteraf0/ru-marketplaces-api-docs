@@ -1,0 +1,19 @@
+{
+  "arrival_passes": [
+    {
+      "arrival_pass_id": 0,
+      "arrival_reasons": [
+        "string"
+      ],
+      "arrival_time": "2024-01-01T00:00:00Z",
+      "driver_name": "string",
+      "driver_phone": "string",
+      "dropoff_point_id": 0,
+      "is_active": false,
+      "vehicle_license_plate": "string",
+      "vehicle_model": "string",
+      "warehouse_id": 0
+    }
+  ],
+  "cursor": "string"
+}

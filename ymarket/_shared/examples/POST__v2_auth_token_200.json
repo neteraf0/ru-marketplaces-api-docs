@@ -1,0 +1,11 @@
+{
+  "status": "OK",
+  "result": {
+    "apiKey": {
+      "name": "string",
+      "authScopes": [
+        "ALL_METHODS"
+      ]
+    }
+  }
+}

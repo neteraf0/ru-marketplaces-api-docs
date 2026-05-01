@@ -1,0 +1,40 @@
+{
+  "sort_dir": "asc",
+  "filter": {
+    "order_numbers": [
+      "12345-1"
+    ],
+    "delivery_method_id": [
+      864244
+    ],
+    "is_blr_traceable": false,
+    "last_changed_status_date": {
+      "from": "2023-11-03T11:47:39.878Z",
+      "to": "2023-11-03T11:47:39.878Z"
+    },
+    "order_id": 1384104176,
+    "since": "2025-12-17T18:53:48.572Z",
+    "to": "2025-12-17T18:53:48.572Z",
+    "status": [
+      "awaiting_packaging",
+      "awaiting_deliver",
+      "delivering",
+      "delivered"
+    ],
+    "provider_ids": [
+      57
+    ],
+    "warehouse_ids": [
+      3092889984
+    ]
+  },
+  "limit": 100,
+  "cursor": "",
+  "with": {
+    "analytics_data": false,
+    "barcodes": true,
+    "financial_data": false,
+    "legal_info": true,
+    "translit": false
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "status": "OK",
+  "results": [
+    {
+      "id": 0,
+      "name": "string",
+      "maxSaleQuantum": 0
+    }
+  ],
+  "errors": [
+    {
+      "categoryId": 0,
+      "type": "UNKNOWN_CATEGORY"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "urls": [
+    {
+      "created_at": "2024-01-01T00:00:00Z",
+      "enable": false,
+      "id": 0,
+      "types": [
+        {
+          "description": "string"
+        }
+      ],
+      "url": "string"
+    }
+  ]
+}

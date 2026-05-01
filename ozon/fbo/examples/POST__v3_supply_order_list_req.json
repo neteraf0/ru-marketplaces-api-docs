@@ -1,0 +1,11 @@
+{
+  "filter": {
+    "states": [
+      "COMPLETED"
+    ]
+  },
+  "last_id": "null",
+  "limit": 1,
+  "sort_by": "ORDER_CREATION",
+  "sort_dir": "DESC"
+}

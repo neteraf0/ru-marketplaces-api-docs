@@ -1,0 +1,14 @@
+{
+  "error_reason": "UNSPECIFIED",
+  "result": {
+    "drop_off_warehouse_timeslots": {
+      "current_time_in_timezone": "string",
+      "days": [
+        {}
+      ],
+      "warehouse_timezone": "string"
+    },
+    "requested_date_from": "string",
+    "requested_date_to": "string"
+  }
+}

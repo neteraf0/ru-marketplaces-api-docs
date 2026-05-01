@@ -1,0 +1,79 @@
+{
+  "data": {
+    "reports": [
+      {
+        "nmId": 9234567890,
+        "subjectName": "Костюмы спортивные",
+        "dimId": 98151405,
+        "prcOver": 130.71,
+        "volume": 6.47,
+        "width": 7,
+        "length": 28,
+        "height": 33,
+        "volumeSup": 4.95,
+        "widthSup": 30,
+        "lengthSup": 33,
+        "heightSup": 5,
+        "photoUrls": [
+          "https://static-basket-09.wbbasket.ru/vol184/obmer-tovarov/measurement_on_table/wbs35154094220_em907759_n1_b2eaa5ed-bf21-4c58-b419-b5b5ec6f29ee.webp",
+          "https://static-basket-09.wbbasket.ru/vol184/obmer-tovarov/measurement_on_table/wbs35159094420_em907759_n2_040407b0-7752-4ae7-a4a4-7ec016e86511.webp",
+          "https://static-basket-09.wbbasket.ru/vol184/obmer-tovarov/measurement_on_table/wbs35189094220_em904757_n3_9f502e24-3b3e-4efd-9hac-802813046ac3.webp"
+        ],
+        "dtBonus": "2025-06-02T00:00:00Z",
+        "isValid": true,
+        "isValidDt": "2025-05-29T13:35:57Z",
+        "reversalAmount": 0,
+        "penaltyAmount": 449.83
+      },
+      {
+        "nmId": 9123456789,
+        "subjectName": "Масло топленое",
+        "dimId": 97079587,
+        "prcOver": 136.09,
+        "volume": 4.37,
+        "width": 14,
+        "length": 24,
+        "height": 13,
+        "volumeSup": 3.21,
+        "widthSup": 13,
+        "lengthSup": 13,
+        "heightSup": 19,
+        "photoUrls": [
+          "https://static-basket-09.wbbasket.ru/vol184/obmer-tovarov/handheld-goods-measurements-photo/gId35619967012_em1178949_nphotoA_d037721f-62c2-4bdd-a5a8-4ad0905e3f8e.webp",
+          "https://static-basket-09.wbbasket.ru/vol184/obmer-tovarov/handheld-goods-measurements-photo/gId35619967012_em1178949_nphotoB_fb161a65-e4b0-08d7-bb01-1bdba1b4d741.webp",
+          "https://static-basket-09.wbbasket.ru/vol184/obmer-tovarov/handheld-goods-measurements-photo/gId35619967012_em1178949_nphotoC_9a8b10f7-26c4-4fc0-b2c5-a7e29a545aa4.webp"
+        ],
+        "dtBonus": "2025-06-02T00:00:00Z",
+        "isValid": true,
+        "isValidDt": "2025-05-23T01:24:19Z",
+        "reversalAmount": 0,
+        "penaltyAmount": 350.08
+      },
+      {
+        "nmId": 9234567809,
+        "subjectName": "Фонарики бытовые",
+        "dimId": 96989876,
+        "prcOver": 246.75,
+        "volume": 2.28,
+        "width": 12,
+        "length": 19,
+        "height": 10,
+        "volumeSup": 0.92,
+        "widthSup": 11,
+        "lengthSup": 14,
+        "heightSup": 6,
+        "photoUrls": [
+          "https://static-basket-09.wbbasket.ru/vol184/obmer-tovarov/handheld-goods-measurements-photo/gId35776508795_em644504_nphotoA_1bdac868-a6c0-435a-950f-489f74acdb2e.webp",
+          "https://static-basket-09.wbbasket.ru/vol184/obmer-tovarov/handheld-goods-measurements-photo/gId35776508795_em644504_nphotoB_8f1802b8-5552-4aae-b930-19e8efbee597.webp",
+          "https://static-basket-09.wbbasket.ru/vol184/obmer-tovarov/handheld-goods-measurements-photo/gId35776508795_em644504_nphotoC_5d8f1832-e219-46cd-931b-d6d238d6784b.webp"
+        ],
+        "dtBonus": "2025-06-02T00:00:00Z",
+        "isValid": true,
+        "isValidDt": "2025-05-23T01:24:19Z",
+        "reversalAmount": 0,
+        "penaltyAmount": 501.6
+      }
+    ],
+    "total": 3
+  }
+}

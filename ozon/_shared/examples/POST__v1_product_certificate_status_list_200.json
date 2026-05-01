@@ -1,0 +1,20 @@
+{
+  "result": [
+    {
+      "code": "approved",
+      "name": "Одобрены"
+    },
+    {
+      "code": "awaiting_verification",
+      "name": "Ожидают проверки"
+    },
+    {
+      "code": "declined",
+      "name": "Отклонены"
+    },
+    {
+      "code": "verification",
+      "name": "На проверке"
+    }
+  ]
+}

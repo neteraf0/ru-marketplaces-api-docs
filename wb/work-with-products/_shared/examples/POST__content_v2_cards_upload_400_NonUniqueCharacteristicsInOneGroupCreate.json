@@ -1,0 +1,8 @@
+{
+  "data": null,
+  "error": true,
+  "errorText": "non unique characteristics in one group",
+  "additionalErrors": {
+    "vendor_code_1": "non unique characteristics in group with ids: {1}, {2}"
+  }
+}

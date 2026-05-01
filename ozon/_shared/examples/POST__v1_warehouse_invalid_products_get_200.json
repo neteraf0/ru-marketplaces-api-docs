@@ -1,0 +1,21 @@
+{
+  "has_next": false,
+  "last_id": 0,
+  "validation_results": [
+    {
+      "item": {
+        "size": {},
+        "sku": 0,
+        "weight_g": 0.0
+      },
+      "state": "UNSPECIFIED",
+      "validation_errors": [
+        {
+          "restriction_vwc": 0.0,
+          "template_id": 0
+        }
+      ]
+    }
+  ],
+  "warehouse_id": 0
+}

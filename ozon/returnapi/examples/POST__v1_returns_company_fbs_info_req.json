@@ -1,0 +1,9 @@
+{
+  "filter": {
+    "place_id": 0
+  },
+  "pagination": {
+    "last_id": 0,
+    "limit": 500
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "next": 12345566,
+  "orders": [
+    {
+      "article": "wb6scpbwvp",
+      "cargoType": 1,
+      "chrtId": 12345676,
+      "createdAt": "2025-03-21T09:53:31Z",
+      "price": 5000,
+      "finalPrice": 5000,
+      "convertedPrice": 5000,
+      "convertedFinalPrice": 5000,
+      "currencyCode": 643,
+      "convertedCurrencyCode": 643,
+      "id": 123456789,
+      "isZeroOrder": false,
+      "nmId": 1234567898765,
+      "orderCode": "21117866-0006",
+      "payMode": "prepaid",
+      "rid": "5044304527347733263.0.0",
+      "skus": [
+        "2043227963145"
+      ],
+      "warehouseAddress": "Москва, район Якиманка, Софийская набережная, 4 с1",
+      "warehouseId": 1162157
+    }
+  ]
+}

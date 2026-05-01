@@ -1,0 +1,71 @@
+{
+  "regions": [
+    {
+      "id": 0,
+      "name": "string",
+      "type": "OTHER",
+      "parent": {
+        "id": 0,
+        "name": "string",
+        "type": "OTHER",
+        "parent": {
+          "id": 0,
+          "name": "string",
+          "type": "OTHER",
+          "parent": {
+            "id": 0,
+            "name": "string",
+            "type": "OTHER",
+            "parent": {
+              "id": 0,
+              "name": "string",
+              "type": "OTHER",
+              "parent": {
+                "id": 0,
+                "name": "string",
+                "type": "OTHER",
+                "parent": {}
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "region": {
+    "id": 0,
+    "name": "string",
+    "type": "OTHER",
+    "parent": {
+      "id": 0,
+      "name": "string",
+      "type": "OTHER",
+      "parent": {
+        "id": 0,
+        "name": "string",
+        "type": "OTHER",
+        "parent": {
+          "id": 0,
+          "name": "string",
+          "type": "OTHER",
+          "parent": {
+            "id": 0,
+            "name": "string",
+            "type": "OTHER",
+            "parent": {
+              "id": 0,
+              "name": "string",
+              "type": "OTHER",
+              "parent": {
+                "id": 0,
+                "name": "string",
+                "type": "OTHER",
+                "parent": {}
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "detail": "parameter \"groupByNm\" in query has an error: empty value is not allowed",
+  "origin": "api-statistics",
+  "requestId": "6a6c2fba81f08e58670a7dab835ff0d7",
+  "title": "Bad Request"
+}

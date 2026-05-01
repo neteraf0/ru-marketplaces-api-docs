@@ -1,0 +1,29 @@
+{
+  "premium_scores": [
+    {
+      "rating": "string",
+      "scores": [
+        {
+          "date": "2024-01-01T00:00:00Z",
+          "rating_value": 0.0,
+          "value": 0
+        }
+      ]
+    }
+  ],
+  "ratings": [
+    {
+      "danger_threshold": 0.0,
+      "premium_threshold": 0.0,
+      "rating": "string",
+      "values": [
+        {
+          "date_from": "2024-01-01T00:00:00Z",
+          "date_to": "2024-01-01T00:00:00Z",
+          "value": 0.0
+        }
+      ],
+      "warning_threshold": 0.0
+    }
+  ]
+}

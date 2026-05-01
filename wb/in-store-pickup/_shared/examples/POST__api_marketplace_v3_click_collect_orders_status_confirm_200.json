@@ -1,0 +1,19 @@
+{
+  "requestId": "03615778-eb9e-4f55-b4O4-fd3ac0fad2сc",
+  "results": [
+    {
+      "orderId": 123456,
+      "isError": true,
+      "errors": [
+        {
+          "code": 404,
+          "detail": "NotFound"
+        }
+      ]
+    },
+    {
+      "orderId": 234567,
+      "isError": false
+    }
+  ]
+}

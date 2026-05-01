@@ -1,0 +1,10 @@
+{
+  "result": [
+    {
+      "id": 1,
+      "info": "Черный-товар",
+      "picture": "https://example.com/images/color_black.jpg",
+      "value": "Чёрный"
+    }
+  ]
+}

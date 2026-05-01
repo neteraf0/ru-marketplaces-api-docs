@@ -1,0 +1,24 @@
+{
+  "requestId": "03615778-eb9e-4f55-b4O4-fd3ac0fad2сc",
+  "results": [
+    {
+      "orderId": 4299281547,
+      "isError": true,
+      "errors": [
+        {
+          "code": 404,
+          "detail": "NotFound"
+        }
+      ]
+    },
+    {
+      "orderId": 4279781545,
+      "isError": false,
+      "data": {
+        "orgName": "ИП Иванов И.И.",
+        "inn": "8888888888",
+        "kpp": ""
+      }
+    }
+  ]
+}

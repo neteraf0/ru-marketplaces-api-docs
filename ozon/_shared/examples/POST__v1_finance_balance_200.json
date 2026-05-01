@@ -1,0 +1,56 @@
+{
+  "cashflows": {
+    "returns": {
+      "amount": {
+        "currency_code": "string",
+        "value": 0.0
+      },
+      "amount_details": {
+        "points_for_discounts": "string"
+      },
+      "fee": {
+        "currency_code": "string",
+        "value": 0.0
+      }
+    },
+    "sales": {
+      "amount": {
+        "currency_code": "string",
+        "value": 0.0
+      },
+      "amount_details": {
+        "points_for_discounts": "string"
+      },
+      "fee": {
+        "currency_code": "string",
+        "value": 0.0
+      }
+    },
+    "services": [
+      {
+        "amount": {},
+        "name": "string"
+      }
+    ]
+  },
+  "total": {
+    "accrued": {
+      "currency_code": "string",
+      "value": 0.0
+    },
+    "closing_balance": {
+      "currency_code": "string",
+      "value": 0.0
+    },
+    "opening_balance": {
+      "currency_code": "string",
+      "value": 0.0
+    },
+    "payments": [
+      {
+        "currency_code": "string",
+        "value": 0.0
+      }
+    ]
+  }
+}

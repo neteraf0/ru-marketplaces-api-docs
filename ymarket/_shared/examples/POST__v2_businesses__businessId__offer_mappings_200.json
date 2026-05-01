@@ -1,0 +1,111 @@
+{
+  "status": "OK",
+  "result": {
+    "paging": {
+      "nextPageToken": "string"
+    },
+    "offerMappings": [
+      {
+        "offer": {
+          "offerId": "string",
+          "name": "Ударная дрель Makita HP1630, 710 Вт",
+          "marketCategoryId": 0,
+          "category": "string",
+          "pictures": [
+            "string"
+          ],
+          "videos": [
+            "string"
+          ],
+          "manuals": [
+            {}
+          ],
+          "vendor": "LEVENHUK",
+          "barcodes": [
+            "46012300000000"
+          ],
+          "description": "string",
+          "manufacturerCountries": [
+            "Россия"
+          ],
+          "weightDimensions": {
+            "length": 65.55,
+            "width": 50.7,
+            "height": 20,
+            "weight": 1.001
+          },
+          "vendorCode": "VNDR-0005A",
+          "tags": [
+            "до 500 рублей"
+          ],
+          "shelfLife": {
+            "timePeriod": 0,
+            "timeUnit": "HOUR",
+            "comment": "string"
+          },
+          "lifeTime": {
+            "timePeriod": 0,
+            "timeUnit": "HOUR",
+            "comment": "string"
+          },
+          "guaranteePeriod": {
+            "timePeriod": 0,
+            "timeUnit": "HOUR",
+            "comment": "string"
+          },
+          "customsCommodityCode": "8517610008",
+          "commodityCodes": [
+            {}
+          ],
+          "certificates": [
+            "string"
+          ],
+          "boxCount": 1,
+          "condition": {
+            "type": "PREOWNED",
+            "quality": "PERFECT",
+            "reason": "string"
+          },
+          "type": "DEFAULT",
+          "downloadable": false,
+          "adult": false,
+          "age": {
+            "value": 0,
+            "ageUnit": "YEAR"
+          },
+          "params": [
+            {}
+          ],
+          "cardStatus": "HAS_CARD_CAN_NOT_UPDATE",
+          "campaigns": [
+            {}
+          ],
+          "sellingPrograms": [
+            {}
+          ],
+          "mediaFiles": {
+            "firstVideoAsCover": false,
+            "videos": [],
+            "pictures": [],
+            "manuals": []
+          },
+          "archived": false,
+          "groupId": "string"
+        },
+        "mapping": {
+          "marketSku": 1,
+          "marketSkuName": "string",
+          "marketModelName": "string",
+          "marketCategoryId": 0,
+          "marketCategoryName": "string"
+        },
+        "showcaseUrls": [
+          {
+            "showcaseType": "B2B",
+            "showcaseUrl": "string"
+          }
+        ]
+      }
+    ]
+  }
+}

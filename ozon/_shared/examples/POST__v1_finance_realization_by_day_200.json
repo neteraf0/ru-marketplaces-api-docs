@@ -1,0 +1,41 @@
+{
+  "rows": [
+    {
+      "commission_ratio": 0.0,
+      "delivery_commission": {
+        "amount": 0.0,
+        "bonus": 0.0,
+        "commission": 0.0,
+        "compensation": 0.0,
+        "price_per_instance": 0.0,
+        "quantity": 0,
+        "standard_fee": 0.0,
+        "bank_coinvestment": 0.0,
+        "stars": 0.0,
+        "pick_up_point_coinvestment": 0.0,
+        "total": 0.0
+      },
+      "item": {
+        "barcode": "string",
+        "name": "string",
+        "offer_id": "string",
+        "sku": 0
+      },
+      "return_commission": {
+        "amount": 0.0,
+        "bonus": 0.0,
+        "commission": 0.0,
+        "compensation": 0.0,
+        "price_per_instance": 0.0,
+        "quantity": 0,
+        "standard_fee": 0.0,
+        "bank_coinvestment": 0.0,
+        "stars": 0.0,
+        "pick_up_point_coinvestment": 0.0,
+        "total": 0.0
+      },
+      "rowNumber": 0,
+      "seller_price_per_instance": 0.0
+    }
+  ]
+}

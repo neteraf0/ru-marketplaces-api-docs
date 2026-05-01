@@ -1,0 +1,14 @@
+{
+  "errors": {
+    "cargo_error_reasons": [
+      {
+        "cargo_id": 0,
+        "error_reasons": []
+      }
+    ],
+    "supply_error_reasons": [
+      "SUPPLY_NOT_FOUND"
+    ]
+  },
+  "operation_id": "string"
+}

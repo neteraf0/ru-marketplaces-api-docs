@@ -1,0 +1,12 @@
+[
+  {
+    "packageCode": "WB_689",
+    "quantity": 1,
+    "barcodes": [
+      {
+        "barcode": "1234567891234",
+        "quantity": 1
+      }
+    ]
+  }
+]

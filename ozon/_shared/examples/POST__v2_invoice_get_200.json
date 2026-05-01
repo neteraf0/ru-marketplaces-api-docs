@@ -1,0 +1,15 @@
+{
+  "result": {
+    "date": "2024-01-01T00:00:00Z",
+    "file_url": "string",
+    "hs_codes": [
+      {
+        "code": "string",
+        "sku": "string"
+      }
+    ],
+    "number": "string",
+    "price": 0.0,
+    "price_currency": "string"
+  }
+}

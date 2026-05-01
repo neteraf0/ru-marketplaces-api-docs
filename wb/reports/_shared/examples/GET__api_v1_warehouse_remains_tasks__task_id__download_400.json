@@ -1,0 +1,6 @@
+{
+  "detail": "Invalid format for parameter task_id: error unmarshaling '7b8875---9f03-46f1-af21-b9b4b22fe821' text as *uuid.UUID: invalid UUID format",
+  "origin": "api-statistics",
+  "requestId": "44bac63ab29c46cb2d49392e6604c1a0",
+  "title": "Bad Request"
+}

@@ -1,0 +1,52 @@
+[
+  {
+    "subjectID": 105,
+    "variants": [
+      {
+        "vendorCode": "АртикулПродавца",
+        "kizMarked": true,
+        "wholesale": {
+          "enabled": true,
+          "quantum": 211
+        },
+        "title": "Наименование товара",
+        "description": "Описание товара",
+        "brand": "Бренд",
+        "dimensions": {
+          "length": 12,
+          "width": 7,
+          "height": 5,
+          "weightBrutto": 1.242
+        },
+        "characteristics": [
+          {
+            "id": 12,
+            "value": [
+              "Turkish flag"
+            ]
+          },
+          {
+            "id": 25471,
+            "value": 1200
+          },
+          {
+            "id": 14177449,
+            "value": [
+              "red"
+            ]
+          }
+        ],
+        "sizes": [
+          {
+            "techSize": "S",
+            "wbSize": "42",
+            "price": 5000,
+            "skus": [
+              "88005553535"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

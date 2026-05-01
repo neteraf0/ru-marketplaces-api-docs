@@ -1,0 +1,3 @@
+{
+  "message": "Failed to update assembly order metadata. Ensure that the assembly order meets all necessary requirements (the assembly order exists, is in the \"In assembly\" status, and metadata is available to the assembly order; see the description of the method **Get assembly order metadata**)."
+}

@@ -1,0 +1,13 @@
+{
+  "title": "Bad Request",
+  "detail": "validation failed",
+  "origin": "brands-api",
+  "requestId": "102d2641a932d61bed60649d6c99d80a",
+  "errors": [
+    {
+      "message": "expected number >= 0",
+      "location": "query.subjectId",
+      "value": "-1"
+    }
+  ]
+}

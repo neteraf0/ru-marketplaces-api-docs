@@ -1,0 +1,34 @@
+{
+  "status": "OK",
+  "result": {
+    "warehouses": [
+      {
+        "id": 0,
+        "name": "string",
+        "campaignId": 1,
+        "express": false,
+        "groupInfo": {
+          "name": "string",
+          "id": 0
+        },
+        "address": {
+          "city": "string",
+          "street": "string",
+          "number": "string",
+          "building": "string",
+          "block": "string",
+          "gps": {
+            "latitude": 0.0,
+            "longitude": 0.0
+          }
+        },
+        "status": {
+          "status": "DISABLED_MANUALLY"
+        }
+      }
+    ],
+    "paging": {
+      "nextPageToken": "string"
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "chat_id": "18b8e1f9-4ae7-461c-84ea-8e1f54d1a45e",
+  "direction": "Forward",
+  "filter": {
+    "message_ids": [
+      "3000000300211559667"
+    ]
+  },
+  "from_message_id": 3000000000118032000,
+  "limit": 1
+}

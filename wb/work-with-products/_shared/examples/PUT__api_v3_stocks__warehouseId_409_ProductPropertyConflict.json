@@ -1,0 +1,6 @@
+[
+  {
+    "code": "ProductPropertyConflict",
+    "message": "Products are not allowed for sale under the selected supply scheme."
+  }
+]

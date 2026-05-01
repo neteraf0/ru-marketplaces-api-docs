@@ -1,0 +1,11 @@
+{
+  "placements": [
+    {
+      "advert_id": 12345,
+      "placements": {
+        "search": true,
+        "recommendations": true
+      }
+    }
+  ]
+}

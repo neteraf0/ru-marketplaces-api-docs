@@ -1,0 +1,52 @@
+{
+  "status": "OK",
+  "result": {
+    "categoryId": 0,
+    "parameters": [
+      {
+        "id": 1,
+        "name": "string",
+        "type": "TEXT",
+        "unit": {
+          "defaultUnitId": 0,
+          "units": [
+            {
+              "id": 0,
+              "name": "кг",
+              "fullName": "килограмм"
+            }
+          ]
+        },
+        "description": "string",
+        "recommendationTypes": [
+          "HAS_VIDEO"
+        ],
+        "required": false,
+        "filtering": false,
+        "distinctive": false,
+        "multivalue": false,
+        "allowCustomValues": false,
+        "values": [
+          {
+            "id": 0,
+            "value": "string",
+            "description": "string"
+          }
+        ],
+        "constraints": {
+          "minValue": 0.0,
+          "maxValue": 0.0,
+          "maxLength": 0
+        },
+        "valueRestrictions": [
+          {
+            "limitingParameterId": 1,
+            "limitedValues": [
+              {}
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

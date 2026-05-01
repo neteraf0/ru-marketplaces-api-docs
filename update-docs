@@ -1,0 +1,1580 @@
+#!/usr/bin/env python3
+"""
+update-docs — Marketplace API Docs CLI
+
+Downloads and keeps up-to-date official API documentation from:
+  - WB (Wildberries)    https://dev.wildberries.ru/en/docs/openapi/*
+  - Ozon                https://docs.ozon.ru/api/seller/swagger.json
+  - Yandex Market       github.com/yandex-market/yandex-market-partner-api
+  - Bitrix24            github.com/bitrix-tools/b24-rest-docs
+
+Usage:
+  ./update-docs                              # interactive menu
+  ./update-docs wb ym                        # specific sources, no menu
+  ./update-docs ozon --ozon-json seller.json # ozon non-interactive
+  ./update-docs --force                      # ignore change detection
+
+Output: docs/{wb,ozon,ymarket,bitrix24}/
+State:  docs/.fetch-state.json (SHA256 per file, skip unchanged)
+"""
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# Bootstrap — stdlib only, runs before third-party imports
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+import os
+import subprocess
+import sys
+from pathlib import Path
+
+_VENV = Path.home() / "venv" / "ru-marketplace-api-docs"
+_PACKAGES = [
+    "playwright",
+    "playwright-stealth",
+    "html2text",
+    "pyyaml",
+    "requests",
+]
+
+
+def _in_venv() -> bool:
+    return str(_VENV) in sys.executable
+
+
+def _bootstrap() -> None:
+    _is_win = sys.platform == "win32"
+    python = _VENV / ("Scripts/python.exe" if _is_win else "bin/python3")
+    if not python.exists():
+        print(f"[setup] Creating virtualenv at {_VENV} …")
+        try:
+            subprocess.run(["uv", "venv", str(_VENV)], check=True)
+        except FileNotFoundError:
+            print("[setup] uv not found — installing via pip …")
+            subprocess.run(
+                [sys.executable, "-m", "pip", "install", "uv", "-q"], check=True
+            )
+            subprocess.run(["uv", "venv", str(_VENV)], check=True)
+
+    print("[setup] Installing packages …")
+    subprocess.run(
+        ["uv", "pip", "install", "--python", str(python), "-q"] + _PACKAGES,
+        check=True,
+    )
+    print("[setup] Installing Chromium for playwright …")
+    subprocess.run(
+        [str(python), "-m", "playwright", "install", "chromium"],
+        check=True,
+    )
+    print("[setup] Done. Restarting …\n")
+    script = str(Path(__file__).resolve())
+    if _is_win:
+        sys.exit(subprocess.run([str(python), script] + sys.argv[1:]).returncode)
+    else:
+        os.execv(str(python), [str(python), script] + sys.argv[1:])
+
+
+if not _in_venv():
+    _bootstrap()
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# Third-party imports — safe, we are in the venv
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+import argparse
+import asyncio
+import hashlib
+import json
+import re
+from datetime import datetime, timezone
+from typing import Any
+
+import html2text
+import requests as _http
+from playwright.async_api import Page, async_playwright
+from playwright_stealth import Stealth
+
+# ---------------------------------------------------------------------------
+# Paths
+# ---------------------------------------------------------------------------
+
+ROOT = Path(__file__).parent
+STATE_FILE = ROOT / ".fetch-state.json"
+
+# ---------------------------------------------------------------------------
+# Config
+# ---------------------------------------------------------------------------
+
+WB_BASE = "https://dev.wildberries.ru"
+WB_SECTIONS = [
+    "work-with-products",
+    "orders-fbs",
+    "orders-dbw",
+    "orders-dbs",
+    "in-store-pickup",
+    "orders-fbw",
+    "promotion",
+    "user-communication",
+    "wb-tariffs",
+    "analytics",
+    "reports",
+    "financial-reports-and-accounting",
+]
+
+# All 430 Ozon API endpoints are in the single seller spec.
+# The tab buttons on the UI are just UI filters over the same OpenAPI document.
+OZON_SPEC_URL = "https://docs.ozon.ru/api/seller/swagger.json"  # for --help hint only
+
+YM_BASE = "https://yandex.ru/dev/market/partner-api/doc/ru"
+YM_REPO = "https://github.com/yandex-market/yandex-market-partner-api.git"
+YM_REPO_DIR = ROOT / ".ym-repo"
+
+BITRIX_BASE = "https://apidocs.bitrix24.com"
+
+# ---------------------------------------------------------------------------
+# State tracking
+# ---------------------------------------------------------------------------
+
+
+class State:
+    def __init__(self, force: bool = False):
+        self._force = force
+        self._data: dict = {}
+        if STATE_FILE.exists():
+            try:
+                self._data = json.loads(STATE_FILE.read_text())
+            except Exception:
+                pass
+
+    def changed(self, key: str, content: str | bytes) -> bool:
+        if self._force:
+            return True
+        raw = content if isinstance(content, bytes) else content.encode()
+        h = hashlib.sha256(raw).hexdigest()
+        if self._data.get(key) == h:
+            return False
+        self._data[key] = h
+        return True
+
+    def save(self):
+        STATE_FILE.write_text(json.dumps(self._data, indent=2))
+
+
+# ---------------------------------------------------------------------------
+# OpenAPI → Markdown converter
+# ---------------------------------------------------------------------------
+
+
+def _resolve_ref(ref: str, components: dict) -> dict:
+    # Support #/components/schemas/Name and #/definitions/Name
+    parts = ref.lstrip("#/").split("/")
+    node = (
+        {"components": components}
+        if parts[0] == "components"
+        else {"definitions": components.get("definitions", {})}
+    )
+    for p in parts:
+        if isinstance(node, dict):
+            node = node.get(p, {})
+    return node if isinstance(node, dict) else {}
+
+
+def _schema_to_example(schema: dict, components: dict, depth: int = 0) -> object:
+    """Synthesize an example value from a schema using field-level example annotations.
+
+    Used when the spec has no top-level response example (e.g. Yandex Market).
+    Returns None if nothing meaningful can be built.
+    """
+    if depth > 8 or not schema:
+        return None
+
+    if "$ref" in schema:
+        return _schema_to_example(
+            _resolve_ref(schema["$ref"], components), components, depth + 1
+        )
+
+    if "example" in schema:
+        return schema["example"]
+
+    if schema.get("allOf"):
+        result: dict = {}
+        for sub in schema["allOf"]:
+            sub_ex = _schema_to_example(sub, components, depth + 1)
+            if isinstance(sub_ex, dict):
+                result.update(sub_ex)
+        return result or None
+
+    for combiner in ("oneOf", "anyOf"):
+        if schema.get(combiner):
+            return _schema_to_example(schema[combiner][0], components, depth + 1)
+
+    stype = schema.get("type", "")
+
+    if stype == "array" or "items" in schema:
+        item_ex = _schema_to_example(schema.get("items", {}), components, depth + 1)
+        return [item_ex] if item_ex is not None else []
+
+    if stype == "object" or schema.get("properties"):
+        result = {}
+        for fname, fschema in schema.get("properties", {}).items():
+            val = _schema_to_example(fschema, components, depth + 1)
+            if val is not None:
+                result[fname] = val
+        return result or {}
+
+    if stype == "boolean":
+        return False
+    if stype == "integer":
+        return schema.get("minimum", 0)
+    if stype in ("number", "float", "double"):
+        return schema.get("minimum", 0.0)
+    if stype == "string":
+        if schema.get("enum"):
+            return schema["enum"][0]
+        fmt = schema.get("format", "")
+        if fmt in ("date-time", "datetime"):
+            return "2024-01-01T00:00:00Z"
+        if fmt == "date":
+            return "2024-01-01"
+        return "string"
+
+    return None
+
+
+def _schema_md(schema: dict, components: dict, depth: int = 0) -> str:
+    if depth > 5 or not schema:
+        return ""
+    indent = "  " * depth
+
+    if "$ref" in schema:
+        resolved = _resolve_ref(schema["$ref"], components)
+        return _schema_md(resolved, components, depth)
+
+    stype = schema.get("type", "")
+    lines = []
+
+    if stype == "array":
+        items = schema.get("items", {})
+        lines.append(f"{indent}*Array of:*")
+        lines.append(_schema_md(items, components, depth + 1))
+
+    elif schema.get("properties") or stype == "object":
+        required = set(schema.get("required", []))
+        lines.append(f"\n{indent}| Field | Type | Req | Description |")
+        lines.append(f"{indent}|-------|------|-----|-------------|")
+        for name, fschema in schema.get("properties", {}).items():
+            if "$ref" in fschema:
+                resolved = _resolve_ref(fschema["$ref"], components)
+                ftype = fschema["$ref"].split("/")[-1]
+                desc = resolved.get("description", "")
+            else:
+                ftype = fschema.get("type", "")
+                if fschema.get("enum"):
+                    ftype += (
+                        " (enum: " + ", ".join(str(e) for e in fschema["enum"]) + ")"
+                    )
+                desc = fschema.get("description", "")
+            ex = fschema.get("example", "")
+            if ex:
+                desc += f" *Example: `{ex}`*"
+            req = "✓" if name in required else ""
+            desc = desc.replace("\n", " ").replace("|", "\\|")
+            lines.append(f"{indent}| `{name}` | {ftype} | {req} | {desc} |")
+
+    elif stype in ("string", "integer", "number", "boolean"):
+        parts = [f"`{stype}`"]
+        if schema.get("enum"):
+            parts.append("enum: " + ", ".join(f"`{e}`" for e in schema["enum"]))
+        if schema.get("example") is not None:
+            parts.append(f"example: `{schema['example']}`")
+        if schema.get("description"):
+            parts.append(schema["description"])
+        lines.append(f"{indent}" + " — ".join(parts))
+
+    return "\n".join(lines)
+
+
+def _write_example(
+    example_dir: Path,
+    key: str,
+    data,
+    shared_dir: Path | None = None,
+    shared_map: dict | None = None,
+) -> str:
+    """Write example data to a JSON file; return relative path for MD links.
+
+    If shared_dir + shared_map are provided, identical content is written once
+    to shared_dir and subsequent callers receive a link to that shared file,
+    eliminating duplicate JSON blobs (e.g. identical 423 error responses).
+    The returned path is relative to the *MD file* in tag_dir/ (not example_dir/).
+    """
+    blob = json.dumps(data, indent=2, ensure_ascii=False)
+
+    if shared_dir is not None and shared_map is not None:
+        h = hashlib.md5(blob.encode()).hexdigest()
+        if h in shared_map:
+            return shared_map[h]
+        shared_dir.mkdir(parents=True, exist_ok=True)
+        slug = re.sub(r"[^\w]", "_", key)[:80].strip("_")
+        fname = f"{slug}.json"
+        # Avoid collisions (different content, same derived slug — rare but possible)
+        counter = 0
+        while (shared_dir / fname).exists():
+            counter += 1
+            fname = f"{slug}_{counter}.json"
+        (shared_dir / fname).write_text(blob, encoding="utf-8")
+        # Path is relative from tag_dir/{op}.md → ../_shared/examples/{fname}
+        rel = f"../_shared/examples/{fname}"
+        shared_map[h] = rel
+        return rel
+
+    # Per-tag examples/ directory (default)
+    slug = re.sub(r"[^\w]", "_", key)[:120].strip("_")
+    fname = f"{slug}.json"
+    example_dir.mkdir(parents=True, exist_ok=True)
+    (example_dir / fname).write_text(blob, encoding="utf-8")
+    return f"examples/{fname}"
+
+
+def _emit_example(
+    lines: list,
+    example_dir: Path | None,
+    key: str,
+    label: str,
+    data,
+    shared_dir: Path | None = None,
+    shared_map: dict | None = None,
+) -> None:
+    """Append example to lines — inline JSON or external file link depending on example_dir."""
+    if example_dir is not None:
+        rel = _write_example(example_dir, key, data, shared_dir, shared_map)
+        lines.append(f"\n[{label}]({rel})\n")
+    else:
+        lines.append(
+            f"\n```json\n{json.dumps(data, indent=2, ensure_ascii=False)}\n```\n"
+        )
+
+
+def openapi_to_md(
+    spec: dict, example_dir: Path | None = None, title_prefix: str = ""
+) -> str:
+    """Convert an OpenAPI spec to Markdown.
+
+    example_dir: if set, examples are written as JSON files there and linked from the MD.
+    """
+    info = spec.get("info", {})
+    components = spec.get("components", spec.get("definitions", {}))
+    if "definitions" in spec and "components" not in spec:
+        components = {
+            "schemas": spec.get("definitions", {}),
+            "definitions": spec.get("definitions", {}),
+        }
+
+    heading = (
+        f"{title_prefix}{info.get('title', 'API')}"
+        if title_prefix
+        else info.get("title", "API")
+    )
+    lines = [
+        f"# {heading}",
+        f"\nVersion: **{info.get('version', '')}**",
+    ]
+    if info.get("description"):
+        lines.append(f"\n{info['description']}")
+
+    servers = spec.get("servers", [])
+    if not servers and spec.get("host"):
+        proto = spec.get("schemes", ["https"])[0]
+        servers = [{"url": f"{proto}://{spec['host']}{spec.get('basePath', '')}"}]
+    if servers:
+        lines.append("\n## Servers\n")
+        for s in servers:
+            lines.append(
+                f"- `{s['url']}`"
+                + (f" — {s.get('description', '')}" if s.get("description") else "")
+            )
+
+    # Group operations by tag
+    paths = spec.get("paths", {})
+    tags: dict[str, list] = {}
+    for path, path_item in paths.items():
+        path_servers = path_item.get("servers", servers)
+        for method, op in path_item.items():
+            if method not in (
+                "get",
+                "post",
+                "put",
+                "patch",
+                "delete",
+                "head",
+                "options",
+            ):
+                continue
+            for tag in op.get("tags", ["Other"]):
+                tags.setdefault(tag, []).append(
+                    (method.upper(), path, op, path_servers)
+                )
+
+    for tag, ops in tags.items():
+        lines.append(f"\n---\n## {tag}")
+        for method, path, op, path_servers in ops:
+            op_key = _op_slug(method, path)
+            lines.append(f"\n### `{method}` {path}\n")
+
+            if path_servers and path_servers != servers:
+                lines.append(f"**Server:** `{path_servers[0]['url']}`\n")
+
+            if op.get("summary"):
+                lines.append(f"**{op['summary']}**\n")
+            if op.get("description"):
+                lines.append(op["description"] + "\n")
+
+            if op.get("deprecated"):
+                lines.append("> ⚠️ **Deprecated**\n")
+
+            # Parameters
+            params = op.get("parameters", [])
+            if params:
+                lines.append("**Parameters:**\n")
+                lines.append("| Name | In | Type | Req | Description |")
+                lines.append("|------|----|------|-----|-------------|")
+                for p in params:
+                    if "$ref" in p:
+                        p = _resolve_ref(p["$ref"], components) or p
+                    name = p.get("name", "")
+                    if not name:
+                        continue
+                    sch = p.get("schema", {})
+                    if "$ref" in sch:
+                        sch = _resolve_ref(sch["$ref"], components)
+                    ptype = sch.get("type", p.get("type", ""))
+                    if sch.get("enum"):
+                        ptype += (
+                            " (enum: " + ", ".join(str(e) for e in sch["enum"]) + ")"
+                        )
+                    desc = (
+                        p.get("description", "").replace("\n", " ").replace("|", "\\|")
+                    )
+                    ex = sch.get("example", p.get("example", ""))
+                    if ex:
+                        desc += f" *Example: `{ex}`*"
+                    req = "✓" if p.get("required") else ""
+                    lines.append(
+                        f"| `{name}` | {p.get('in', '')} | {ptype} | {req} | {desc} |"
+                    )
+                lines.append("")
+
+            # Request body
+            rb = op.get("requestBody") or op.get("body")
+            if rb:
+                lines.append("**Request Body:**\n")
+                content = rb.get("content", {})
+                if not content and rb.get("schema"):
+                    content = {"application/json": {"schema": rb["schema"]}}
+                for media_type, media in content.items():
+                    lines.append(f"Content-Type: `{media_type}`\n")
+                    if sch := media.get("schema"):
+                        lines.append(_schema_md(sch, components))
+                    if ex := media.get("example"):
+                        _emit_example(
+                            lines, example_dir, f"{op_key}_req", "Request example", ex
+                        )
+                    for ex_name, ex_obj in media.get("examples", {}).items():
+                        if "$ref" in ex_obj:
+                            ex_obj = _resolve_ref(ex_obj["$ref"], components)
+                        val = ex_obj.get("value", ex_obj)
+                        _emit_example(
+                            lines,
+                            example_dir,
+                            f"{op_key}_req_{ex_name}",
+                            f"Request: {ex_name}",
+                            val,
+                        )
+
+            # Responses
+            responses = op.get("responses", {})
+            if responses:
+                lines.append("**Responses:**\n")
+                for code, resp in responses.items():
+                    desc = resp.get("description", "")
+                    lines.append(f"#### `{code}` {desc}\n")
+                    for media_type, media in resp.get("content", {}).items():
+                        sch = media.get("schema")
+                        if sch:
+                            lines.append(_schema_md(sch, components))
+                        if ex := media.get("example"):
+                            _emit_example(
+                                lines,
+                                example_dir,
+                                f"{op_key}_{code}",
+                                f"Response {code}",
+                                ex,
+                            )
+                        elif (
+                            not media.get("examples")
+                            and sch
+                            and example_dir is not None
+                        ):
+                            gen = _schema_to_example(sch, components)
+                            if gen is not None:
+                                _emit_example(
+                                    lines,
+                                    example_dir,
+                                    f"{op_key}_{code}",
+                                    f"Response {code}",
+                                    gen,
+                                )
+                        for ex_name, ex_obj in media.get("examples", {}).items():
+                            if "$ref" in ex_obj:
+                                ex_obj = _resolve_ref(ex_obj["$ref"], components)
+                            val = ex_obj.get("value", ex_obj)
+                            _emit_example(
+                                lines,
+                                example_dir,
+                                f"{op_key}_{code}_{ex_name}",
+                                f"Response {code}: {ex_name}",
+                                val,
+                            )
+
+    return "\n".join(lines)
+
+
+# ---------------------------------------------------------------------------
+# Helpers
+# ---------------------------------------------------------------------------
+
+
+def save_spec(
+    out_dir: Path, name: str, spec: dict, state: State, example_dir: Path | None = None
+) -> bool:
+    """Save OpenAPI spec as .json + single .md. Returns True if updated."""
+    json_str = json.dumps(spec, ensure_ascii=False, indent=2)
+    if not state.changed(f"{out_dir.name}/{name}", json_str):
+        return False
+
+    out_dir.mkdir(parents=True, exist_ok=True)
+    (out_dir / f"{name}.json").write_text(json_str, encoding="utf-8")
+    if example_dir:
+        example_dir.mkdir(parents=True, exist_ok=True)
+    md = openapi_to_md(spec, example_dir=example_dir)
+    (out_dir / f"{name}.md").write_text(md, encoding="utf-8")
+    return True
+
+
+def _op_slug(method: str, path: str) -> str:
+    return re.sub(r"[^\w]", "_", f"{method}_{path}").strip("_")[:80]
+
+
+_HTML_TAG_RE = re.compile(r"<[^>]+>")
+
+
+def _strip_html(text: str) -> str:
+    return _HTML_TAG_RE.sub("", text).strip()
+
+
+_HTTP_STATUS_NAMES = {
+    "200": "OK",
+    "201": "Created",
+    "204": "No Content",
+    "400": "Bad Request",
+    "401": "Unauthorized",
+    "402": "Payment Required",
+    "403": "Forbidden",
+    "404": "Not Found",
+    "405": "Method Not Allowed",
+    "409": "Conflict",
+    "422": "Unprocessable Entity",
+    "423": "Locked",
+    "429": "Too Many Requests",
+    "500": "Internal Server Error",
+    "503": "Service Unavailable",
+}
+
+
+def _clean_md(text: str) -> str:
+    """Light post-processing pass to normalise generated Markdown."""
+    # Strip WB-style {{ /path }} template artifacts anywhere in text
+    text = re.sub(r"\{\{.*?\}\}", "", text)
+    # Strip residual HTML tags (e.g. WB <span class='response__value '>)
+    text = _HTML_TAG_RE.sub("", text)
+    # Collapse 3+ consecutive blank lines to 2
+    text = re.sub(r"\n{4,}", "\n\n\n", text)
+    # Remove trailing whitespace from every line
+    text = "\n".join(line.rstrip() for line in text.splitlines())
+    # Ensure file ends with single newline
+    return text.rstrip("\n") + "\n"
+
+
+def _render_operation(
+    method: str,
+    path: str,
+    op: dict,
+    path_servers: list,
+    global_servers: list,
+    components: dict,
+    example_dir: Path,
+    tag: str,
+    tag_slug: str,
+    shared_dir: Path | None = None,
+    shared_map: dict | None = None,
+) -> str:
+    """Render a single OpenAPI operation to Markdown. One file = one endpoint."""
+    op_key = _op_slug(method, path)
+    lines = [
+        f"# `{method}` {path}",
+        f"\n**Tag:** [{tag}](index.md)\n",
+    ]
+    if op.get("operationId"):
+        lines.append(f"**operationId:** `{op['operationId']}`\n")
+    if path_servers and path_servers != global_servers:
+        lines.append(f"**Server:** `{path_servers[0]['url']}`\n")
+    if op.get("summary"):
+        summary = re.sub(r"\{\{.*?\}\}", "", op["summary"]).strip()
+        if summary:
+            lines.append(f"**{summary}**\n")
+    if op.get("description"):
+        lines.append(op["description"].strip() + "\n")
+    if op.get("deprecated"):
+        lines.append("> ⚠️ **Deprecated**\n")
+
+    # Parameters
+    params = op.get("parameters", [])
+    if params:
+        lines.append("## Parameters\n")
+        lines.append("| Name | In | Type | Required | Description |")
+        lines.append("|------|----|------|----------|-------------|")
+        for p in params:
+            if "$ref" in p:
+                p = _resolve_ref(p["$ref"], components) or p
+            pname = p.get("name", "")
+            if not pname:
+                continue
+            sch = p.get("schema", {})
+            if "$ref" in sch:
+                sch = _resolve_ref(sch["$ref"], components)
+            ptype = sch.get("type", p.get("type", ""))
+            if sch.get("enum"):
+                ptype += " (enum: " + ", ".join(str(e) for e in sch["enum"]) + ")"
+            pdesc = p.get("description", "").replace("\n", " ").replace("|", "\\|")
+            pex = sch.get("example", p.get("example", ""))
+            if pex:
+                pdesc += f" *Example: `{pex}`*"
+            preq = "✓" if p.get("required") else ""
+            lines.append(
+                f"| `{pname}` | {p.get('in', '')} | {ptype} | {preq} | {pdesc} |"
+            )
+        lines.append("")
+
+    # Request body
+    rb = op.get("requestBody") or op.get("body")
+    if rb:
+        lines.append("## Request Body\n")
+        rb_content = rb.get("content", {})
+        if not rb_content and rb.get("schema"):
+            rb_content = {"application/json": {"schema": rb["schema"]}}
+        for media_type, media in rb_content.items():
+            lines.append(f"Content-Type: `{media_type}`\n")
+            if sch := media.get("schema"):
+                lines.append(_schema_md(sch, components))
+            if ex := media.get("example"):
+                _emit_example(
+                    lines, example_dir, f"{op_key}_req", "Request example", ex
+                )
+            for ex_name, ex_obj in media.get("examples", {}).items():
+                if "$ref" in ex_obj:
+                    ex_obj = _resolve_ref(ex_obj["$ref"], components)
+                val = ex_obj.get("value", ex_obj)
+                _emit_example(
+                    lines,
+                    example_dir,
+                    f"{op_key}_req_{ex_name}",
+                    f"Request: {ex_name}",
+                    val,
+                )
+
+    # Responses
+    responses = op.get("responses", {})
+    if responses:
+        lines.append("## Responses\n")
+        for code, resp in responses.items():
+            rdesc = _strip_html(resp.get("description", "")).strip()
+            if not rdesc:
+                rdesc = _HTTP_STATUS_NAMES.get(str(code), "")
+            content = resp.get("content", {})
+            if not content:
+                # No body — emit a compact one-liner, no sub-heading
+                lines.append(f"- **{code}** {rdesc}")
+                continue
+            lines.append(f"### `{code}` {rdesc}\n")
+            for _, media in content.items():
+                sch = media.get("schema")
+                if sch:
+                    lines.append(_schema_md(sch, components))
+                if ex := media.get("example"):
+                    _emit_example(
+                        lines,
+                        example_dir,
+                        f"{op_key}_{code}",
+                        f"Response {code}",
+                        ex,
+                        shared_dir,
+                        shared_map,
+                    )
+                elif not media.get("examples") and sch:
+                    gen = _schema_to_example(sch, components)
+                    if gen is not None:
+                        _emit_example(
+                            lines,
+                            example_dir,
+                            f"{op_key}_{code}",
+                            f"Response {code}",
+                            gen,
+                            shared_dir,
+                            shared_map,
+                        )
+                for ex_name, ex_obj in media.get("examples", {}).items():
+                    if "$ref" in ex_obj:
+                        ex_obj = _resolve_ref(ex_obj["$ref"], components)
+                    val = ex_obj.get("value", ex_obj)
+                    _emit_example(
+                        lines,
+                        example_dir,
+                        f"{op_key}_{code}_{ex_name}",
+                        f"Response {code}: {ex_name}",
+                        val,
+                        shared_dir,
+                        shared_map,
+                    )
+
+    return "\n".join(lines)
+
+
+def save_openapi_split(out_dir: Path, name: str, spec: dict, state: State) -> int:
+    """Save OpenAPI spec as one-file-per-endpoint, organized by tag subdirectory.
+
+    Output:
+        out_dir/index.md                          root index
+        out_dir/{tag}/index.md                    tag index
+        out_dir/{tag}/{METHOD}_{path}.md          one endpoint per file (~100-300 lines)
+        out_dir/{tag}/examples/{...}.json         per-endpoint examples (unique content only)
+        out_dir/_shared/examples/{...}.json       deduplicated examples shared across endpoints
+    Returns count of written/updated files.
+    """
+    out_dir.mkdir(parents=True, exist_ok=True)
+    (out_dir / f"{name}.json").write_text(
+        json.dumps(spec, ensure_ascii=False, indent=2), encoding="utf-8"
+    )
+
+    # Shared example registry: content hash → relative path from tag_dir/{op}.md
+    shared_dir: Path = out_dir / "_shared" / "examples"
+    shared_map: dict[str, str] = {}
+
+    info = spec.get("info", {})
+    components = spec.get("components", spec.get("definitions", {}))
+    if "definitions" in spec and "components" not in spec:
+        components = {
+            "schemas": spec.get("definitions", {}),
+            "definitions": spec.get("definitions", {}),
+        }
+
+    servers = spec.get("servers", [])
+    if not servers and spec.get("host"):
+        proto = spec.get("schemes", ["https"])[0]
+        servers = [{"url": f"{proto}://{spec['host']}{spec.get('basePath', '')}"}]
+
+    paths = spec.get("paths", {})
+    by_tag: dict[str, list] = {}
+    for path, path_item in paths.items():
+        path_servers = path_item.get("servers", servers)
+        for method, op in path_item.items():
+            if method not in (
+                "get",
+                "post",
+                "put",
+                "patch",
+                "delete",
+                "head",
+                "options",
+            ):
+                continue
+            for tag in op.get("tags", ["Other"]):
+                by_tag.setdefault(tag, []).append(
+                    (method.upper(), path, op, path_servers)
+                )
+
+    updated = 0
+    title = info.get("title", name)
+    base_url = servers[0]["url"] if servers else ""
+
+    root_lines = [
+        f"# {title}",
+        f"\nVersion: **{info.get('version', '')}**" if info.get("version") else "",
+        f"\n{len(paths)} paths · {len(by_tag)} tags"
+        + (f" · `{base_url}`" if base_url else "")
+        + "\n",
+        "## Tags\n",
+    ]
+
+    for tag, ops in by_tag.items():
+        tslug = re.sub(r"[^\w-]", "_", tag.lower()).strip("_") or "other"
+        tag_dir = out_dir / tslug
+        tag_dir.mkdir(exist_ok=True)
+        example_dir = tag_dir / "examples"
+
+        root_lines.append(f"- [{tag}]({tslug}/index.md) — {len(ops)} endpoint(s)")
+
+        tag_index = [
+            f"# {tag}",
+            f"\n[← {title}](../index.md)\n",
+            "## Endpoints\n",
+        ]
+
+        for method, path, op, path_servers in ops:
+            ofile = _op_slug(method, path) + ".md"
+            summary = re.sub(r"\{\{.*?\}\}", "", op.get("summary", "")).strip()
+            tag_index.append(
+                f"- [`{method}` {path}]({ofile}){' — ' + summary if summary else ''}"
+            )
+
+            op_md = _clean_md(
+                _render_operation(
+                    method,
+                    path,
+                    op,
+                    path_servers,
+                    servers,
+                    components,
+                    example_dir,
+                    tag,
+                    tslug,
+                    shared_dir,
+                    shared_map,
+                )
+            )
+            op_key = f"{out_dir.name}/{name}/{tslug}/{_op_slug(method, path)}"
+            if state.changed(op_key, op_md):
+                example_dir.mkdir(parents=True, exist_ok=True)
+                (tag_dir / ofile).write_text(op_md, encoding="utf-8")
+                updated += 1
+
+        tag_index_md = _clean_md("\n".join(tag_index))
+        if state.changed(f"{out_dir.name}/{name}/{tslug}/index", tag_index_md):
+            (tag_dir / "index.md").write_text(tag_index_md, encoding="utf-8")
+            updated += 1
+
+    root_md = _clean_md("\n".join(root_lines))
+    if state.changed(f"{out_dir.name}/{name}/index", root_md):
+        (out_dir / "index.md").write_text(root_md, encoding="utf-8")
+        updated += 1
+
+    return updated
+
+
+def html_to_md(html: str, base_url: str = "") -> str:
+    h = html2text.HTML2Text()
+    h.ignore_links = False
+    h.ignore_images = True
+    h.body_width = 0
+    h.baseurl = base_url
+    return h.handle(html)
+
+
+async def browser_fetch_text(
+    page: Page, url: str, headers: dict | None = None
+) -> str | None:
+    """Fetch a URL as text using the browser's session (inherits cookies)."""
+    extra = json.dumps(headers or {})
+    result = await page.evaluate(f"""async () => {{
+        try {{
+            const r = await fetch({json.dumps(url)}, {{ headers: {extra} }});
+            if (!r.ok) return null;
+            return await r.text();
+        }} catch (e) {{ return null; }}
+    }}""")
+    return result
+
+
+_BROWSER_UA = (
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+    "AppleWebKit/537.36 (KHTML, like Gecko) "
+    "Chrome/124.0.0.0 Safari/537.36"
+)
+
+
+def _http_session(pw_cookies: list[Any]) -> "_http.Session":
+    """Build requests.Session with cookies extracted from a playwright context."""
+    s = _http.Session()
+    for c in pw_cookies:
+        s.cookies.set(
+            c["name"], c["value"], domain=c.get("domain", ""), path=c.get("path", "/")
+        )
+    s.headers.update(
+        {
+            "User-Agent": _BROWSER_UA,
+            "Accept-Language": "en-US,en;q=0.9",
+        }
+    )
+    return s
+
+
+def _http_get_text(
+    url: str, pw_cookies: list[Any], extra_headers: dict | None = None
+) -> str | None:
+    s = _http_session(pw_cookies)
+    if extra_headers:
+        s.headers.update(extra_headers)
+    try:
+        r = s.get(url, timeout=30)
+        if r.ok:
+            # Force UTF-8: requests defaults to ISO-8859-1 when Content-Type has no charset
+            return r.content.decode("utf-8", errors="replace")
+    except Exception:
+        pass
+    return None
+
+
+def _parse_wb_rsc(text: str) -> dict | None:
+    """Extract __redoc_state JSON from a WB RSC payload (text/x-component format)."""
+    for line in text.splitlines():
+        if "__redoc_state" not in line:
+            continue
+        t_idx = line.find(":T")
+        if t_idx < 0:
+            continue
+        comma_idx = line.find(",", t_idx)
+        if comma_idx < 0:
+            continue
+        content = line[comma_idx + 1 :]
+        m = re.search(
+            r"const __redoc_state\s*=\s*(\{.+\})\s*;?\s*$", content, re.DOTALL
+        )
+        if m:
+            try:
+                return json.loads(m.group(1))
+            except json.JSONDecodeError:
+                pass
+    return None
+
+
+# ---------------------------------------------------------------------------
+# WB
+# ---------------------------------------------------------------------------
+
+
+async def fetch_wb(page: Page, state: State):
+    print("[WB] Starting...")
+    out_dir = ROOT / "wb"
+
+    # WB uses __wbaas antibot that requires stealth + real Chrome
+    await page.goto(f"{WB_BASE}/en", wait_until="domcontentloaded")
+    try:
+        await page.wait_for_function(
+            "() => document.title.includes('WB API')",
+            timeout=30000,
+        )
+    except Exception:
+        print("  [WB] WARN: antibot may not have cleared")
+    await page.wait_for_timeout(2000)
+
+    # Extract antibot cookies — subsequent RSC fetches use HTTP (much faster than 12 browser navigations)
+    wb_cookies = await page.context.cookies([WB_BASE])
+    print(
+        f"  [WB] antibot passed, extracted {len(wb_cookies)} cookies"
+        f" — fetching {len(WB_SECTIONS)} sections via HTTP"
+    )
+
+    rsc_headers = {
+        "RSC": "1",
+        "Accept": "text/x-component",
+        "Referer": f"{WB_BASE}/en",
+        "Next-Router-Prefetch": "1",
+    }
+
+    for section in WB_SECTIONS:
+        url = f"{WB_BASE}/en/docs/openapi/{section}"
+        print(f"  [WB] {section}...", end=" ", flush=True)
+
+        state_obj = None
+
+        # Try HTTP first (avoids full browser navigation per section)
+        rsc_text = _http_get_text(url, wb_cookies, rsc_headers)
+        if rsc_text:
+            state_obj = _parse_wb_rsc(rsc_text)
+
+        # Fallback: browser JS fetch (inherits browser cookies)
+        if state_obj is None:
+            rsc_text = await browser_fetch_text(page, url, {"RSC": "1"})
+            if rsc_text:
+                state_obj = _parse_wb_rsc(rsc_text)
+
+        if state_obj is None:
+            print("WARN: no redoc_state")
+            continue
+
+        spec = state_obj.get("spec", {}).get("data", {})
+        if not spec:
+            print("WARN: empty spec")
+            continue
+
+        section_dir = out_dir / section
+        n = save_openapi_split(section_dir, section, spec, state)
+        print("UPDATED" if n else "unchanged")
+
+    await _fetch_wb_release_notes(page, out_dir, state)
+    await _fetch_wb_news(page, out_dir, state)
+
+
+async def _fetch_wb_release_notes(page: Page, out_dir: Path, state: State):
+    url = f"{WB_BASE}/en/release-notes"
+    print("  [WB] release-notes...")
+    await page.goto(url, wait_until="networkidle")
+
+    content = await page.inner_html("main") if await page.query_selector("main") else ""
+    if not content:
+        return
+
+    md = html_to_md(content, WB_BASE)
+    changelog_dir = out_dir / "changelog"
+    changelog_dir.mkdir(parents=True, exist_ok=True)
+
+    if state.changed("wb/release-notes", md):
+        (changelog_dir / "release-notes.md").write_text(md, encoding="utf-8")
+        print("  [WB] UPDATED: release-notes")
+    else:
+        print("  [WB] unchanged: release-notes")
+
+
+async def _fetch_wb_news(page: Page, out_dir: Path, state: State):
+    """Fetch WB news/digest pages."""
+    url = f"{WB_BASE}/en/news"
+    await page.goto(url, wait_until="networkidle")
+
+    # Find all news links
+    links = await page.evaluate("""() => {
+        return [...document.querySelectorAll('a[href*="/news/"]')]
+            .map(a => a.href)
+            .filter(h => { try { return /[/]news[/]\\d+$/.test(h); } catch(e) { return false; } });
+    }""")
+    links = list(dict.fromkeys(links))  # deduplicate
+
+    changelog_dir = out_dir / "changelog" / "news"
+    changelog_dir.mkdir(parents=True, exist_ok=True)
+    updated = 0
+
+    for link in links[:50]:  # cap at 50 most recent
+        news_id = link.split("/")[-1]
+        await page.goto(link, wait_until="networkidle")
+        content = (
+            await page.inner_html("main") if await page.query_selector("main") else ""
+        )
+        if not content:
+            continue
+        md = html_to_md(content, WB_BASE)
+        if state.changed(f"wb/news/{news_id}", md):
+            (changelog_dir / f"{news_id}.md").write_text(md, encoding="utf-8")
+            updated += 1
+
+    if updated:
+        print(f"  [WB] UPDATED: {updated} news items")
+    else:
+        print("  [WB] unchanged: news")
+
+
+# ---------------------------------------------------------------------------
+# Ozon
+# ---------------------------------------------------------------------------
+
+
+async def fetch_ozon(state: State, json_path: Path | None = None) -> None:
+    """Split Ozon seller.json into per-operation MD files.
+
+    seller.json is downloaded manually — open {OZON_SPEC_URL} in your browser
+    and save the file, then pass it via --ozon-json or the interactive prompt.
+    """
+    print("[Ozon] Starting...")
+    out_dir = ROOT / "ozon"
+
+    if json_path is None:
+        print("  [Ozon] ERROR: no seller.json provided")
+        return
+
+    try:
+        spec = json.loads(json_path.read_text(encoding="utf-8"))
+    except Exception as e:
+        print(f"  [Ozon] ERROR reading {json_path}: {e}")
+        return
+
+    # Cache a copy for reference
+    import shutil
+
+    out_dir.mkdir(parents=True, exist_ok=True)
+    cached = out_dir / "seller.json"
+    if json_path.resolve() != cached.resolve():
+        shutil.copy2(json_path, cached)
+
+    n = save_openapi_split(out_dir, "seller", spec, state)
+    print(f"  [Ozon] UPDATED: {n} tag files" if n else "  [Ozon] unchanged")
+
+
+# ---------------------------------------------------------------------------
+# Yandex Market
+# ---------------------------------------------------------------------------
+
+
+def _bundle_openapi(main_file: Path) -> dict[str, Any]:
+    """Load a split OpenAPI spec, resolving all file-based $ref references inline."""
+    import yaml as _yaml  # pyyaml
+
+    _cache: dict[
+        str, Any
+    ] = {}  # keyed by str(resolved_path) — Path hashing unreliable in Py3.14
+
+    def _load(path: Path) -> Any:
+        key = str(path.resolve())
+        if key in _cache:
+            return _cache[key]
+        raw = path.read_text(encoding="utf-8")
+        data = (
+            _yaml.safe_load(raw)
+            if path.suffix in (".yaml", ".yml")
+            else json.loads(raw)
+        )
+        _cache[key] = data  # store before resolving refs — breaks reference cycles
+        return data
+
+    def _resolve(obj: Any, base_dir: Path, depth: int = 0) -> Any:
+        if depth > 60:  # guard against pathological nesting
+            return obj
+        if isinstance(obj, dict):
+            if (
+                "$ref" in obj
+                and isinstance(obj["$ref"], str)
+                and not obj["$ref"].startswith("#")
+            ):
+                ref_path = (base_dir / obj["$ref"]).resolve()
+                ref_data = _load(ref_path)
+                return _resolve(ref_data, ref_path.parent, depth + 1)
+            return {k: _resolve(v, base_dir, depth + 1) for k, v in obj.items()}
+        if isinstance(obj, list):
+            return [_resolve(item, base_dir, depth + 1) for item in obj]
+        return obj
+
+    root = _load(main_file)
+    result = _resolve(root, main_file.parent)
+    return result if isinstance(result, dict) else {}
+
+
+def _git_clone_or_pull(repo_url: str, repo_dir: Path, label: str) -> bool:
+    """Clone or pull a git repo. Returns True on success."""
+    import subprocess
+
+    if repo_dir.exists():
+        print(f"  [{label}] git pull...")
+        r = subprocess.run(
+            ["git", "pull", "--ff-only"], cwd=repo_dir, capture_output=True, text=True
+        )
+        print(f"  [{label}] {r.stdout.strip() or r.stderr.strip()}")
+        return r.returncode == 0
+    else:
+        print(f"  [{label}] git clone (first run, may take a minute)...")
+        r = subprocess.run(
+            ["git", "clone", "--depth=1", repo_url, str(repo_dir)],
+            capture_output=True,
+            text=True,
+        )
+        if r.returncode != 0:
+            print(f"  [{label}] ERROR: {r.stderr}")
+            return False
+        print(f"  [{label}] cloned to {repo_dir}")
+        return True
+
+
+async def fetch_ym(state: State):
+    """
+    Official Yandex Market OpenAPI specs live in the GitHub repo:
+    https://github.com/yandex-market/yandex-market-partner-api (official Yandex org)
+
+    We clone it and convert all OpenAPI YAML/JSON files to split per-tag MDs.
+    The SPA docs site (yandex.ru/dev/market/...) only renders 13 pages and
+    misses most content, so the GitHub source is more complete.
+    """
+    print("[YM] Starting...")
+
+    out_dir = ROOT / "ymarket"
+    out_dir.mkdir(parents=True, exist_ok=True)
+
+    if not _git_clone_or_pull(YM_REPO, YM_REPO_DIR, "YM"):
+        print("  [YM] ERROR: cannot clone repo, skipping")
+        return
+
+    updated = 0
+
+    # Copy markdown docs as-is
+    for md_file in YM_REPO_DIR.rglob("*.md"):
+        rel = md_file.relative_to(YM_REPO_DIR)
+        if any(p.startswith(".") or p == "node_modules" for p in rel.parts):
+            continue
+        content = md_file.read_text(encoding="utf-8", errors="replace")
+        if state.changed(f"ym/md/{rel}", content):
+            dest = out_dir / rel
+            dest.parent.mkdir(parents=True, exist_ok=True)
+            dest.write_text(content, encoding="utf-8")
+            updated += 1
+
+    # Bundle and convert OpenAPI specs (resolving $ref: file.yaml references)
+    main_spec = YM_REPO_DIR / "openapi" / "openapi.yaml"
+    if main_spec.exists():
+        print("  [YM] bundling OpenAPI spec (resolving file $refs)...")
+        try:
+            bundled = _bundle_openapi(main_spec)
+            n = save_openapi_split(out_dir, "openapi", bundled, state)
+            updated += n
+            if n:
+                print(f"  [YM] UPDATED: {n} tag files")
+            else:
+                print("  [YM] unchanged: openapi")
+        except Exception as e:
+            print(f"  [YM] ERROR bundling openapi.yaml: {e}")
+    else:
+        print("  [YM] WARN: openapi/openapi.yaml not found in repo")
+
+    if updated:
+        print(f"  [YM] total updated: {updated} files")
+    else:
+        print("  [YM] unchanged")
+
+
+# ---------------------------------------------------------------------------
+# Bitrix24
+# ---------------------------------------------------------------------------
+
+BITRIX_REPO = "https://github.com/bitrix-tools/b24-rest-docs.git"
+BITRIX_REPO_DIR = ROOT / ".bitrix24-repo"
+
+
+async def fetch_bitrix(state: State):
+    """
+    apidocs.bitrix24.com is generated from the official GitHub repo
+    bitrix-tools/b24-rest-docs (updated daily). We git-clone/pull that repo
+    and copy changed markdown files to docs/bitrix24/.
+    """
+    print("[Bitrix24] Starting...")
+    out_dir = ROOT / "bitrix24"
+    out_dir.mkdir(parents=True, exist_ok=True)
+
+    if not _git_clone_or_pull(BITRIX_REPO, BITRIX_REPO_DIR, "Bitrix"):
+        print("  [Bitrix] ERROR: cannot clone repo")
+        return
+
+    # Copy all markdown files that changed
+    updated = 0
+    for md_file in BITRIX_REPO_DIR.rglob("*.md"):
+        rel = md_file.relative_to(BITRIX_REPO_DIR)
+        # Skip hidden dirs and node_modules (check relative parts only)
+        if any(p.startswith(".") or p == "node_modules" for p in rel.parts):
+            continue
+        dest = out_dir / rel
+        content = md_file.read_text(encoding="utf-8", errors="replace")
+
+        if state.changed(f"bitrix/{rel}", content):
+            dest.parent.mkdir(parents=True, exist_ok=True)
+            dest.write_text(content, encoding="utf-8")
+            updated += 1
+
+    if updated:
+        print(f"  [Bitrix] UPDATED: {updated} files")
+    else:
+        print("  [Bitrix] unchanged")
+
+
+# ---------------------------------------------------------------------------
+# Main
+# ---------------------------------------------------------------------------
+
+SITES = ["wb", "ozon", "ym", "bitrix"]
+
+_SITE_LABELS = {
+    "wb":     "Wildberries   (requires Chrome for antibot)",
+    "ozon":   "Ozon          (requires seller.json from browser)",
+    "ym":     "Yandex Market (git clone, no browser)",
+    "bitrix": "Bitrix24      (git clone, no browser)",
+}
+
+
+# ---------------------------------------------------------------------------
+# Ozon JSON validation
+# ---------------------------------------------------------------------------
+
+def _validate_ozon_spec(path: Path) -> tuple[bool, str]:
+    """Return (ok, message). Rejects empty/partial specs to protect the cache."""
+    try:
+        spec = json.loads(path.read_text(encoding="utf-8"))
+    except Exception as exc:
+        return False, f"invalid JSON: {exc}"
+
+    if not isinstance(spec, dict):
+        return False, "file is not a JSON object"
+
+    paths = spec.get("paths", {})
+    if not paths:
+        return False, "no 'paths' section — probably wrong file"
+
+    n_paths = len(paths)
+    if n_paths < 50:
+        return False, (
+            f"too few endpoints: {n_paths} "
+            f"(expected ~430 — possibly incomplete download)"
+        )
+
+    tags: set[str] = set()
+    for path_item in paths.values():
+        if not isinstance(path_item, dict):
+            continue
+        for method, op in path_item.items():
+            if method in ("get", "post", "put", "patch", "delete") and isinstance(op, dict):
+                tags.update(op.get("tags", []))
+
+    n_tags = len(tags)
+    if n_tags < 5:
+        return False, f"too few tags: {n_tags} (expected ~52)"
+
+    return True, f"{n_paths} endpoints, {n_tags} tags"
+
+
+def _term_link(url: str, text: str) -> str:
+    """OSC 8 terminal hyperlink — clickable in iTerm2, modern terminals."""
+    return f"\033]8;;{url}\033\\{text}\033]8;;\033\\"
+
+
+def _find_in_downloads() -> Path | None:
+    """Return the most-recently-modified seller.json / swagger.json in ~/Downloads, if any."""
+    downloads = Path.home() / "Downloads"
+    if not downloads.exists():
+        return None
+    candidates = []
+    for name in ("seller.json", "swagger.json"):
+        p = downloads / name
+        if p.exists():
+            candidates.append(p)
+    if not candidates:
+        return None
+    return max(candidates, key=lambda p: p.stat().st_mtime)
+
+
+def _ask_ozon_json() -> Path | None:
+    """Prompt for seller.json path, validate it. Returns Path or None (skip)."""
+    cached = ROOT / "ozon" / "seller.json"
+    hint = " (Enter = use cache)" if cached.exists() else " (Enter = skip)"
+
+    swagger_link = _term_link(OZON_SPEC_URL, OZON_SPEC_URL)
+    print("  [Ozon] Open in browser → Save As… seller.json")
+    print(f"         {swagger_link}")
+
+    # Auto-detect a freshly downloaded file
+    dl = _find_in_downloads()
+    if dl:
+        ok, msg = _validate_ozon_spec(dl)
+        if ok:
+            answer = input(f"  [Ozon] Found {dl.name} in Downloads — use it? [Y/n]: ").strip().lower()
+            if answer not in ("n", "no"):
+                print(f"  [Ozon] ✓ {msg}")
+                return dl
+
+    while True:
+        raw = input(f"  [Ozon] Path to seller.json{hint}: ").strip()
+
+        if not raw:
+            if cached.exists():
+                ok, msg = _validate_ozon_spec(cached)
+                if ok:
+                    print(f"  [Ozon] cache: {msg}")
+                    return cached
+                print(f"  [Ozon] cache is invalid ({msg}), provide file manually")
+                continue
+            return None
+
+        path = Path(raw).expanduser()
+        if not path.exists():
+            print(f"  [Ozon] file not found: {path}")
+            continue
+
+        ok, msg = _validate_ozon_spec(path)
+        if ok:
+            print(f"  [Ozon] ✓ {msg}")
+            return path
+
+        print(f"  [Ozon] ✗ {msg}")
+        if input("  Try another file? [Y/n]: ").strip().lower() in ("n", "no"):
+            return None
+
+
+# ---------------------------------------------------------------------------
+# Interactive site selection
+# ---------------------------------------------------------------------------
+
+def _interactive() -> tuple[list[str], Path | None]:
+    """Ask which sites to update. Returns (sites, ozon_json_path)."""
+    print("=" * 50)
+    print("  Marketplace API Docs")
+    print("=" * 50)
+    print()
+    print("What to update?\n")
+    print("  0. all — everything")
+    for i, site in enumerate(SITES, 1):
+        print(f"  {i}. {site} — {_SITE_LABELS[site]}")
+    print()
+
+    while True:
+        raw = input("Choice [0–4, Enter=0]: ").strip() or "0"
+        if raw == "0":
+            sites = list(SITES)
+            break
+        try:
+            idx = int(raw)
+            if 1 <= idx <= len(SITES):
+                sites = [SITES[idx - 1]]
+                break
+        except ValueError:
+            pass
+        print(f"  Enter a number from 0 to {len(SITES)}")
+
+    print()
+    ozon_json: Path | None = None
+    if "ozon" in sites:
+        ozon_json = _ask_ozon_json()
+        if ozon_json is None:
+            sites = [s for s in sites if s != "ozon"]
+            print("  [Ozon] skipped\n")
+
+    return sites, ozon_json
+
+
+async def main():
+    parser = argparse.ArgumentParser(
+        description="Marketplace API Docs — fetch WB / Ozon / YM / Bitrix24",
+        epilog=(
+            "Without arguments: interactive menu. "
+            "With arguments: non-interactive (CI-friendly)."
+        ),
+    )
+    parser.add_argument(
+        "sites",
+        nargs="*",
+        choices=list(SITES) + ["all"],
+        metavar="SITE",
+        help="wb ozon ym bitrix (or all). No args = interactive menu.",
+    )
+    parser.add_argument(
+        "--force", action="store_true", help="Re-fetch even if content is unchanged"
+    )
+    parser.add_argument(
+        "--headed",
+        action="store_true",
+        help="Run Chrome in headed mode (WB only; on headless servers: "
+        "Xvfb :99 -screen 0 1280x720x24 & DISPLAY=:99 ./update-docs --headed)",
+    )
+    parser.add_argument(
+        "--ozon-json",
+        metavar="PATH",
+        help=f"Path to seller.json ({OZON_SPEC_URL})",
+    )
+    args = parser.parse_args()
+
+    ozon_json: Path | None = None
+
+    if not args.sites:
+        # ── Interactive mode ─────────────────────────────────────────────────
+        sites, ozon_json = _interactive()
+        if not sites:
+            print("Nothing selected, exiting.")
+            return
+    else:
+        # ── Non-interactive (CLI args) ────────────────────────────────────────
+        sites = list(SITES) if "all" in args.sites else list(args.sites)
+
+        if "ozon" in sites:
+            if args.ozon_json:
+                path = Path(args.ozon_json).expanduser()
+                ok, msg = _validate_ozon_spec(path)
+                if not ok:
+                    print(f"[Ozon] ✗ invalid spec: {msg}")
+                    return
+                print(f"[Ozon] ✓ {msg}")
+                ozon_json = path
+            else:
+                ozon_json = _ask_ozon_json()
+                if ozon_json is None:
+                    sites = [s for s in sites if s != "ozon"]
+                    print("[Ozon] skipped\n")
+
+    state = State(force=args.force)
+
+    started = datetime.now(timezone.utc)
+    needs_browser = "wb" in sites
+    print(f"fetch-docs.py — {started.strftime('%Y-%m-%d %H:%M UTC')}")
+    print(
+        f"Sites: {', '.join(sites)}"
+        + (f", headless={'no' if args.headed else 'yes'}" if needs_browser else "")
+        + "\n"
+    )
+
+    # Non-browser sites: ozon, ym, bitrix
+    for site in [s for s in sites if s != "wb"]:
+        try:
+            if site == "ozon":
+                await fetch_ozon(state, ozon_json)
+            elif site == "ym":
+                await fetch_ym(state)
+            elif site == "bitrix":
+                await fetch_bitrix(state)
+        except Exception as e:
+            print(f"  [{site}] ERROR: {e}")
+        print()
+
+    # WB needs real Chrome for __wbaas antibot
+    if needs_browser:
+        import os
+
+        headless = not args.headed and not sys.argv[0].endswith("xvfb-run")
+        if os.environ.get("DISPLAY") and not args.headed:
+            headless = False
+        profile_dir = ROOT / ".browser-profile"
+        profile_dir.mkdir(exist_ok=True)
+        async with async_playwright() as pw:
+            ctx = await pw.chromium.launch_persistent_context(
+                user_data_dir=str(profile_dir),
+                headless=headless,
+                channel="chrome",
+                user_agent=(
+                    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+                    "AppleWebKit/537.36 (KHTML, like Gecko) "
+                    "Chrome/124.0.0.0 Safari/537.36"
+                ),
+                viewport={"width": 1280, "height": 800},
+            )
+            page = await ctx.new_page()
+            await Stealth().apply_stealth_async(page)
+            try:
+                await fetch_wb(page, state)
+            except Exception as e:
+                print(f"  [wb] ERROR: {e}")
+            finally:
+                await ctx.close()
+        print()
+
+    state.save()
+    elapsed = (datetime.now(timezone.utc) - started).seconds
+    print(f"Done in {elapsed}s. State saved to {STATE_FILE.relative_to(ROOT)}")
+
+    # Clean up large cache dirs — re-created on next run
+    import shutil
+
+    for cache_dir in (
+        ROOT / ".bitrix24-repo",
+        ROOT / ".ym-repo",
+        ROOT / ".browser-profile",
+    ):
+        if cache_dir.exists():
+            shutil.rmtree(cache_dir, ignore_errors=True)
+            print(f"  cleaned {cache_dir.name}/")
+
+
+if __name__ == "__main__":
+    asyncio.run(main())

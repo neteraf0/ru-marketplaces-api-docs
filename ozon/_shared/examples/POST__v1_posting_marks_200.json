@@ -1,0 +1,22 @@
+{
+  "invalid_postings": [
+    "string"
+  ],
+  "issued_exemplars": [
+    {
+      "exemplar_id": 0,
+      "mandatory_marks": [
+        "string"
+      ],
+      "posting_number": "string",
+      "sku": 0
+    }
+  ],
+  "non_issued_exemplars": [
+    {
+      "exemplar_id": 0,
+      "posting_number": "string",
+      "sku": 0
+    }
+  ]
+}

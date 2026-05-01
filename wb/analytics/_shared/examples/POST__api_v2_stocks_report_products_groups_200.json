@@ -1,0 +1,15 @@
+{
+  "data": {
+    "groups": [
+      {
+        "subjectID": 123456789,
+        "subjectName": "Кружка",
+        "brandName": "Крутая посуда",
+        "tagID": 12345,
+        "tagName": "Человек-Паук",
+        "items": []
+      }
+    ],
+    "currency": "RUB"
+  }
+}

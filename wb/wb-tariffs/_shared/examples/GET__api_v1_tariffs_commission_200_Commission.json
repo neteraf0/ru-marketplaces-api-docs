@@ -1,0 +1,16 @@
+{
+  "report": [
+    {
+      "kgvpBooking": 14.5,
+      "kgvpMarketplace": 15.5,
+      "kgvpPickup": 14.5,
+      "kgvpSupplier": 12.5,
+      "kgvpSupplierExpress": 3,
+      "paidStorageKgvp": 15.5,
+      "parentID": 657,
+      "parentName": "Бытовая техника",
+      "subjectID": 6461,
+      "subjectName": "Оборудование зуботехническое"
+    }
+  ]
+}

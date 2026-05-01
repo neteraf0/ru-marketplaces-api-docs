@@ -1,0 +1,16 @@
+{
+  "error_reasons": [
+    "INVALID_ORDER_STATE"
+  ],
+  "result": {
+    "is_order_cancelled": false,
+    "supplies": [
+      {
+        "error_reasons": [],
+        "is_supply_cancelled": false,
+        "supply_id": 0
+      }
+    ]
+  },
+  "status": "SUCCESS"
+}

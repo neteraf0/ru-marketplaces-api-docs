@@ -1,0 +1,51 @@
+{
+  "next": 0,
+  "orders": [
+    {
+      "cargoType": "mgt",
+      "colorCode": "RAL 3017",
+      "createdAt": "2022-05-04",
+      "crossBorder": {
+        "parcel": "1Z999AA10123456784"
+      },
+      "crossBorderType": "crossBorder",
+      "id": 1234567890,
+      "isZeroOrder": false,
+      "metaDetails": [
+        {
+          "key": "uin",
+          "decision": "uinMaySell"
+        }
+      ],
+      "options": {
+        "isB2B": false
+      },
+      "orderUid": "165918930_629fbc924b984618a44354475ca58675",
+      "priceInfo": {
+        "convertedCurrencyCode": 643,
+        "convertedPrice": 1020,
+        "currencyCode": 643,
+        "price": 1020
+      },
+      "product": {
+        "article": "wv1702fyjh",
+        "chrtId": 12345678,
+        "nmId": 370870300,
+        "skus": [
+          "12345Ejf5",
+          "12345Ejf6",
+          "12345Ejf7"
+        ]
+      },
+      "rid": "f884001e44e511edb8780242ac120002",
+      "scanPrice": 5200,
+      "status": {
+        "supplierStatus": "complete",
+        "wbStatus": "sent_to_carrier"
+      },
+      "stickerId": 33811984302,
+      "supplyId": "WB-GI-1234588",
+      "warehouseId": 55684681
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "country_code": "RU",
+  "is_kgt": false,
+  "coordinates": {
+    "latitude": 55,
+    "longitude": 37
+  },
+  "search": {
+    "address": "москва",
+    "types": [
+      "PPZ"
+    ]
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "result": {
+    "cargoes": [
+      {
+        "key": "string",
+        "value": {}
+      }
+    ]
+  },
+  "status": "SUCCESS",
+  "errors": {
+    "error_reasons": [
+      "INVALID_STATE"
+    ],
+    "items_validation": [
+      {
+        "barcode": "string",
+        "cargo_key": "string",
+        "quant": 0,
+        "type": "SUPPLY_ITEM_NOT_FOUND"
+      }
+    ]
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "status": "OK",
+  "result": {
+    "id": 0,
+    "orderId": 0,
+    "creationDate": "2020-02-02T14:30:30+03:00",
+    "updateDate": "2020-02-02T14:30:30+03:00",
+    "refundStatus": "STARTED_BY_USER",
+    "logisticPickupPoint": {
+      "id": 0,
+      "name": "string",
+      "address": {
+        "country": "Россия",
+        "city": "Москва",
+        "street": "Стрелецкая улица",
+        "house": "9к2",
+        "postcode": "123518"
+      },
+      "instruction": "string",
+      "type": "WAREHOUSE",
+      "logisticPartnerId": 0
+    },
+    "pickupTillDate": "2020-02-02T14:30:30+03:00",
+    "shipmentRecipientType": "SHOP",
+    "shipmentStatus": "CREATED",
+    "refundAmount": 0,
+    "amount": {
+      "value": 0.0,
+      "currencyId": "RUR"
+    },
+    "items": [
+      {
+        "marketSku": 1,
+        "shopSku": "string",
+        "count": 0,
+        "decisions": [
+          {
+            "returnItemId": 0,
+            "count": 0,
+            "comment": "string",
+            "reasonType": "BAD_QUALITY",
+            "subreasonType": "USER_DID_NOT_LIKE",
+            "decisionType": "FAST_REFUND_MONEY",
+            "refundAmount": 0,
+            "amount": {
+              "value": 0.0,
+              "currencyId": "RUR"
+            },
+            "partnerCompensation": 0,
+            "partnerCompensationAmount": {
+              "value": 0.0,
+              "currencyId": "RUR"
+            },
+            "images": [
+              "string"
+            ]
+          }
+        ],
+        "instances": [
+          {
+            "stockType": "FIT",
+            "status": "CREATED",
+            "cis": "string",
+            "imei": "string"
+          }
+        ],
+        "tracks": [
+          {
+            "trackCode": "string"
+          }
+        ]
+      }
+    ],
+    "returnType": "UNREDEEMED",
+    "fastReturn": false
+  }
+}

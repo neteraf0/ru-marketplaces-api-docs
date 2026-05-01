@@ -1,0 +1,14 @@
+{
+  "result": [
+    {
+      "schedule": {
+        "capacity": [],
+        "date": "2024-01-01T00:00:00Z"
+      },
+      "warehouse": {
+        "id": "string",
+        "name": "string"
+      }
+    }
+  ]
+}

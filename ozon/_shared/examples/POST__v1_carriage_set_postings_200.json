@@ -1,0 +1,9 @@
+{
+  "result": [
+    {
+      "error": "string",
+      "posting_number": "string",
+      "result": false
+    }
+  ]
+}

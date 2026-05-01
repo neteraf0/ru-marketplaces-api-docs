@@ -1,0 +1,6 @@
+{
+  "title": "Invalid request body",
+  "detail": "code=400, message=invalid: positionCluster (field required), limit (field required), offset (field required), internal=invalid: positionCluster (field required), limit (field required), offset (field required",
+  "requestId": "fb25c9e9-cae8-52db-b68e-736c1466a3f5",
+  "origin": "analytic-open-api"
+}

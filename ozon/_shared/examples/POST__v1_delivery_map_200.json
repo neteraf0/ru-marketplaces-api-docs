@@ -1,0 +1,19 @@
+{
+  "clusters": [
+    {
+      "coordinate": {
+        "lat": 0.0,
+        "long": 0.0
+      },
+      "is_same_building": false,
+      "map_point_ids": [
+        "string"
+      ],
+      "points_count": 0,
+      "viewport": {
+        "left_bottom": {},
+        "right_top": {}
+      }
+    }
+  ]
+}

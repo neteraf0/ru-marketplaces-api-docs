@@ -1,0 +1,18 @@
+{
+  "bundle_ids": [
+    "bundle_123456789",
+    "bundle_987654321"
+  ],
+  "is_asc": true,
+  "item_tags_calculation": {
+    "dropoff_warehouse_id": 17717042026000,
+    "storage_warehouse_ids": [
+      "17717042026001",
+      "17717042026002"
+    ]
+  },
+  "last_id": "item_555123456789",
+  "limit": 100,
+  "query": "книга Хайям",
+  "sort_field": "NAME"
+}

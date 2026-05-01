@@ -1,0 +1,14 @@
+{
+  "status": "OK",
+  "result": {
+    "bids": [
+      {
+        "sku": "string",
+        "bid": 570
+      }
+    ],
+    "paging": {
+      "nextPageToken": "string"
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "products": [
+    {
+      "product_id": 145123054,
+      "offer_id": "10032",
+      "quantity": 1,
+      "name": "Телевизор LG",
+      "image_url": "https://url"
+    }
+  ],
+  "cursor": "hCGiPPopcBFMgMErdzaCEpzQfinuPyEhUoSmBMADuoFAhBjXeA=="
+}

@@ -1,0 +1,31 @@
+{
+  "warehouses": [
+    {
+      "address": {
+        "address": "string",
+        "city": "string",
+        "coordinates": {},
+        "country_code": "string",
+        "macrolocal_cluster_id": 0,
+        "region": "string",
+        "timezone": "string"
+      },
+      "contacts": {
+        "phone_numbers": [
+          "string"
+        ]
+      },
+      "courier_comment": "string",
+      "is_active": false,
+      "is_pickup": false,
+      "seller_warehouse_id": 0,
+      "seller_warehouse_name": "string",
+      "working_days": [
+        {
+          "time_from_local": "string",
+          "time_to_local": "string"
+        }
+      ]
+    }
+  ]
+}

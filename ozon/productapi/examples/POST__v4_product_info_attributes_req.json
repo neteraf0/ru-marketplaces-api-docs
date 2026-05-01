@@ -1,0 +1,16 @@
+{
+  "filter": {
+    "product_id": [
+      "213761435"
+    ],
+    "offer_id": [
+      "testtest5"
+    ],
+    "sku": [
+      "123495432"
+    ],
+    "visibility": "ALL"
+  },
+  "limit": 100,
+  "sort_dir": "ASC"
+}

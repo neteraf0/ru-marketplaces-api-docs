@@ -1,0 +1,22 @@
+{
+  "status": "OK",
+  "results": [
+    {
+      "offerId": "string",
+      "errors": [
+        {
+          "type": "UNKNOWN_CATEGORY",
+          "parameterId": 0,
+          "message": "string"
+        }
+      ],
+      "warnings": [
+        {
+          "type": "UNKNOWN_CATEGORY",
+          "parameterId": 0,
+          "message": "string"
+        }
+      ]
+    }
+  ]
+}

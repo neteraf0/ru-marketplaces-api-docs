@@ -1,0 +1,10 @@
+{
+  "errors": [
+    {
+      "code": "123-123",
+      "error": "does not exist",
+      "barcode": "112772873170",
+      "product_id": 9988776612
+    }
+  ]
+}

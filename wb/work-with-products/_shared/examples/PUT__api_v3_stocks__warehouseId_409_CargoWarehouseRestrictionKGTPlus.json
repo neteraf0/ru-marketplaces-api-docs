@@ -1,0 +1,12 @@
+[
+  {
+    "code": "CargoWarehouseRestrictionKGTPlus",
+    "message": "The selected warehouse is not suitable for goods with the type \"CD+\". Upload the balances to the warehouse marked - CD+",
+    "data": [
+      {
+        "sku": "skuTest3",
+        "amount": 10
+      }
+    ]
+  }
+]

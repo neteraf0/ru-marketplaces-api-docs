@@ -1,0 +1,12 @@
+{
+  "date_from": "2019-08-24T14:15:22Z",
+  "date_to": "2019-08-24T14:15:22Z",
+  "limit_by_sku": 0,
+  "page": 0,
+  "page_size": 1000,
+  "skus": [
+    "string"
+  ],
+  "sort_by": "BY_SEARCHES",
+  "sort_dir": "DESCENDING"
+}

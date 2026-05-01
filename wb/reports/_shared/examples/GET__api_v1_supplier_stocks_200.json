@@ -1,0 +1,22 @@
+[
+  {
+    "lastChangeDate": "2023-07-05T11:13:35",
+    "warehouseName": "Краснодар",
+    "supplierArticle": "443284",
+    "nmId": 1439871458,
+    "barcode": "2037401340280",
+    "quantity": 33,
+    "inWayToClient": 1,
+    "inWayFromClient": 0,
+    "quantityFull": 34,
+    "category": "Посуда и инвентарь",
+    "subject": "Формы для запекания",
+    "brand": "X",
+    "techSize": "0",
+    "Price": 185,
+    "Discount": 0,
+    "isSupply": true,
+    "isRealization": false,
+    "SCCode": "Tech"
+  }
+]

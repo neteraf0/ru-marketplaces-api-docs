@@ -1,0 +1,9 @@
+{
+  "polygons": [
+    {
+      "coordinates": "string",
+      "polygon_id": 0,
+      "time": 0
+    }
+  ]
+}

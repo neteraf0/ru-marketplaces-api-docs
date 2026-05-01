@@ -1,0 +1,12 @@
+{
+  "name": "Телефоны",
+  "nms": [
+    146168367,
+    200425104
+  ],
+  "bid_type": "manual",
+  "placement_types": [
+    "search",
+    "recommendations"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "title": "Bad Request",
+  "detail": "validation failed",
+  "origin": "brands-api",
+  "requestId": "102d2641a932d61bed60649d6c99d80a",
+  "errors": [
+    {
+      "message": "invalid integer",
+      "location": "query.next",
+      "value": "MTkxOTAzMQ=="
+    }
+  ]
+}

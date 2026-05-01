@@ -1,0 +1,15 @@
+{
+  "filter": {
+    "offer_id": "string",
+    "posting_number": "string",
+    "group_state": [
+      "ALL"
+    ],
+    "created_at": {
+      "from": "2019-08-24T14:15:22Z",
+      "to": "2019-08-24T14:15:22Z"
+    }
+  },
+  "last_id": 0,
+  "limit": 1000
+}

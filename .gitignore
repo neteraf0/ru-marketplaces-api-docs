@@ -1,0 +1,13 @@
+# local git clones (large, re-cloned on update)
+.bitrix24-repo/
+.ym-repo/
+
+# browser automation state
+.browser-profile/
+
+# Ozon spec — downloaded manually each time
+ozon/seller.json
+
+# Python venv
+__pycache__/
+*.pyc

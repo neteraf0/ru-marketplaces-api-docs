@@ -1,0 +1,9 @@
+{
+  "data": null,
+  "error": true,
+  "errorText": "some products lacks required characteristics. please fill them and try again.",
+  "additionalErrors": {
+    "vendor_code_1": "missing required characteristics with ids: {1}, {2}",
+    "vendor_code_2": "missing required characteristics with ids: {1}, {2}"
+  }
+}

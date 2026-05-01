@@ -1,0 +1,25 @@
+{
+  "status": "OK",
+  "result": {
+    "items": [
+      {
+        "id": 0,
+        "vat": "NO_VAT",
+        "count": 0,
+        "price": 0.0,
+        "offerName": "string",
+        "offerId": "string",
+        "instances": [
+          {
+            "cis": "string",
+            "cisFull": "string",
+            "uin": "string",
+            "rnpt": "string",
+            "gtd": "string",
+            "countryCode": "RU"
+          }
+        ]
+      }
+    ]
+  }
+}

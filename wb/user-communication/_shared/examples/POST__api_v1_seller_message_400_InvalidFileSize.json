@@ -1,0 +1,8 @@
+{
+  "status": 400,
+  "title": "Bad Request",
+  "origin": "proxy-chats",
+  "detail": "A24FA09844E: attachment too big. Max size: 5MiB",
+  "requestId": "1b21cad4833a0c9244dc294a000f6149",
+  "error": "A24FA09844E: attachment too big. Max size: 5MiB"
+}

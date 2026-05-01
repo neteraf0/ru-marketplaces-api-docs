@@ -1,0 +1,12 @@
+{
+  "status": "OK",
+  "result": {
+    "id": "string",
+    "lastName": "string",
+    "firstName": "string",
+    "middleName": "string",
+    "type": "PERSON",
+    "phone": "string",
+    "trusted": false
+  }
+}

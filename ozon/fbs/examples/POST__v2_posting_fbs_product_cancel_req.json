@@ -1,0 +1,11 @@
+{
+  "cancel_reason_id": 352,
+  "cancel_reason_message": "Product is out of stock",
+  "items": [
+    {
+      "quantity": 5,
+      "sku": 150587396
+    }
+  ],
+  "posting_number": "33920113-1231-1"
+}

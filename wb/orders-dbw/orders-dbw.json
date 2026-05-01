@@ -1,0 +1,2683 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "DBW Orders",
+    "version": "ordersdbw",
+    "description": "Use DBW (Delivery by WB Courier) Orders methods to:\n  - get [assembly orders](./orders-dbw#tag/DBW-Assembly-Orders) information, manage statuses, and cancel assembly orders\n  - get, add, edit, and delete [metadata](./orders-dbw#tag/DBW-Metadata) for assembly orders\n",
+    "x-file-name": "orders-dbw"
+  },
+  "security": [
+    {
+      "HeaderApiKey": []
+    }
+  ],
+  "tags": [
+    {
+      "name": "DBW Orders",
+      "description": "<div class=\"api-description\">\n\nUse DBW (Delivery by WB Courier) Orders methods to:\n  - get [assembly orders](./orders-dbw#tag/DBW-Assembly-Orders) information, manage statuses, and cancel assembly orders\n  - get, add, edit, and delete [metadata](./orders-dbw#tag/DBW-Metadata) for assembly orders\n\n\n</div>",
+      "x-traitTag": true
+    },
+    {
+      "name": "DBW Assembly Orders",
+      "description": "<div class=\"description_auth\">\n  To access the methods, use a <a href=\"./api-information#tag/Authorization/How-to-create-a-personal-access-base-or-test-token\">token</a> for the <strong>Marketplace</strong> category\n</div>\n\nHow to work with DBW assembly orders:\n1. [Get a new assembly order](./orders-dbw#tag/DBW-Assembly-Orders/paths/~1api~1v3~1dbw~1orders~1new/get).\n2. [Transfer it for assembly](./orders-dbw#tag/DBW-Assembly-Orders/paths/~1api~1v3~1dbw~1orders~1%7BorderId%7D~1confirm/patch).\n3. After the assembly order is moved to assembly, [information about the courier](./orders-dbw#tag/DBW-Assembly-Orders/paths/~1api~1v3~1dbw~1orders~1courier/post) (phone, vehicle number) becomes available. To allow the courier to contact you, [link](./work-with-products#tag/Seller-Warehouses/paths/~1api~1v3~1dbw~1warehouses~1%7BwarehouseId%7D~1contacts/put) your contacts to the warehouse. You can also [get](./work-with-products#tag/Seller-Warehouses/paths/~1api~1v3~1dbw~1warehouses~1%7BwarehouseId%7D~1contacts/get) the current list of your contacts.\n4. [Get](./orders-dbw#tag/DBW-Assembly-Orders/paths/~1api~1v3~1dbw~1orders~1stickers/post), print, and attach the stickers.\n5. [Transfer to delivery](./orders-dbw#tag/DBW-Assembly-Orders/paths/~1api~1v3~1dbw~1orders~1%7BorderId%7D~1assemble/patch).\n6. Waiting for the courier.\n7. The courier picks up the order and delivers it to the buyer.\n8. The buyer accepts or declines the order.\n9. If the buyer accepts the order, the courier changes the assembly order status to `receive`. If the buyer declines, it is changed to `reject`.\n"
+    },
+    {
+      "name": "DBW Metadata",
+      "description": "<div class=\"description_auth\">\n  To access the methods, use a <a href=\"./api-information#tag/Authorization/How-to-create-a-personal-access-base-or-test-token\">token</a> for the <strong>Marketplace</strong> category\n</div>\n"
+    }
+  ],
+  "paths": {
+    "/api/v3/dbw/orders/new": {
+      "servers": [
+        {
+          "url": "https://marketplace-api.wildberries.ru"
+        }
+      ],
+      "get": {
+        "x-readonly-method": true,
+        "x-category": "marketplace",
+        "security": [
+          {
+            "HeaderApiKey": []
+          }
+        ],
+        "tags": [
+          "DBW Assembly Orders"
+        ],
+        "summary": "Get New Orders{{ /api/v3/dbw/orders/new }}",
+        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nReturns a list of all new [orders](./orders-dbw#tag/DBW-Assembly-Orders).\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/Introduction/Rate-Limits'>Request limit</a>  per one seller's account for DBW methods:\n<ul>\n    <li>for getting and updating contact lists</li>\n    <li>for getting and deleting metadata</li>\n    <li>assembly orders</li>\n</ul>\n\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 300 requests | 200 ms | 20 requests |\n\n</div>\n",
+        "responses": {
+          "200": {
+            "description": "<span class='response__value response__value_success'>Success</span>",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "nullable": false,
+                  "properties": {
+                    "orders": {
+                      "type": "array",
+                      "nullable": false,
+                      "description": "New assembly orders list",
+                      "items": {
+                        "$ref": "#/components/schemas/OrderNewDBW"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/401",
+            "description": "<span class='response__value '></span>"
+          },
+          "402": {
+            "$ref": "#/components/responses/402",
+            "description": "<span class='response__value '></span>"
+          },
+          "403": {
+            "$ref": "#/components/responses/AccessDenied",
+            "description": "<span class='response__value '></span>"
+          },
+          "429": {
+            "$ref": "#/components/responses/429",
+            "description": "<span class='response__value '></span>"
+          }
+        }
+      }
+    },
+    "/api/v3/dbw/orders": {
+      "servers": [
+        {
+          "url": "https://marketplace-api.wildberries.ru"
+        }
+      ],
+      "get": {
+        "x-readonly-method": true,
+        "x-category": "marketplace",
+        "security": [
+          {
+            "HeaderApiKey": []
+          }
+        ],
+        "tags": [
+          "DBW Assembly Orders"
+        ],
+        "summary": "Get Information on Completed Orders{{ /api/v3/dbw/orders }}",
+        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nReturns information on completed orders (either canceled or sold).\n<br>\nYou can get data for a specified period, maximum of 30 calendar days per request.\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/Introduction/Rate-Limits'>Request limit</a> per one seller's account for DBW methods:\n<ul>\n    <li>for getting and updating contact lists</li>\n    <li>for getting and deleting metadata</li>\n    <li>assembly orders</li>\n</ul>\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 300 requests | 200 ms | 20 requests |\n\nOne request with a response code of <code>409</code> is counted as 10 requests\n</div>\n",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Limit"
+          },
+          {
+            "$ref": "#/components/parameters/Next"
+          },
+          {
+            "name": "dateFrom",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Period start date in Unix timestamp format\n"
+          },
+          {
+            "name": "dateTo",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Period end date in Unix timestamp format"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "<span class='response__value response__value_success'>Success</span>",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "nullable": false,
+                  "properties": {
+                    "next": {
+                      "$ref": "#/components/schemas/Next"
+                    },
+                    "orders": {
+                      "type": "array",
+                      "nullable": false,
+                      "items": {
+                        "$ref": "#/components/schemas/Order"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "<span class='response__value '>Bad request</span>",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "IncorrectParameter": {
+                    "$ref": "#/components/examples/IncorrectParameter"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/401",
+            "description": "<span class='response__value '></span>"
+          },
+          "402": {
+            "$ref": "#/components/responses/402",
+            "description": "<span class='response__value '></span>"
+          },
+          "403": {
+            "$ref": "#/components/responses/AccessDenied",
+            "description": "<span class='response__value '></span>"
+          },
+          "429": {
+            "$ref": "#/components/responses/429",
+            "description": "<span class='response__value '></span>"
+          }
+        }
+      }
+    },
+    "/api/v3/dbw/orders/delivery-date": {
+      "servers": [
+        {
+          "url": "https://marketplace-api.wildberries.ru"
+        }
+      ],
+      "post": {
+        "x-readonly-method": true,
+        "x-category": "marketplace",
+        "security": [
+          {
+            "HeaderApiKey": []
+          }
+        ],
+        "summary": "Delivery Date and Time{{ /api/v3/dbw/orders/delivery-date }}",
+        "tags": [
+          "DBW Assembly Orders"
+        ],
+        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nMethod provides information about the delivery date and time selected by the buyer for orders.\n<br>\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/Introduction/Rate-Limits'>Request limit</a> per one seller's account for DBW methods:\n<ul>\n    <li>for getting and updating contact lists</li>\n    <li>for getting and deleting metadata</li>\n    <li>assembly orders</li>\n</ul>\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 300 requests | 200 ms | 20 requests |\n\nOne request with a response code of <code>409</code> is counted as 10 requests\n</div>\n",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeliveryDatesRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "<span class='response__value response__value_success'>Success</span>",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeliveryDatesInfoResp"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "<span class='response__value '>Bad request</span>",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "IncorrectRequest": {
+                    "$ref": "#/components/examples/IncorrectRequest1"
+                  },
+                  "IncorrectRequestBody": {
+                    "$ref": "#/components/examples/IncorrectRequestBody"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/401",
+            "description": "<span class='response__value '></span>"
+          },
+          "402": {
+            "$ref": "#/components/responses/402",
+            "description": "<span class='response__value '></span>"
+          },
+          "403": {
+            "$ref": "#/components/responses/AccessDenied",
+            "description": "<span class='response__value '></span>"
+          },
+          "429": {
+            "$ref": "#/components/responses/429",
+            "description": "<span class='response__value '></span>"
+          }
+        }
+      }
+    },
+    "/api/marketplace/v3/dbw/orders/client": {
+      "servers": [
+        {
+          "url": "https://marketplace-api.wildberries.ru"
+        }
+      ],
+      "post": {
+        "x-readonly-method": true,
+        "x-category": "marketplace",
+        "security": [
+          {
+            "HeaderApiKey": []
+          }
+        ],
+        "summary": "Buyer Information{{ /api/marketplace/v3/dbw/orders/client }}",
+        "tags": [
+          "DBW Assembly Orders"
+        ],
+        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nThe method returns buyers information by order IDs.\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/Introduction/Rate-Limits'>Request limit</a> per one seller's account for DBW methods:\n<ul>\n    <li>for getting and updating contact lists</li>\n    <li>for getting and deleting metadata</li>\n    <li>assembly orders</li>\n</ul>\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 300 requests | 200 ms | 20 requests |\n\nOne request with a response code of <code>409</code> is counted as 10 requests\n</div>\n",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrdersRequestAPI"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "<span class='response__value response__value_success'>Success</span>",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClientInfoResp"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "<span class='response__value '>Bad request</span>",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "IncorrectRequest": {
+                    "$ref": "#/components/examples/IncorrectRequest1"
+                  },
+                  "IncorrectRequestBody": {
+                    "$ref": "#/components/examples/IncorrectRequestBody"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/401",
+            "description": "<span class='response__value '></span>"
+          },
+          "403": {
+            "$ref": "#/components/responses/AccessDenied",
+            "description": "<span class='response__value '></span>"
+          },
+          "429": {
+            "$ref": "#/components/responses/429",
+            "description": "<span class='response__value '></span>"
+          }
+        }
+      }
+    },
+    "/api/v3/dbw/orders/status": {
+      "servers": [
+        {
+          "url": "https://marketplace-api.wildberries.ru"
+        }
+      ],
+      "post": {
+        "x-readonly-method": true,
+        "x-category": "marketplace",
+        "security": [
+          {
+            "HeaderApiKey": []
+          }
+        ],
+        "tags": [
+          "DBW Assembly Orders"
+        ],
+        "summary": "Get Orders Statuses{{ /api/v3/dbw/orders/status }}",
+        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nReturns the statuses of orders based on the provided list of assembly order IDs\n\n`supplierStatus` is a status of an order. The trigger for its change is the action of the seller himself.<br>\nPossible values for this field are:\n| Status   | Description               | How to move an order to this status   |\n| -------  | ---------                 | --------------------------------------|\n| `new`      | **New order** | |\n| `confirm`  | **Order on assembly**      |  [Transfer to assembly](./orders-dbw#tag/DBW-Assembly-Orders/paths/~1api~1v3~1dbw~1orders~1%7BorderId%7D~1confirm/patch)\n| `complete`  | **Order on delivery**<br>    | [Transfer to delivery](./orders-dbw#tag/DBW-Assembly-Orders/paths/~1api~1v3~1dbw~1orders~1%7BorderId%7D~1assemble/patch)\n| `receive`  | **Received by the buyer**<br>       | Changed by the courier\n| `reject`   | **Declined upon receipt**<br>           |  Changed by the courier\n| `cancel`   | **Canceled by the seller**   |  [Cancel the order](./orders-dbw#tag/DBW-Assembly-Orders/paths/~1api~1v3~1dbw~1orders~1%7BorderId%7D~1cancel/patch)\n| `cancel_missed_call` | **Cancellation due to unreachable buyer** | The status changes automatically |\n\n`wbStatus` is a status of an order on the Wildberries side.<br>\nPossible values for this field are:\n- `waiting` — order in work\n- `sold` — the buyer got the order\n- `canceled` — order canceled\n- `canceled_by_client` — the buyer canceled the order\n- `declined_by_client` — the buyer canceled the order in the first hour <br> Cancellation is available to the buyer in the first hour from the moment of order, if the order is not transferred to confirm status.\n- `defect` — order canceled due to a defect\n- `canceled_by_missed_call` — cancellation due to unreachable buyer\n- `postponed_delivery` — courier delivery is postponed\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/Introduction/Rate-Limits'>Request limit</a> per one seller's account for DBW methods:\n<ul>\n    <li>for getting and updating contact lists</li>\n    <li>for getting and deleting metadata</li>\n    <li>assembly orders</li>\n</ul>\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 300 requests | 200 ms | 20 requests |\n\nOne request with a response code of <code>409</code> is counted as 10 requests\n</div>\n",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "orders"
+                ],
+                "properties": {
+                  "orders": {
+                    "type": "array",
+                    "minItems": 1,
+                    "maxItems": 1000,
+                    "description": "Orders IDs list",
+                    "items": {
+                      "type": "integer",
+                      "format": "int64",
+                      "example": 5632423
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "<span class='response__value response__value_success'>Success</span>",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "orders": {
+                      "type": "array",
+                      "nullable": false,
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "integer",
+                            "format": "int64",
+                            "nullable": false,
+                            "description": "Assembly order ID",
+                            "example": 5632423
+                          },
+                          "supplierStatus": {
+                            "type": "string",
+                            "nullable": false,
+                            "description": "Assembly order status set by the seller",
+                            "example": "new"
+                          },
+                          "wbStatus": {
+                            "type": "string",
+                            "nullable": false,
+                            "description": "Order status in the WB systems"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "<span class='response__value '>Bad request</span>",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "IncorrectParameter": {
+                    "$ref": "#/components/examples/IncorrectParameter"
+                  },
+                  "IncorrectRequestBody": {
+                    "$ref": "#/components/examples/IncorrectRequestBody"
+                  },
+                  "IncorrectRequest": {
+                    "$ref": "#/components/examples/IncorrectRequest"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/401",
+            "description": "<span class='response__value '></span>"
+          },
+          "402": {
+            "$ref": "#/components/responses/402",
+            "description": "<span class='response__value '></span>"
+          },
+          "403": {
+            "$ref": "#/components/responses/AccessDenied",
+            "description": "<span class='response__value '></span>"
+          },
+          "429": {
+            "$ref": "#/components/responses/429",
+            "description": "<span class='response__value '></span>"
+          }
+        }
+      }
+    },
+    "/api/v3/dbw/orders/{orderId}/confirm": {
+      "servers": [
+        {
+          "url": "https://marketplace-api.wildberries.ru"
+        }
+      ],
+      "patch": {
+        "x-readonly-method": false,
+        "x-category": "marketplace",
+        "security": [
+          {
+            "HeaderApiKey": []
+          }
+        ],
+        "tags": [
+          "DBW Assembly Orders"
+        ],
+        "summary": "Transfer to Assembly{{ /api/v3/dbw/orders/{orderId}/confirm }}",
+        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nTransfers the assembly order to the `confirm` status — on assembly.\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/Introduction/Rate-Limits'>Request limit</a> per one seller's account for DBW methods:\n<ul>\n    <li>for getting and updating contact lists</li>\n    <li>for getting and deleting metadata</li>\n    <li>assembly orders</li>\n</ul>\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 300 requests | 200 ms | 20 requests |\n\nOne request with a response code of <code>409</code> is counted as 10 requests\n</div>\n",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Order"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "<span class='response__value response__value_success'>Confirmed</span>"
+          },
+          "400": {
+            "description": "<span class='response__value '>Bad request</span>",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "IncorrectParameter": {
+                    "$ref": "#/components/examples/IncorrectParameter"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/401",
+            "description": "<span class='response__value '></span>"
+          },
+          "402": {
+            "$ref": "#/components/responses/402",
+            "description": "<span class='response__value '></span>"
+          },
+          "403": {
+            "$ref": "#/components/responses/AccessDenied",
+            "description": "<span class='response__value '></span>"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound",
+            "description": "<span class='response__value '></span>"
+          },
+          "409": {
+            "description": "<span class='response__value '>Error updating a status</span>",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "StatusMismatch": {
+                    "$ref": "#/components/examples/StatusMismatch"
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "$ref": "#/components/responses/429",
+            "description": "<span class='response__value '></span>"
+          }
+        }
+      }
+    },
+    "/api/v3/dbw/orders/stickers": {
+      "servers": [
+        {
+          "url": "https://marketplace-api.wildberries.ru"
+        }
+      ],
+      "post": {
+        "x-readonly-method": true,
+        "x-category": "marketplace",
+        "security": [
+          {
+            "HeaderApiKey": []
+          }
+        ],
+        "tags": [
+          "DBW Assembly Orders"
+        ],
+        "summary": "Get Orders Stickers{{ /api/v3/dbw/orders/stickers }}",
+        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nReturns a list of stickers for the [assembly orders](/openapi/orders-dbw#tag/DBW-Assembly-Orders/paths/~1api~1v3~1dbw~1orders~1new/get) in the [statuses](./orders-dbw#tag/DBW-Assembly-Orders/paths/~1api~1v3~1dbw~1orders~1status/post):\n  - `confirm` — on assembly\n  - `complete` — on delivery\n\nYou can get a maximum of 100 stickers per request.<br>\nAvailable sticker formats:\n  - SVG\n  - ZPLV (vertical)\n  - ZPLH (horizontal)\n  - PNG\n\nAvailable dimensions:\n  - 580x400 px, with `width=58&height=40` in request\n  - 400x300 px, with `width=40&height=30` in request\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/Introduction/Rate-Limits'>Request limit</a> per one seller's account for DBW methods:\n<ul>\n    <li>for getting and updating contact lists</li>\n    <li>for getting and deleting metadata</li>\n    <li>assembly orders</li>\n</ul>\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 300 requests | 200 ms | 20 requests |\n\nOne request with a response code of <code>409</code> is counted as 10 requests\n</div>\n",
+        "parameters": [
+          {
+            "name": "type",
+            "in": "query",
+            "required": true,
+            "description": "Sticker format",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "svg",
+                "zplv",
+                "zplh",
+                "png"
+              ]
+            }
+          },
+          {
+            "name": "width",
+            "in": "query",
+            "required": true,
+            "description": "Sticker width",
+            "schema": {
+              "type": "integer",
+              "enum": [
+                58,
+                40
+              ]
+            }
+          },
+          {
+            "name": "height",
+            "in": "query",
+            "required": true,
+            "description": "Sticker height",
+            "schema": {
+              "type": "integer",
+              "enum": [
+                40,
+                30
+              ]
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "orders": {
+                    "type": "array",
+                    "minItems": 1,
+                    "maxItems": 100,
+                    "description": "Assembly order IDs list",
+                    "items": {
+                      "type": "integer",
+                      "format": "int64",
+                      "example": 5346346
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "<span class='response__value response__value_success'>Success</span>",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "stickers": {
+                      "type": "array",
+                      "nullable": false,
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "orderId": {
+                            "type": "integer",
+                            "format": "int64",
+                            "nullable": false,
+                            "description": "Assembly order ID",
+                            "example": 5346346
+                          },
+                          "partA": {
+                            "type": "string",
+                            "nullable": false,
+                            "description": "The first part of the sticker ID for printing the signature",
+                            "example": "231648"
+                          },
+                          "partB": {
+                            "type": "string",
+                            "nullable": false,
+                            "description": "The second part of the sticker ID for printing the signature",
+                            "example": "97523"
+                          },
+                          "barcode": {
+                            "type": "string",
+                            "nullable": false,
+                            "description": "The encoded value of the sticker",
+                            "example": "!uKEtQZVx"
+                          },
+                          "file": {
+                            "type": "string",
+                            "nullable": false,
+                            "description": "Base64 encoded representation of the sticker in a requested format",
+                            "example": "PD94bWwgdmVyc2lvbj0iMS4wIj8+CjwhLS0gR2VuZXJhdGVkIGJ5IFNWR28gLS0+Cjxzdmcgd2lkdGg9IjQwMCIgaGVpZ2h0PSIzMDAiCiAgICAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogICAgIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj4KPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjQwMCIgaGVpZQiIGhlaWdodD0iMTcwIiBzdHlsZT0iZmlsbDpibGFjayIgLz4KPHJlY3QgeD0iMzE4IiB5PSIyMCIgd2lkdGg9IjYiIGhlaWdodD0iMTcwIiBzdHlsZT0iZmlsbDpibGFjayIgLz4KPHJlY3QgeD0iMzI2IiB5PSIyMCIgd2lkdGg9IjIiIGhlaWdodD0iMTcwIiBzdHlsZT0iZmlsbDpibGFjayIgLz4KPHJlY3QgeD0iMzMwIiB5PSIyMCIgd2lkdGg9IjQiIGhlaWdodD0iMTcwIiBzdHlsZT0iZmlsbDpibGFjayIgLz4KPHJlY3QgeD0iMjAiIHk9IjIwMCIgd2lkdGg9IjM1MCIgaGVpZ2h0PSI5MCIgc3R5bGU9ImZpbGw6YmxhY2siIC8+Cjx0ZXh0IHg9IjMwIiB5PSIyNDAiIHN0eWxlPSJmaWxsOndoaXRlO2ZvbnQtc2l6ZTozMHB0O3RleHQtYW5jaG9yOnN0YXJ0IiA+MjMxNjQ4PC90ZXh0Pgo8dGV4dCB4PSIzNTAiIHk9IjI3MCIgc3R5bGU9ImZpbGw6d2hpdGU7Zm9udC1zaXplOjUwcHQ7dGV4dC1hbmNob3I6ZW5kIiA+OTc1MzwvdGV4dD4KPC9zdmc+Cg=="
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "<span class='response__value '>Bad request</span>",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "IncorrectRequestBody": {
+                    "$ref": "#/components/examples/IncorrectRequestBody"
+                  },
+                  "IncorrectRequest": {
+                    "$ref": "#/components/examples/IncorrectRequest"
+                  },
+                  "IncorrectParameter": {
+                    "$ref": "#/components/examples/IncorrectParameter"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/401",
+            "description": "<span class='response__value '></span>"
+          },
+          "402": {
+            "$ref": "#/components/responses/402",
+            "description": "<span class='response__value '></span>"
+          },
+          "403": {
+            "$ref": "#/components/responses/AccessDenied",
+            "description": "<span class='response__value '></span>"
+          },
+          "429": {
+            "$ref": "#/components/responses/429",
+            "description": "<span class='response__value '></span>"
+          }
+        }
+      }
+    },
+    "/api/v3/dbw/orders/{orderId}/assemble": {
+      "servers": [
+        {
+          "url": "https://marketplace-api.wildberries.ru"
+        }
+      ],
+      "patch": {
+        "x-readonly-method": false,
+        "x-category": "marketplace",
+        "security": [
+          {
+            "HeaderApiKey": []
+          }
+        ],
+        "tags": [
+          "DBW Assembly Orders"
+        ],
+        "summary": "Transfer to Delivery{{ /api/v3/dbw/orders/{orderId}/assemble }}",
+        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nTransfers the [assembly order](/openapi/orders-dbw#tag/DBW-Assembly-Orders/paths/~1api~1v3~1dbw~1orders/get) to the [status](/openapi/orders-dbw#tag/DBW-Assembly-Orders/paths/~1api~1v3~1dbw~1orders~1status/post) `complete` — in delivery.\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/Introduction/Rate-Limits'>Request limit</a> per one seller's account for DBW methods:\n<ul>\n    <li>for getting and updating contact lists</li>\n    <li>for getting and deleting metadata</li>\n    <li>assembly orders</li>\n</ul>\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 300 requests | 200 ms | 20 requests |\n\nOne request with a response code of <code>409</code> is counted as 10 requests\n</div>\n",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Order"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "<span class='response__value response__value_success'>Confirmed</span>"
+          },
+          "400": {
+            "description": "<span class='response__value '>Bad request</span>",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "IncorrectParameter": {
+                    "$ref": "#/components/examples/IncorrectParameter"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/401",
+            "description": "<span class='response__value '></span>"
+          },
+          "402": {
+            "$ref": "#/components/responses/402",
+            "description": "<span class='response__value '></span>"
+          },
+          "403": {
+            "$ref": "#/components/responses/AccessDenied",
+            "description": "<span class='response__value '></span>"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound",
+            "description": "<span class='response__value '></span>"
+          },
+          "409": {
+            "description": "<span class='response__value '>Error updating a status</span>",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "StatusMismatch": {
+                    "$ref": "#/components/examples/StatusMismatch"
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "$ref": "#/components/responses/429",
+            "description": "<span class='response__value '></span>"
+          }
+        }
+      }
+    },
+    "/api/v3/dbw/orders/courier": {
+      "servers": [
+        {
+          "url": "https://marketplace-api.wildberries.ru"
+        }
+      ],
+      "post": {
+        "x-readonly-method": true,
+        "x-category": "marketplace",
+        "tags": [
+          "DBW Assembly Orders"
+        ],
+        "summary": "Courier Info{{ /api/v3/dbw/orders/courier }}",
+        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nMethod provides the courier's contact information and vehicle number based on the assembly order ID. For assembly orders in the statuses `confirm` and `complete`.\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/Introduction/Rate-Limits'>Request limit</a>  per one seller's account for DBW methods:\n<ul>\n    <li>for getting and updating contact lists</li>\n    <li>for getting and deleting metadata</li>\n    <li>assembly orders</li>\n</ul>\n\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 300 requests | 200 ms | 20 requests |\n\n</div>\n",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrdersRequestAPI"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "<span class='response__value response__value_success'>Success</span>",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrderCourierInfoResp"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "<span class='response__value '>Bad request</span>",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "IncorrectParameter": {
+                    "$ref": "#/components/examples/IncorrectParameter"
+                  },
+                  "IncorrectRequestBody": {
+                    "$ref": "#/components/examples/IncorrectRequestBody"
+                  },
+                  "IncorrectRequest": {
+                    "$ref": "#/components/examples/IncorrectRequest"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/401",
+            "description": "<span class='response__value '></span>"
+          },
+          "402": {
+            "$ref": "#/components/responses/402",
+            "description": "<span class='response__value '></span>"
+          },
+          "403": {
+            "$ref": "#/components/responses/AccessDenied",
+            "description": "<span class='response__value '></span>"
+          },
+          "429": {
+            "$ref": "#/components/responses/429",
+            "description": "<span class='response__value '></span>"
+          }
+        }
+      }
+    },
+    "/api/v3/dbw/orders/{orderId}/cancel": {
+      "servers": [
+        {
+          "url": "https://marketplace-api.wildberries.ru"
+        }
+      ],
+      "patch": {
+        "x-readonly-method": false,
+        "x-category": "marketplace",
+        "security": [
+          {
+            "HeaderApiKey": []
+          }
+        ],
+        "tags": [
+          "DBW Assembly Orders"
+        ],
+        "summary": "Cancel the Order{{ /api/v3/dbw/orders/{orderId}/cancel }}",
+        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nMoves the assembly order to `cancel` status — canceled by the seller.\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/Introduction/Rate-Limits'>Request limit</a> per one seller's account for the DBW methods:\n<ul>\n    <li>for getting and updating contact lists</li>\n    <li>for getting and deleting metadata</li>\n    <li>for managing assembly orders</li>\n</ul>\n\n\n| Type | Period | Limit | Interval | Burst |\n| --- | --- | --- | --- | --- |\n| Personal | 1 min | 300 requests | 200 ms | 20 requests |\n| Service | 1 min | 300 requests | 200 ms | 20 requests |\n| Base | 1 h | 10 requests | 6 min | 1 request |\n\nOne request with a response code of <code>409</code> is counted as 10 requests\n</div>\n",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Order"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "<span class='response__value response__value_success'>Canceled</span>"
+          },
+          "400": {
+            "description": "<span class='response__value '>Bad request</span>",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "IncorrectParameter": {
+                    "$ref": "#/components/examples/IncorrectParameter"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/401",
+            "description": "<span class='response__value '></span>"
+          },
+          "402": {
+            "$ref": "#/components/responses/402",
+            "description": "<span class='response__value '></span>"
+          },
+          "403": {
+            "$ref": "#/components/responses/AccessDenied",
+            "description": "<span class='response__value '></span>"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound",
+            "description": "<span class='response__value '></span>"
+          },
+          "409": {
+            "description": "<span class='response__value '>Error updating a status</span>",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "StatusMismatch": {
+                    "$ref": "#/components/examples/StatusMismatch"
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "$ref": "#/components/responses/429",
+            "description": "<span class='response__value '></span>"
+          }
+        }
+      }
+    },
+    "/api/marketplace/v3/dbw/orders/meta/details": {
+      "servers": [
+        {
+          "url": "https://marketplace-api.wildberries.ru"
+        }
+      ],
+      "post": {
+        "x-readonly-method": true,
+        "x-category": "marketplace",
+        "security": [
+          {
+            "HeaderApiKey": []
+          }
+        ],
+        "tags": [
+          "DBW Metadata"
+        ],
+        "summary": "Get Order Metadata{{ /api/marketplace/v3/dbw/orders/meta/details }}",
+        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nReturns [assembly orders](./orders-dbw#tag/DBW-Assembly-Orders) metadata and their validation statuses.\n<br><br>\nThe list of metadata available for the assembly order can be obtained in the [list of new assembly orders](/openapi/orders-dbw#tag/DBW-Assembly-Orders/paths/~1api~1v3~1dbw~1orders~1new/get), field `requiredMeta`.\n<br><br>\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/Introduction/Rate-Limits'>Request limit</a>  per one seller's account for DBW methods:\n<ul>\n    <li>for getting and updating contact lists</li>\n    <li>for getting and deleting metadata</li>\n    <li>assembly orders</li>\n</ul>\n\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 300 requests | 200 ms | 20 requests |\n\n</div>\n",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/api.OrdersRequestV2"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "<span class='response__value response__value_success'>Success</span>",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/api.OrdersMetaDetailsResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "<span class='response__value '>Bad request</span>",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/api.BatchError"
+                },
+                "example": {
+                  "detail": {},
+                  "origin": "dbs-public-api",
+                  "requestId": "f1787bd2d1fdс35d6f537316514у4a05",
+                  "title": "IncorrectRequest"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/401",
+            "description": "<span class='response__value '></span>"
+          },
+          "403": {
+            "description": "<span class='response__value '>Access denied</span>",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/api.BatchError"
+                },
+                "example": {
+                  "detail": {},
+                  "origin": "dbs-public-api",
+                  "requestId": "f1787bd2d1fdс35d6f537316514у4a05",
+                  "title": "AccessDenied"
+                }
+              }
+            }
+          },
+          "429": {
+            "$ref": "#/components/responses/429",
+            "description": "<span class='response__value '></span>"
+          }
+        }
+      }
+    },
+    "/api/v3/dbw/orders/{orderId}/meta": {
+      "servers": [
+        {
+          "url": "https://marketplace-api.wildberries.ru"
+        }
+      ],
+      "get": {
+        "x-readonly-method": true,
+        "x-category": "marketplace",
+        "security": [
+          {
+            "HeaderApiKey": []
+          }
+        ],
+        "tags": [
+          "DBW Metadata"
+        ],
+        "summary": "Get Order Metadata{{ /api/v3/dbw/orders/{orderId}/meta }}",
+        "deprecated": true,
+        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nThis method is deprecated. It will be removed on [July 27](https://dev.wildberries.ru/en/release-notes?id=508)\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/Introduction/Rate-Limits'>Request limit</a>  per one seller's account for DBW methods:\n<ul>\n    <li>for getting and updating contact lists</li>\n    <li>for getting and deleting metadata</li>\n    <li>assembly orders</li>\n</ul>\n\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 300 requests | 200 ms | 20 requests |\n\n</div>\n",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Order"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "<span class='response__value response__value_success'>Success</span>",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "nullable": false,
+                  "properties": {
+                    "meta": {
+                      "$ref": "#/components/schemas/Meta"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "<span class='response__value '>Bad request</span>",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "IncorrectParameter": {
+                    "$ref": "#/components/examples/IncorrectParameter"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/401",
+            "description": "<span class='response__value '></span>"
+          },
+          "402": {
+            "$ref": "#/components/responses/402",
+            "description": "<span class='response__value '></span>"
+          },
+          "403": {
+            "$ref": "#/components/responses/AccessDenied",
+            "description": "<span class='response__value '></span>"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound",
+            "description": "<span class='response__value '></span>"
+          },
+          "429": {
+            "$ref": "#/components/responses/429",
+            "description": "<span class='response__value '></span>"
+          }
+        }
+      },
+      "delete": {
+        "x-readonly-method": false,
+        "x-category": "marketplace",
+        "security": [
+          {
+            "HeaderApiKey": []
+          }
+        ],
+        "tags": [
+          "DBW Metadata"
+        ],
+        "summary": "Delete Order Metadata{{ /api/v3/dbw/orders/{orderId}/meta }}",
+        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nRemoves all order metadata values for the passed key. Possible metadata is `imei`, `uin`, `gtin`, `sgtin`.\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/Introduction/Rate-Limits'>Request limit</a>  per one seller's account for DBW methods:\n<ul>\n    <li>for getting and updating contact lists</li>\n    <li>for getting and deleting metadata</li>\n    <li>assembly orders</li>\n</ul>\n\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 300 requests | 200 ms | 20 requests |\n\n</div>\n",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Order"
+          },
+          {
+            "name": "key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Name of metadata to delete (`imei`, `uin`, `gtin`, `sgtin`). Only one value is passed"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "<span class='response__value response__value_success'>Удалено</span>"
+          },
+          "400": {
+            "description": "<span class='response__value '>Bad request</span>",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "IncorrectParameter": {
+                    "$ref": "#/components/examples/IncorrectParameter"
+                  },
+                  "IncorrectRequest": {
+                    "$ref": "#/components/examples/IncorrectRequest"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/401",
+            "description": "<span class='response__value '></span>"
+          },
+          "402": {
+            "$ref": "#/components/responses/402",
+            "description": "<span class='response__value '></span>"
+          },
+          "403": {
+            "$ref": "#/components/responses/AccessDenied",
+            "description": "<span class='response__value '></span>"
+          },
+          "409": {
+            "description": "<span class='response__value '>Ошибка удаления метаданных</span>",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "FailedToUpdateMeta": {
+                    "$ref": "#/components/examples/FailedToUpdateMeta"
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "$ref": "#/components/responses/429",
+            "description": "<span class='response__value '></span>"
+          }
+        }
+      }
+    },
+    "/api/v3/dbw/orders/{orderId}/meta/sgtin": {
+      "servers": [
+        {
+          "url": "https://marketplace-api.wildberries.ru"
+        }
+      ],
+      "put": {
+        "x-readonly-method": false,
+        "x-category": "marketplace",
+        "security": [
+          {
+            "HeaderApiKey": []
+          }
+        ],
+        "tags": [
+          "DBW Metadata"
+        ],
+        "summary": "Add Labeling Code Chestny ZNAK to the Order{{ /api/v3/dbw/orders/{orderId}/meta/sgtin }}",
+        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nThis method allows you to assign a Data Matrix code (Chestny ZNAK marking) to an order. <br> The assignment of a Data Matrix code to an order is only possible if this field is returned in the response of the [Get order metadata](./orders-dbw#tag/DBW-Metadata/paths/~1api~1v3~1dbw~1orders~1%7BorderId%7D~1meta/get) method and the order is in the `confirm` status.\n\n<br><br>You can get the uploaded labeling code [Chestny ZNAK](https://chestnyznak.ru/en) using the [Get order metadata](./orders-dbw#tag/DBW-Metadata/paths/~1api~1v3~1dbw~1orders~1%7BorderId%7D~1meta/get) method.\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/Introduction/Rate-Limits'>Request limit</a> per one seller's account for all methods for <strong>adding DBW metadata</strong>:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 1000 requests | 60 ms | 20 requests |\n\nOne request with a response code of <code>409</code> is counted as 10 requests\n</div>\n",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Order"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "sgtins": {
+                    "type": "array",
+                    "description": "List of labeling codes Chestny ZNAK",
+                    "minItems": 1,
+                    "maxItems": 24,
+                    "items": {
+                      "type": "string",
+                      "description": "Labeling code [Chestny ZNAK](https://chestnyznak.ru/en) on the package. From 16 to 135 characters",
+                      "example": "1234567890123456"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "<span class='response__value response__value_success'>Отправлено</span>"
+          },
+          "400": {
+            "description": "<span class='response__value '>Bad request</span>",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "IncorrectRequestBody": {
+                    "$ref": "#/components/examples/IncorrectRequestBody"
+                  },
+                  "IncorrectRequest": {
+                    "$ref": "#/components/examples/IncorrectRequest"
+                  },
+                  "IncorrectParameter": {
+                    "$ref": "#/components/examples/IncorrectParameter"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/401",
+            "description": "<span class='response__value '></span>"
+          },
+          "402": {
+            "$ref": "#/components/responses/402",
+            "description": "<span class='response__value '></span>"
+          },
+          "403": {
+            "$ref": "#/components/responses/AccessDenied",
+            "description": "<span class='response__value '></span>"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound",
+            "description": "<span class='response__value '></span>"
+          },
+          "409": {
+            "description": "<span class='response__value '>Metadata update error</span>",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "FailedToUpdateMeta": {
+                    "$ref": "#/components/examples/FailedToUpdateMeta"
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "$ref": "#/components/responses/429",
+            "description": "<span class='response__value '></span>"
+          }
+        }
+      }
+    },
+    "/api/v3/dbw/orders/{orderId}/meta/uin": {
+      "servers": [
+        {
+          "url": "https://marketplace-api.wildberries.ru"
+        }
+      ],
+      "put": {
+        "x-readonly-method": false,
+        "x-category": "marketplace",
+        "security": [
+          {
+            "HeaderApiKey": []
+          }
+        ],
+        "tags": [
+          "DBW Metadata"
+        ],
+        "summary": "Add UIN (Unique Identification Number) to the Order{{ /api/v3/dbw/orders/{orderId}/meta/uin }}",
+        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nSets the UIN for the order. The order can only have one UIN. You can add the code only for orders in the `confirmed` status.\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/Introduction/Rate-Limits'>Request limit</a> per one seller's account for all methods for <strong>adding DBW metadata</strong>:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 1000 requests | 60 ms | 20 requests |\n\nOne request with a response code of <code>409</code> is counted as 10 requests\n</div>\n",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Order"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "uin": {
+                    "type": "string",
+                    "minLength": 16,
+                    "maxLength": 16,
+                    "description": "UIN",
+                    "example": "1234567890123456"
+                  }
+                },
+                "required": [
+                  "uin"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "<span class='response__value response__value_success'>Updated</span>"
+          },
+          "400": {
+            "description": "<span class='response__value '>Bad request</span>",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "IncorrectRequestBody": {
+                    "$ref": "#/components/examples/IncorrectRequestBody"
+                  },
+                  "IncorrectRequest": {
+                    "$ref": "#/components/examples/IncorrectRequest"
+                  },
+                  "IncorrectParameter": {
+                    "$ref": "#/components/examples/IncorrectParameter"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/401",
+            "description": "<span class='response__value '></span>"
+          },
+          "402": {
+            "$ref": "#/components/responses/402",
+            "description": "<span class='response__value '></span>"
+          },
+          "403": {
+            "$ref": "#/components/responses/AccessDenied",
+            "description": "<span class='response__value '></span>"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound",
+            "description": "<span class='response__value '></span>"
+          },
+          "409": {
+            "description": "<span class='response__value '>Metadata update error</span>",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "FailedToUpdateMeta": {
+                    "$ref": "#/components/examples/FailedToUpdateMeta"
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "$ref": "#/components/responses/429",
+            "description": "<span class='response__value '></span>"
+          }
+        }
+      }
+    },
+    "/api/v3/dbw/orders/{orderId}/meta/imei": {
+      "servers": [
+        {
+          "url": "https://marketplace-api.wildberries.ru"
+        }
+      ],
+      "put": {
+        "x-readonly-method": false,
+        "x-category": "marketplace",
+        "security": [
+          {
+            "HeaderApiKey": []
+          }
+        ],
+        "tags": [
+          "DBW Metadata"
+        ],
+        "summary": "Add IMEI to the Order{{ /api/v3/dbw/orders/{orderId}/meta/imei }}",
+        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nSets the IMEI for the order. The order can have only one IMEI. You can add the code only for orders in the `confirmed` status.\n\n<div class=\"description_limit\">\n<a href='./api-information#tag/Introduction/Rate-Limits'>Request limit</a> per one seller's account for all methods for <strong>adding DBW metadata</strong>:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 1000 requests | 60 ms | 20 requests |\n\nOne request with a response code of <code>409</code> is counted as 10 requests\n</div>\n",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Order"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "imei": {
+                    "type": "string",
+                    "minLength": 15,
+                    "maxLength": 15,
+                    "description": "IMEI",
+                    "example": "123456789012345"
+                  }
+                },
+                "required": [
+                  "imei"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "<span class='response__value response__value_success'>Updated</span>"
+          },
+          "400": {
+            "description": "<span class='response__value '>Bad request</span>",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "IncorrectRequestBody": {
+                    "$ref": "#/components/examples/IncorrectRequestBody"
+                  },
+                  "IncorrectRequest": {
+                    "$ref": "#/components/examples/IncorrectRequest"
+                  },
+                  "IncorrectParameter": {
+                    "$ref": "#/components/examples/IncorrectParameter"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/401",
+            "description": "<span class='response__value '></span>"
+          },
+          "402": {
+            "$ref": "#/components/responses/402",
+            "description": "<span class='response__value '></span>"
+          },
+          "403": {
+            "$ref": "#/components/responses/AccessDenied",
+            "description": "<span class='response__value '></span>"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound",
+            "description": "<span class='response__value '></span>"
+          },
+          "409": {
+            "description": "<span class='response__value '>Metadata update error</span>",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "FailedToUpdateMeta": {
+                    "$ref": "#/components/examples/FailedToUpdateMeta"
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "$ref": "#/components/responses/429",
+            "description": "<span class='response__value '></span>"
+          }
+        }
+      }
+    },
+    "/api/v3/dbw/orders/{orderId}/meta/gtin": {
+      "servers": [
+        {
+          "url": "https://marketplace-api.wildberries.ru"
+        }
+      ],
+      "put": {
+        "x-readonly-method": false,
+        "x-category": "marketplace",
+        "security": [
+          {
+            "HeaderApiKey": []
+          }
+        ],
+        "tags": [
+          "DBW Metadata"
+        ],
+        "summary": "Add GTIN to the Order{{ /api/v3/dbw/orders/{orderId}/meta/gtin }}",
+        "description": "<div class='description-title'><span>Описание метода</span></div>\n\nSets the GTIN (Belarus product unique identifier) for the order. The order can only have one GTIN. You can add the code only for orders in the `confirmed` status.\n\n <div class=\"description_limit\">\n<a href='./api-information#tag/Introduction/Rate-Limits'>Request limit</a> per one seller's account for all methods for <strong>adding DBW metadata</strong>:\n\n| Period | Limit | Interval | Burst |\n| --- | --- | --- | --- |\n| 1 min | 1000 requests | 60 ms | 20 requests |\n\nOne request with a response code of <code>409</code> is counted as 10 requests\n</div>\n",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Order"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "gtin": {
+                    "type": "string",
+                    "minLength": 13,
+                    "maxLength": 13,
+                    "description": "GTIN",
+                    "example": "1234567890123"
+                  }
+                },
+                "required": [
+                  "gtin"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "<span class='response__value response__value_success'>Updated</span>"
+          },
+          "400": {
+            "description": "<span class='response__value '>Bad request</span>",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "IncorrectRequestBody": {
+                    "$ref": "#/components/examples/IncorrectRequestBody"
+                  },
+                  "IncorrectRequest": {
+                    "$ref": "#/components/examples/IncorrectRequest"
+                  },
+                  "IncorrectParameter": {
+                    "$ref": "#/components/examples/IncorrectParameter"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/401",
+            "description": "<span class='response__value '></span>"
+          },
+          "402": {
+            "$ref": "#/components/responses/402",
+            "description": "<span class='response__value '></span>"
+          },
+          "403": {
+            "$ref": "#/components/responses/AccessDenied",
+            "description": "<span class='response__value '></span>"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound",
+            "description": "<span class='response__value '></span>"
+          },
+          "409": {
+            "description": "<span class='response__value '>Metadata update error</span>",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "FailedToUpdateMeta": {
+                    "$ref": "#/components/examples/FailedToUpdateMeta"
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "$ref": "#/components/responses/429",
+            "description": "<span class='response__value '></span>"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "HeaderApiKey": {
+        "type": "apiKey",
+        "name": "Authorization",
+        "in": "header"
+      }
+    },
+    "parameters": {
+      "Order": {
+        "name": "orderId",
+        "in": "path",
+        "required": true,
+        "description": "Assembly order ID",
+        "schema": {
+          "type": "integer",
+          "format": "int64",
+          "example": 5632423
+        }
+      },
+      "Next": {
+        "name": "next",
+        "in": "query",
+        "required": true,
+        "schema": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "description": "Pagination parameter. Sets the value from which to retrieve the next batch. It should start at `0` to get the full list of data. For the subsequent requests, you must take the value from the `next` field in the response"
+      },
+      "Limit": {
+        "name": "limit",
+        "in": "query",
+        "required": true,
+        "schema": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1000
+        },
+        "description": "Pagination parameter. Sets the limit for the amount of data returned"
+      }
+    },
+    "examples": {
+      "IncorrectRequestBody": {
+        "description": "Некорректное тело запроса",
+        "value": {
+          "message": ""
+        }
+      },
+      "IncorrectRequest": {
+        "value": {
+          "message": ""
+        }
+      },
+      "IncorrectRequest1": {
+        "description": "Incorrect Request",
+        "value": {
+          "code": "IncorrectRequest",
+          "message": ""
+        }
+      },
+      "IncorrectParameter": {
+        "value": {
+          "code": "IncorrectParameter",
+          "message": ""
+        }
+      },
+      "FailedToUpdateMeta": {
+        "value": {
+          "code": "FailedToUpdateMeta",
+          "message": ""
+        }
+      },
+      "StatusMismatch": {
+        "value": {
+          "data": {},
+          "code": "StatusMismatch",
+          "message": ""
+        }
+      }
+    },
+    "responses": {
+      "401": {
+        "description": "<span class='response__value '>Unauthorized</span>",
+        "content": {
+          "application/problem+json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string",
+                  "description": "Error title"
+                },
+                "detail": {
+                  "type": "string",
+                  "description": "Error details"
+                },
+                "code": {
+                  "type": "string",
+                  "description": "Internal error code"
+                },
+                "requestId": {
+                  "type": "string",
+                  "description": "Unique request ID"
+                },
+                "origin": {
+                  "type": "string",
+                  "description": "WB internal service ID"
+                },
+                "status": {
+                  "type": "number",
+                  "description": "HTTP status code"
+                },
+                "statusText": {
+                  "type": "string",
+                  "description": "Text of the HTTP status code"
+                },
+                "timestamp": {
+                  "type": "string",
+                  "format": "date-time",
+                  "description": "Request date and time"
+                }
+              }
+            },
+            "example": {
+              "title": "unauthorized",
+              "detail": "token problem; token is malformed: could not base64 decode signature: illegal base64 data at input byte 84",
+              "code": "07e4668e--a53a3d31f8b0-[UK-oWaVDUqNrKG]; 03bce=277; 84bd353bf-75",
+              "requestId": "7b80742415072fe8b6b7f7761f1d1211",
+              "origin": "s2s-api-auth-catalog",
+              "status": 401,
+              "statusText": "Unauthorized",
+              "timestamp": "2024-09-30T06:52:38Z"
+            }
+          }
+        }
+      },
+      "402": {
+        "description": "<span class='response__value '>Payment required</span>",
+        "content": {
+          "application/problem+json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string",
+                  "description": "Error title"
+                },
+                "detail": {
+                  "type": "string",
+                  "description": "Error details. The error is only returned to services from the [Solutions for business Catalog](https://dev.wildberries.ru/business-solutions)"
+                }
+              }
+            },
+            "example": {
+              "title": "payment required",
+              "detail": "wb solution for business has insufficient funds on its balance. please top up the balance in the company's personal account https://dev.wildberries.ru/company"
+            }
+          }
+        }
+      },
+      "429": {
+        "description": "<span class='response__value '>Too many requests</span>",
+        "content": {
+          "application/problem+json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string",
+                  "description": "Error title"
+                },
+                "detail": {
+                  "type": "string",
+                  "description": "Error details"
+                },
+                "code": {
+                  "type": "string",
+                  "description": "Internal error code"
+                },
+                "requestId": {
+                  "type": "string",
+                  "description": "Unique request ID"
+                },
+                "origin": {
+                  "type": "string",
+                  "description": "WB internal service ID"
+                },
+                "status": {
+                  "type": "number",
+                  "description": "HTTP status code"
+                },
+                "statusText": {
+                  "type": "string",
+                  "description": "Text of the HTTP status code"
+                },
+                "timestamp": {
+                  "type": "string",
+                  "format": "date-time",
+                  "description": "Request date and time"
+                }
+              }
+            },
+            "example": {
+              "title": "too many requests",
+              "detail": "limited by c122a060-a7fb-4bb4-abb0-32fd4e18d489",
+              "code": "07e4668e-ac2242c5c8c5-[UK-4dx7JUdskGZ]",
+              "requestId": "9d3c02cc698f8b041c661a7c28bed293",
+              "origin": "s2s-api-auth-catalog",
+              "status": 429,
+              "statusText": "Too Many Requests",
+              "timestamp": "2024-09-30T06:52:38Z"
+            }
+          }
+        }
+      },
+      "NotFound": {
+        "description": "<span class='response__value '>The resource is not found</span>",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "example": {
+              "code": "NotFound",
+              "message": ""
+            }
+          }
+        }
+      },
+      "AccessDenied": {
+        "description": "<span class='response__value '>Access denied</span>",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "example": {
+              "code": "AccessDenied",
+              "message": ""
+            }
+          }
+        }
+      }
+    },
+    "schemas": {
+      "ClientInfo": {
+        "properties": {
+          "replacementPhone": {
+            "type": "string",
+            "description": "Replacement phone number to contact the buyer. <br>\nAn empty value `\"\"` means that the number is not assigned yet\n",
+            "example": "79871234567",
+            "nullable": false
+          },
+          "phone": {
+            "type": "string",
+            "description": "Buyer contact phone number:\n  - if the extension code is not specified in the `phoneCode` field, you can call the buyer using the specified number. Additional phone numbers that do not need extension codes are specified in the `additionalPhones` field\n  - if the extension code is specified in the `phoneCode` field, use it to reach the buyer via the specified number and extension code\n",
+            "example": "+79871234567",
+            "nullable": false
+          },
+          "firstName": {
+            "type": "string",
+            "description": "Buyer first name",
+            "example": "Иван",
+            "nullable": false
+          },
+          "fullName": {
+            "type": "string",
+            "description": "Buyer full name, used for documents",
+            "example": "Иванов Иван Иванович",
+            "nullable": false
+          },
+          "additionalPhones": {
+            "nullable": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Additional phone numbers to contact the buyer. <br>\nUse it to call the buyer, if the main number from `phone` is unavailable.<br>\nAn empty value means that the number is not specified\n",
+            "example": [
+              "1234554321"
+            ]
+          },
+          "additionalPhoneCodes": {
+            "nullable": false,
+            "type": "array",
+            "items": {
+              "type": "integer"
+            },
+            "description": "Additional extension codes. <br>\nUse it if you could not reach the buyer using the extension code from `phoneCode`.<br>\nAn empty value means that the codes are not assigned yet\n",
+            "example": [
+              12345
+            ]
+          },
+          "orderId": {
+            "type": "integer",
+            "description": "Assembly order ID",
+            "example": 1345678910
+          },
+          "phoneCode": {
+            "type": "integer",
+            "description": "Extension phone code. <br>\nUse it to reach the buyer via the number from `phone`.<br>\nIf the code is not specified, you can call the buyer without codes\n",
+            "example": 0,
+            "nullable": false
+          }
+        },
+        "type": "object"
+      },
+      "ClientInfoResp": {
+        "properties": {
+          "orders": {
+            "description": "Buyers information",
+            "items": {
+              "$ref": "#/components/schemas/ClientInfo"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "OrderCourierInfo": {
+        "type": "object",
+        "properties": {
+          "courierInfo": {
+            "type": "object",
+            "description": "Courier info",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/CourierInfo"
+              }
+            ]
+          },
+          "orderID": {
+            "type": "integer",
+            "description": "Assembly order ID",
+            "example": 2876979713
+          }
+        }
+      },
+      "OrderCourierInfoResp": {
+        "type": "object",
+        "properties": {
+          "orders": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OrderCourierInfo"
+            }
+          }
+        }
+      },
+      "CourierContactsResponse": {
+        "type": "object",
+        "properties": {
+          "carNumber": {
+            "type": "string",
+            "description": "Vehicle number",
+            "example": "х111хх11"
+          },
+          "fullName": {
+            "type": "string",
+            "description": "Courier's full name",
+            "example": "Иванов Иван Иванович"
+          },
+          "phone": {
+            "type": "string",
+            "description": "Phone number",
+            "example": "71230971931"
+          },
+          "pTimeFrom": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Date and time from which the courier will arrive",
+            "nullable": true,
+            "example": "2025-09-06T08:00:00Z"
+          },
+          "pTimeTo": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Date and time by which the courier will arrive",
+            "nullable": true,
+            "example": "2025-09-06T11:00:00Z"
+          }
+        }
+      },
+      "CourierInfo": {
+        "type": "object",
+        "properties": {
+          "contacts": {
+            "type": "object",
+            "nullable": true,
+            "description": "Courier contact information",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/CourierContactsResponse"
+              }
+            ]
+          },
+          "mustBeAssigned": {
+            "type": "boolean",
+            "description": "If the the courier should be assigned by the current moment:\n - `false` — no\n - `true` — yes\n\n If `\"mustBeAssigned\": true` and `\"contacts\": null`, then you need to request the contacts from [support](https://seller.wildberries.ru/service-desk-v2)\n"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Date and time of the courier information update. <br> If `null`, the information has not been updated",
+            "nullable": true,
+            "example": "2025-09-06T11:33:10+03:00"
+          }
+        }
+      },
+      "api.OrdersMetaDetailsResponse": {
+        "type": "object",
+        "required": [
+          "requestId"
+        ],
+        "properties": {
+          "requestId": {
+            "type": "string",
+            "description": "Unique request ID",
+            "example": "f1787bd2d1fdс35d6f537316514у4a05"
+          },
+          "orders": {
+            "type": "array",
+            "description": "Assembly orders metadata and validation statuses",
+            "items": {
+              "type": "object",
+              "required": [
+                "isError"
+              ],
+              "properties": {
+                "orderId": {
+                  "type": "integer",
+                  "example": 123456,
+                  "description": "Assembly order ID"
+                },
+                "isError": {
+                  "type": "boolean",
+                  "description": "Are there any errors",
+                  "example": false
+                },
+                "errors": {
+                  "type": "array",
+                  "example": [],
+                  "description": "Error data",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "code": {
+                        "type": "integer",
+                        "description": "Error code",
+                        "example": 404
+                      },
+                      "detail": {
+                        "type": "string",
+                        "example": "NotFound",
+                        "description": "Additional error data"
+                      }
+                    }
+                  }
+                },
+                "metaDetails": {
+                  "type": "array",
+                  "description": "Metadata and their validation statuses",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "key": {
+                        "type": "string",
+                        "example": "sgtin",
+                        "description": "Metadata"
+                      },
+                      "value": {
+                        "type": "string",
+                        "nullable": true,
+                        "description": "Metadata value",
+                        "example": "123456789012345"
+                      },
+                      "decision": {
+                        "type": "string",
+                        "example": "sgtinIntroduced",
+                        "description": "State:\n- `imei`\n  - `pending` — Metadata for inspection\n  - `optional` — Metadata is not required\n  - `filled` — Validation passed\n  - `deadlineExceeded` — Validation passed\n  - `imeiMaySell` — The product is approved for sale. Validation passed\n  - `imeiSoldB2B` — The product was sold to a B2B buyer and allowed to be sold again. Validation passed\n  - `required` — Required metadata is not filled. Validation failed\n  - `imeiInvalidFormat` — Invalid format. Validation failed\n  - `imeiAlreadySold` — The item with this IMEI has already been sold. Validation failed\n- `uin`\n  - `filled` — Validation passed\n  - `optional` — Metadata is not required\n- `sgtin`\n  - `pending` — Metadata for inspection\n  - `optional` — Metadata is not required\n  - `filled` — Validation passed\n  - `deadlineExceeded` — Validation passed\n  - `sgtinIntroduced` — The product is approved for sale. Validation passed\n  - `sgtinSoldB2B` — The product was sold to a B2B buyer and allowed to be sold again. Validation passed\n  - `required` — Required metadata is not filled. Validation failed\n  - `sgtinInvalidFormat` — Invalid format. Validation failed\n  - `sgtinNotFound` — Metadata not found in [Chestny ZNAK](https://chestnyznak.ru/en/). Validation failed\n  - `sgtinEmitted` —  Metadata has been issued. Validation failed\n  - `sgtinApplied` — Putting into circulation not completed. Validation failed\n  - `sgtinWrittenOff` — Written off. Validation failed\n  - `sgtinRetired` — Retired. Validation failed\n  - `sgtinWithdrawn` — Withdrawn. Validation failed\n  - `sgtinDisaggregation` — Disaggregation. Validation failed\n  - `sgtinDisaggregated` — Disaggregated. Validation failed\n  - `sgtinAppliedNotPaid` — Not paid. Validation failed\n- `gtin`\n  - `optional` — Metadata is not required\n  - `filled` — Validation passed\n- `customsDeclaration`\n  - `optional` — Metadata is not required\n  - `filled` — Validation passed\n"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "api.BatchError": {
+        "properties": {
+          "detail": {
+            "type": "object",
+            "description": "Error details",
+            "example": {}
+          },
+          "origin": {
+            "type": "string",
+            "description": "WB internal service ID",
+            "example": "dbs-public-api"
+          },
+          "requestId": {
+            "type": "string",
+            "description": "Unique request ID",
+            "example": "f1787bd2d1fdс35d6f537316514у4a05"
+          },
+          "title": {
+            "type": "string",
+            "description": "Error title",
+            "example": "IncorrectRequest"
+          }
+        },
+        "type": "object"
+      },
+      "Error": {
+        "type": "object",
+        "nullable": false,
+        "properties": {
+          "code": {
+            "type": "string",
+            "description": "Error code",
+            "nullable": false
+          },
+          "message": {
+            "type": "string",
+            "description": "Error description",
+            "nullable": false
+          },
+          "data": {
+            "type": "object",
+            "description": "Additional data for the error",
+            "nullable": true
+          }
+        }
+      },
+      "OrdersRequestAPI": {
+        "properties": {
+          "orders": {
+            "description": "Assembly order IDs list",
+            "items": {
+              "type": "integer"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object",
+        "example": {
+          "orders": [
+            987654321,
+            123456789
+          ]
+        }
+      },
+      "DeliveryDatesRequest": {
+        "properties": {
+          "orders": {
+            "description": "Assembly order IDs list",
+            "items": {
+              "type": "integer",
+              "minItems": 1,
+              "maxItems": 1000
+            },
+            "type": "array"
+          }
+        },
+        "type": "object",
+        "example": {
+          "orders": [
+            1234567890
+          ]
+        }
+      },
+      "Next": {
+        "type": "integer",
+        "format": "int64",
+        "nullable": false,
+        "description": "Pagination parameter. Sets the value from which to retrieve the next batch",
+        "example": 13833711
+      },
+      "OrderNewDBW": {
+        "type": "object",
+        "properties": {
+          "address": {
+            "type": "object",
+            "nullable": true,
+            "description": "Address of the buyer for delivery",
+            "properties": {
+              "fullAddress": {
+                "description": "Delivery address",
+                "type": "string",
+                "example": "Chelyabinsk Region, Chelyabinsk, 51st Arabkir Street, Building 10A, Apartment 42"
+              },
+              "longitude": {
+                "type": "number",
+                "format": "float64",
+                "nullable": false,
+                "description": "Longitude",
+                "example": 44.519068
+              },
+              "latitude": {
+                "type": "number",
+                "format": "float64",
+                "nullable": false,
+                "description": "Latitude",
+                "example": 40.20192
+              }
+            }
+          },
+          "salePrice": {
+            "description": "Seller's price in the currency of sale, including seller's discount, except the WB Club discount, multiplied by 100\n",
+            "type": "integer",
+            "nullable": true,
+            "example": 504600
+          },
+          "requiredMeta": {
+            "description": "List of metadata available for the assembly order. [Specifying the IMEI](./orders-dbw#tag/DBW-Metadata/paths/~1api~1v3~1dbw~1orders~1%7BorderId%7D~1meta~1imei/put) is required for `Smartphones` [subject](./work-with-products#tag/Categories-Subjects-and-Characteristics/paths/~1content~1v2~1object~1all/get), `\"subjectId\":515`",
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "type": "string"
+            },
+            "example": [
+              "uin"
+            ]
+          },
+          "comment": {
+            "type": "string",
+            "nullable": false,
+            "description": "Buyer comment",
+            "maxLength": 300,
+            "example": "Упакуйте в пленку, пожалуйста"
+          },
+          "options": {
+            "type": "object",
+            "description": "Order options",
+            "properties": {
+              "isB2b": {
+                "type": "boolean",
+                "description": "Indicator of a B2B sale:\n  - `false` — not B2B sale\n  - `true` — B2B sale\n"
+              }
+            }
+          },
+          "orderUid": {
+            "type": "string",
+            "description": "Transaction ID for order grouping. Orders in the same buyer's cart will have the same `orderUid`",
+            "example": "165918930_629fbc924b984618a44354475ca58675"
+          },
+          "groupId": {
+            "description": "Assembly order group ID. <br> It unites assembly orders received at a single warehouse (`warehouseId`) as part of a single buyer transaction (`orderUid`)",
+            "type": "string",
+            "format": "UUID",
+            "example": "7a2c8810-1db2-4011-9682-5c7fa33afd83"
+          },
+          "article": {
+            "type": "string",
+            "nullable": false,
+            "description": "Seller's article",
+            "example": "one-ring-7548"
+          },
+          "colorCode": {
+            "description": "Color code (for tinted products only)",
+            "type": "string",
+            "nullable": false,
+            "example": "RAL 3017"
+          },
+          "rid": {
+            "type": "string",
+            "nullable": false,
+            "description": "Unique order ID. <br>\nNote: `rid` corresponds to `srid` in the responses of the methods:\n  - [Buyers return applications](./user-communication#tag/Buyers-Returns/paths/~1api~1v1~1claims/get)\n  - [Orders](./reports#tag/Main-Reports/paths/~1api~1v1~1supplier~1orders/get)\n  - [Sales](./reports#tag/Main-Reports/paths/~1api~1v1~1supplier~1sales/get)\n  - [Goods Return Report](./reports#tag/Goods-Return-Report)\n  - [Realization sales report](./financial-reports-and-accounting#tag/Financial-Reports/paths/~1api~1v5~1supplier~1reportDetailByPeriod/get)\n",
+            "example": "f884001e44e511edb8780242ac120002"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": false,
+            "description": "Order creation date",
+            "example": "2022-05-04T07:56:29Z"
+          },
+          "skus": {
+            "type": "array",
+            "nullable": false,
+            "description": "Product barcode array",
+            "items": {
+              "type": "string",
+              "example": "6665956397512"
+            }
+          },
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": false,
+            "description": "Assembly order ID",
+            "example": 13833711
+          },
+          "warehouseId": {
+            "type": "integer",
+            "nullable": false,
+            "description": "Seller's warehouse ID where the order was received",
+            "example": 658434
+          },
+          "nmId": {
+            "type": "integer",
+            "nullable": false,
+            "description": "WB article",
+            "example": 123456789
+          },
+          "chrtId": {
+            "type": "integer",
+            "nullable": false,
+            "description": "Product size ID in WB systems",
+            "example": 987654321
+          },
+          "price": {
+            "type": "integer",
+            "nullable": false,
+            "description": "The price in the currency of sale including all discounts, except WB Wallet discount, multiplied by 100. You can find a currency code in the `currencyCode`. Provided for informational purposes only",
+            "example": 1014
+          },
+          "convertedPrice": {
+            "type": "integer",
+            "nullable": false,
+            "description": "The price in the currency of the seller's country including all discounts, except WB Wallet discount, multiplied by 100. Provided for informational purposes only",
+            "example": 1014
+          },
+          "currencyCode": {
+            "type": "integer",
+            "nullable": false,
+            "format": "ISO 4217",
+            "description": "Sale currency code",
+            "example": 933
+          },
+          "convertedCurrencyCode": {
+            "type": "integer",
+            "nullable": false,
+            "format": "ISO 4217",
+            "description": "Currency code of the seller country",
+            "example": 643
+          },
+          "cargoType": {
+            "type": "integer",
+            "nullable": false,
+            "description": "Type of cargo:\n  - `1` — small-sized goods\n  - `2` — over dimensional cargo (ODC)\n  - `3` — dimensional cargo+ (CD+)\n",
+            "enum": [
+              1,
+              2,
+              3
+            ]
+          },
+          "isZeroOrder": {
+            "type": "boolean",
+            "description": "Indicator of an order for a product with zero inventory:\n  - `false` — the order is made for a product with a non-zero inventory\n  - `true` — the order is made for a product with zero inventory. Such an order can be canceled without a cancellation fee\n",
+            "example": false
+          }
+        }
+      },
+      "Order": {
+        "type": "object",
+        "properties": {
+          "address": {
+            "type": "object",
+            "nullable": true,
+            "description": "Address of the buyer for delivery",
+            "properties": {
+              "fullAddress": {
+                "description": "Delivery address",
+                "type": "string",
+                "example": "Chelyabinsk Region, Chelyabinsk, 51st Arabkir Street, Building 10A, Apartment 42"
+              },
+              "longitude": {
+                "type": "number",
+                "format": "float64",
+                "nullable": false,
+                "description": "Longitude",
+                "example": 44.519068
+              },
+              "latitude": {
+                "type": "number",
+                "format": "float64",
+                "nullable": false,
+                "description": "Latitude",
+                "example": 40.20192
+              }
+            }
+          },
+          "options": {
+            "type": "object",
+            "description": "Order options",
+            "properties": {
+              "isB2b": {
+                "type": "boolean",
+                "description": "Indicator of a B2B sale:\n  - `false` — not B2B sale\n  - `true` — B2B sale\n"
+              }
+            }
+          },
+          "orderUid": {
+            "type": "string",
+            "description": "Transaction ID for order grouping. Orders in the same buyer's cart will have the same `orderUid`",
+            "example": "165918930_629fbc924b984618a44354475ca58675"
+          },
+          "groupId": {
+            "description": "Assembly order group ID. <br> It unites assembly orders received at a single warehouse (`warehouseId`) as part of a single buyer transaction (`orderUid`)",
+            "type": "string",
+            "format": "UUID",
+            "example": "7a2c8810-1db2-4011-9682-5c7fa33afd83"
+          },
+          "article": {
+            "type": "string",
+            "nullable": false,
+            "description": "Seller's article",
+            "example": "one-ring-7548"
+          },
+          "colorCode": {
+            "type": "string",
+            "nullable": false,
+            "description": "Color code (for tinted products only)",
+            "example": "RAL 3017"
+          },
+          "rid": {
+            "type": "string",
+            "nullable": false,
+            "description": "Unique order ID. <br>\nNote: `rid` corresponds to `srid` in the responses of the methods:\n  - [Buyers return applications](./user-communication#tag/Buyers-Returns/paths/~1api~1v1~1claims/get)\n  - [Orders](./reports#tag/Main-Reports/paths/~1api~1v1~1supplier~1orders/get)\n  - [Sales](./reports#tag/Main-Reports/paths/~1api~1v1~1supplier~1sales/get)\n  - [Goods Return Report](./reports#tag/Goods-Return-Report)\n  - [Realization sales report](./financial-reports-and-accounting#tag/Financial-Reports/paths/~1api~1v5~1supplier~1reportDetailByPeriod/get)\n",
+            "example": "f884001e44e511edb8780242ac120002"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": false,
+            "description": "Order creation date",
+            "example": "2022-05-04T07:56:29Z"
+          },
+          "skus": {
+            "type": "array",
+            "nullable": false,
+            "description": "Product barcode array",
+            "items": {
+              "type": "string",
+              "example": "6665956397512"
+            }
+          },
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": false,
+            "description": "Assembly order ID",
+            "example": 13833711
+          },
+          "warehouseId": {
+            "type": "integer",
+            "nullable": false,
+            "description": "Seller's warehouse ID where the order was received",
+            "example": 658434
+          },
+          "nmId": {
+            "type": "integer",
+            "nullable": false,
+            "description": "WB article",
+            "example": 123456789
+          },
+          "chrtId": {
+            "type": "integer",
+            "nullable": false,
+            "description": "Product size ID in WB systems",
+            "example": 987654321
+          },
+          "price": {
+            "type": "integer",
+            "nullable": false,
+            "description": "The price in the currency of sale including all discounts, except WB Wallet discount, multiplied by 100. You can find a currency code in the `currencyCode`. Provided for informational purposes only",
+            "example": 1014
+          },
+          "convertedPrice": {
+            "type": "integer",
+            "nullable": false,
+            "description": "The price in the currency of the seller's country including all discounts, except WB Wallet discount, multiplied by 100. Provided for informational purposes only",
+            "example": 1014
+          },
+          "currencyCode": {
+            "type": "integer",
+            "nullable": false,
+            "format": "ISO 4217",
+            "description": "Sale currency code",
+            "example": 933
+          },
+          "convertedCurrencyCode": {
+            "type": "integer",
+            "nullable": false,
+            "format": "ISO 4217",
+            "description": "Currency code of the seller country",
+            "example": 643
+          },
+          "cargoType": {
+            "type": "integer",
+            "nullable": false,
+            "description": "Type of cargo:\n  - `1` — small-sized goods\n  - `2` — over dimensional cargo (ODC)\n  - `3` — dimensional cargo+ (CD+)\n",
+            "enum": [
+              1,
+              2,
+              3
+            ]
+          },
+          "comment": {
+            "type": "string",
+            "nullable": false,
+            "description": "Buyer comment",
+            "maxLength": 300,
+            "example": "Упакуйте в пленку, пожалуйста"
+          },
+          "isZeroOrder": {
+            "type": "boolean",
+            "description": "Indicator of an order for a product with zero inventory:\n  - `false` — the order is made for a product with a non-zero inventory\n  - `true` — the order is made for a product with zero inventory. Such an order can be canceled without a cancellation fee\n",
+            "example": false
+          }
+        }
+      },
+      "DeliveryDatesInfoResp": {
+        "type": "object",
+        "properties": {
+          "orders": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "dTimeFrom": {
+                  "type": "string",
+                  "nullable": true,
+                  "description": "Current delivery time \"from\"",
+                  "example": "11:11"
+                },
+                "dTimeTo": {
+                  "type": "string",
+                  "nullable": true,
+                  "description": "Current delivery time \"to\"",
+                  "example": "22:22"
+                },
+                "dTimeFromOld": {
+                  "type": "string",
+                  "nullable": true,
+                  "description": "Previous delivery time \"from\". Available only during the first day after the change",
+                  "example": "12:30"
+                },
+                "dTimeToOld": {
+                  "type": "string",
+                  "nullable": true,
+                  "description": "Previous delivery time \"to\". Available only during the first day after the change",
+                  "example": "22:30"
+                },
+                "dDateOld": {
+                  "type": "string",
+                  "nullable": true,
+                  "description": "Previous delivery date. Available only one day after the change",
+                  "example": "2025-01-28"
+                },
+                "dDate": {
+                  "type": "string",
+                  "nullable": false,
+                  "description": "Current delivery date",
+                  "example": "2025-02-20"
+                },
+                "id": {
+                  "type": "integer",
+                  "description": "Assembly order ID",
+                  "example": 1234567890
+                }
+              }
+            }
+          }
+        }
+      },
+      "api.OrdersRequestV2": {
+        "type": "object",
+        "properties": {
+          "ordersIds": {
+            "description": "List of assembly order IDs",
+            "example": [
+              123456,
+              234567
+            ],
+            "maxItems": 1000,
+            "type": "array",
+            "items": {
+              "type": "integer"
+            }
+          }
+        }
+      },
+      "Meta": {
+        "type": "object",
+        "description": "Assembly order metadata",
+        "nullable": true,
+        "properties": {
+          "imei": {
+            "type": "object",
+            "properties": {
+              "value": {
+                "nullable": true,
+                "type": "string",
+                "example": "123456789012345"
+              }
+            },
+            "description": "IMEI"
+          },
+          "uin": {
+            "type": "object",
+            "properties": {
+              "value": {
+                "nullable": true,
+                "type": "string",
+                "example": "123456789012345"
+              }
+            },
+            "description": "UIN"
+          },
+          "gtin": {
+            "type": "object",
+            "properties": {
+              "value": {
+                "nullable": true,
+                "type": "string",
+                "example": "123456789012345"
+              }
+            },
+            "description": "GTIN"
+          },
+          "sgtin": {
+            "type": "object",
+            "properties": {
+              "value": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "example": [
+                  "123456789012345"
+                ],
+                "nullable": true
+              }
+            },
+            "description": "Labeling code [Chestny ZNAK](https://chestnyznak.ru/en)"
+          }
+        }
+      }
+    }
+  }
+}

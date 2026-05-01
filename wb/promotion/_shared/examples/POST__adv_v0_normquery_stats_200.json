@@ -1,0 +1,241 @@
+{
+  "stats": [
+    {
+      "advert_id": 1825035,
+      "nm_id": 983512347,
+      "stats": [
+        {
+          "atbs": 68,
+          "avg_pos": 3.6,
+          "clicks": 2090,
+          "cpc": 471,
+          "cpm": 813,
+          "ctr": 107.23,
+          "norm_query": "Фраза 1",
+          "orders": 19,
+          "views": 1949
+        },
+        {
+          "atbs": 68,
+          "avg_pos": 3.6,
+          "clicks": 2090,
+          "cpc": 471,
+          "cpm": 813,
+          "ctr": 107.23,
+          "norm_query": "Фраза 2",
+          "orders": 19,
+          "views": 1949
+        },
+        {
+          "atbs": 68,
+          "avg_pos": 3.6,
+          "clicks": 2090,
+          "cpc": 471,
+          "cpm": 813,
+          "ctr": 107.23,
+          "norm_query": "Фраза 3",
+          "orders": 19,
+          "views": 1949
+        },
+        {
+          "atbs": 36,
+          "avg_pos": 3.9,
+          "clicks": 1847,
+          "cpc": 278,
+          "cpm": 445,
+          "ctr": 96.4,
+          "norm_query": "Фраза 4",
+          "orders": 28,
+          "views": 1916
+        },
+        {
+          "atbs": 36,
+          "avg_pos": 3.9,
+          "clicks": 1847,
+          "cpc": 278,
+          "cpm": 445,
+          "ctr": 96.4,
+          "norm_query": "Фраза 5",
+          "orders": 28,
+          "views": 1916
+        },
+        {
+          "atbs": 79,
+          "avg_pos": 2.2,
+          "clicks": 2468,
+          "cpc": 106,
+          "cpm": 819,
+          "ctr": 145.01,
+          "norm_query": "Фраза 6",
+          "orders": 14,
+          "views": 1702
+        },
+        {
+          "atbs": 79,
+          "avg_pos": 2.2,
+          "clicks": 2468,
+          "cpc": 106,
+          "cpm": 819,
+          "ctr": 145.01,
+          "norm_query": "Фраза 7",
+          "orders": 14,
+          "views": 1702
+        },
+        {
+          "atbs": 67,
+          "avg_pos": 9.9,
+          "clicks": 1166,
+          "cpc": 250,
+          "cpm": 837,
+          "ctr": 70.33,
+          "norm_query": "Фраза 8",
+          "orders": 26,
+          "views": 1658
+        },
+        {
+          "atbs": 67,
+          "avg_pos": 9.9,
+          "clicks": 1166,
+          "cpc": 250,
+          "cpm": 837,
+          "ctr": 70.33,
+          "norm_query": "Фраза 9",
+          "orders": 26,
+          "views": 1658
+        },
+        {
+          "atbs": 46,
+          "avg_pos": 2,
+          "clicks": 2927,
+          "cpc": 122,
+          "cpm": 468,
+          "ctr": 186.43,
+          "norm_query": "Фраза 10",
+          "orders": 23,
+          "views": 1570
+        },
+        {
+          "atbs": 46,
+          "avg_pos": 2,
+          "clicks": 2927,
+          "cpc": 122,
+          "cpm": 468,
+          "ctr": 186.43,
+          "norm_query": "Фраза 11",
+          "orders": 23,
+          "views": 1570
+        },
+        {
+          "atbs": 79,
+          "avg_pos": 7.1,
+          "clicks": 2447,
+          "cpc": 67,
+          "cpm": 426,
+          "ctr": 163.9,
+          "norm_query": "Фраза 12",
+          "orders": 13,
+          "views": 1493
+        },
+        {
+          "atbs": 79,
+          "avg_pos": 7.1,
+          "clicks": 2447,
+          "cpc": 67,
+          "cpm": 426,
+          "ctr": 163.9,
+          "norm_query": "Фраза 13",
+          "orders": 13,
+          "views": 1493
+        },
+        {
+          "atbs": 61,
+          "avg_pos": 6,
+          "clicks": 1391,
+          "cpc": 370,
+          "cpm": 980,
+          "ctr": 99.29,
+          "norm_query": "Фраза 14",
+          "orders": 27,
+          "views": 1401
+        },
+        {
+          "atbs": 61,
+          "avg_pos": 6,
+          "clicks": 1391,
+          "cpc": 370,
+          "cpm": 980,
+          "ctr": 99.29,
+          "norm_query": "Фраза 15",
+          "orders": 27,
+          "views": 1401
+        },
+        {
+          "atbs": 26,
+          "avg_pos": 6.9,
+          "clicks": 1029,
+          "cpc": 88,
+          "cpm": 459,
+          "ctr": 77.43,
+          "norm_query": "Фраза 16",
+          "orders": 3,
+          "views": 1329
+        },
+        {
+          "atbs": 26,
+          "avg_pos": 6.9,
+          "clicks": 1029,
+          "cpc": 88,
+          "cpm": 459,
+          "ctr": 77.43,
+          "norm_query": "Фраза 17",
+          "orders": 3,
+          "views": 1329
+        },
+        {
+          "atbs": 67,
+          "avg_pos": 3.8,
+          "clicks": 1371,
+          "cpc": 448,
+          "cpm": 534,
+          "ctr": 104.18,
+          "norm_query": "Фраза 18",
+          "orders": 3,
+          "views": 1316
+        },
+        {
+          "atbs": 67,
+          "avg_pos": 3.8,
+          "clicks": 1371,
+          "cpc": 448,
+          "cpm": 534,
+          "ctr": 104.18,
+          "norm_query": "Фраза 19",
+          "orders": 3,
+          "views": 1316
+        },
+        {
+          "atbs": 18,
+          "avg_pos": 10,
+          "clicks": 2944,
+          "cpc": 472,
+          "cpm": 839,
+          "ctr": 256,
+          "norm_query": "Фраза 20",
+          "orders": 4,
+          "views": 1150
+        },
+        {
+          "atbs": 18,
+          "avg_pos": 10,
+          "clicks": 2944,
+          "cpc": 472,
+          "cpm": 839,
+          "ctr": 256,
+          "norm_query": "Фраза 21",
+          "orders": 4,
+          "views": 1150
+        }
+      ]
+    }
+  ]
+}

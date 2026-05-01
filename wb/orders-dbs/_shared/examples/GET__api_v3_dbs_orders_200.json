@@ -1,0 +1,40 @@
+{
+  "next": 13833711,
+  "orders": [
+    {
+      "address": {
+        "fullAddress": "Chelyabinsk Region, Chelyabinsk, 51st Arabkir Street, Building 10A, Apartment 42",
+        "longitude": 44.519068,
+        "latitude": 40.20192
+      },
+      "deliveryType": "string",
+      "options": {
+        "isB2b": false
+      },
+      "orderUid": "165918930_629fbc924b984618a44354475ca58675",
+      "groupId": "7a2c8810-1db2-4011-9682-5c7fa33afd83",
+      "article": "one-ring-7548",
+      "colorCode": "RAL 3017",
+      "rid": "f884001e44e511edb8780242ac120002",
+      "createdAt": "2022-05-04T07:56:29Z",
+      "skus": [
+        "6665956397512"
+      ],
+      "id": 13833711,
+      "warehouseId": 658434,
+      "nmId": 12345678,
+      "chrtId": 987654321,
+      "scanPrice": 50,
+      "price": 1014,
+      "convertedPrice": 1014,
+      "currencyCode": 643,
+      "convertedCurrencyCode": 643,
+      "convertedFinalPrice": 1014,
+      "finalPrice": 1014,
+      "cargoType": 0,
+      "comment": "Упакуйте в пленку, пожалуйста",
+      "isZeroOrder": false,
+      "wbStickerId": 123456
+    }
+  ]
+}

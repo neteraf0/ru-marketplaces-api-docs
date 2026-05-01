@@ -1,0 +1,6 @@
+{
+  "detail": "parameter \"date\" in query has an error: value is required but missing",
+  "origin": "tariffs",
+  "requestId": "7bc5c30d95933058d0e0bddc79b9da547",
+  "title": "Bad Request"
+}

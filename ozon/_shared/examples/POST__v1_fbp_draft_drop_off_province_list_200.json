@@ -1,0 +1,9 @@
+{
+  "provinces": [
+    {
+      "name": "string",
+      "points_count": 0,
+      "province_uuid": "string"
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "status": "OK",
+  "result": {
+    "logisticPoints": [
+      {
+        "logisticPointId": 1,
+        "brand": "MARKET",
+        "address": {
+          "fullAddress": "string",
+          "gps": {
+            "latitude": 0.0,
+            "longitude": 0.0
+          },
+          "regionId": 0,
+          "city": "string",
+          "street": "string",
+          "house": "string",
+          "building": "string",
+          "block": "string",
+          "km": 0,
+          "additional": "string"
+        },
+        "workingSchedule": {
+          "schedule": [
+            {
+              "day": "MONDAY",
+              "startTime": "string",
+              "endTime": "string"
+            }
+          ],
+          "holidays": [
+            "2024-01-01"
+          ]
+        },
+        "deliveryRestrictions": {
+          "dimensionsRestrictions": {
+            "weight": 1,
+            "height": 1,
+            "width": 1,
+            "length": 1,
+            "dimensionsSum": 1
+          }
+        },
+        "features": [
+          "RETURN_ALLOWED"
+        ],
+        "storagePeriod": 0
+      }
+    ],
+    "paging": {
+      "nextPageToken": "string"
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "data": [
+    {
+      "charcID": 54337,
+      "subjectName": "Кроссовки",
+      "subjectID": 105,
+      "name": "Размер",
+      "required": false,
+      "unitName": "см",
+      "maxCount": 0,
+      "popular": false,
+      "charcType": 4,
+      "hasFilter": true,
+      "isVariable": true
+    }
+  ],
+  "error": false,
+  "errorText": "",
+  "additionalErrors": null
+}

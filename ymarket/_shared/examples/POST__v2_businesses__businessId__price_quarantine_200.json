@@ -1,0 +1,29 @@
+{
+  "status": "OK",
+  "result": {
+    "paging": {
+      "nextPageToken": "string"
+    },
+    "offers": [
+      {
+        "offerId": "string",
+        "currentPrice": {
+          "value": 0,
+          "currencyId": "RUR"
+        },
+        "lastValidPrice": {
+          "value": 0,
+          "currencyId": "RUR"
+        },
+        "verdicts": [
+          {
+            "type": "PRICE_CHANGE",
+            "params": [
+              {}
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

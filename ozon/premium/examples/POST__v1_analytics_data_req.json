@@ -1,0 +1,20 @@
+{
+  "date_from": "2020-09-01",
+  "date_to": "2021-10-15",
+  "metrics": [
+    "hits_view_search"
+  ],
+  "dimension": [
+    "sku",
+    "day"
+  ],
+  "filters": [],
+  "sort": [
+    {
+      "key": "hits_view_search",
+      "order": "DESC"
+    }
+  ],
+  "limit": 1000,
+  "offset": 0
+}

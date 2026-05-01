@@ -1,0 +1,29 @@
+{
+  "data": {
+    "items": [
+      {
+        "text": "костюм",
+        "nmId": 211131895,
+        "subjectName": "Phones",
+        "brandName": "Apple",
+        "vendorCode": "wb3ha2668w",
+        "name": "iPhone 13 256 ГБ Серебристый",
+        "isCardRated": true,
+        "rating": 6,
+        "feedbackRating": 1,
+        "price": {},
+        "frequency": {},
+        "weekFrequency": 140,
+        "medianPosition": {},
+        "avgPosition": {},
+        "openCard": {},
+        "addToCart": {},
+        "openToCart": {},
+        "orders": {},
+        "cartToOrder": {},
+        "visibility": {}
+      }
+    ],
+    "currency": "RUB"
+  }
+}

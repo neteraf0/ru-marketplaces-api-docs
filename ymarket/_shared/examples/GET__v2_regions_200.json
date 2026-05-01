@@ -1,0 +1,38 @@
+{
+  "regions": [
+    {
+      "id": 0,
+      "name": "string",
+      "type": "OTHER",
+      "parent": {
+        "id": 0,
+        "name": "string",
+        "type": "OTHER",
+        "parent": {
+          "id": 0,
+          "name": "string",
+          "type": "OTHER",
+          "parent": {
+            "id": 0,
+            "name": "string",
+            "type": "OTHER",
+            "parent": {
+              "id": 0,
+              "name": "string",
+              "type": "OTHER",
+              "parent": {
+                "id": 0,
+                "name": "string",
+                "type": "OTHER",
+                "parent": {}
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "paging": {
+    "nextPageToken": "string"
+  }
+}

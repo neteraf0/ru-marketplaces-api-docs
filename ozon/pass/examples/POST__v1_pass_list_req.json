@@ -1,0 +1,17 @@
+{
+  "cursor": "",
+  "filter": {
+    "arrival_pass_ids": [
+      "string"
+    ],
+    "arrival_reason": "string",
+    "dropoff_point_ids": [
+      "string"
+    ],
+    "only_active_passes": true,
+    "warehouse_ids": [
+      "string"
+    ]
+  },
+  "limit": 1000
+}

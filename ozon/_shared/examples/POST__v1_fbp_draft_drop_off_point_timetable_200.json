@@ -1,0 +1,12 @@
+{
+  "calendar": [
+    {
+      "calendar_item": {
+        "break_hours": {},
+        "is_holiday": false,
+        "opening_hours": {}
+      },
+      "day_of_week": "DAY_OF_WEEK_UNSPECIFIED"
+    }
+  ]
+}

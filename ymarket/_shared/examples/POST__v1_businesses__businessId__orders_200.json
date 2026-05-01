@@ -1,0 +1,220 @@
+{
+  "orders": [
+    {
+      "orderId": 0,
+      "campaignId": 1,
+      "programType": "FBY",
+      "externalOrderId": "string",
+      "status": "PLACING",
+      "substatus": "RESERVATION_EXPIRED",
+      "creationDate": "2020-02-02T14:30:30+03:00",
+      "updateDate": "2020-02-02T14:30:30+03:00",
+      "paymentType": "PREPAID",
+      "paymentMethod": "CASH_ON_DELIVERY",
+      "fake": false,
+      "items": [
+        {
+          "id": 0,
+          "offerId": "string",
+          "offerName": "string",
+          "count": 0,
+          "prices": {
+            "payment": {
+              "value": 0.0,
+              "currencyId": "RUR"
+            },
+            "subsidy": {
+              "value": 0.0,
+              "currencyId": "RUR"
+            },
+            "cashback": {
+              "value": 0.0,
+              "currencyId": "RUR"
+            },
+            "vat": "NO_VAT"
+          },
+          "instances": [
+            {
+              "cis": "string",
+              "cisFull": "string",
+              "uin": "string",
+              "rnpt": "string",
+              "gtd": "string",
+              "countryCode": "RU"
+            }
+          ],
+          "requiredInstanceTypes": [
+            "CIS"
+          ],
+          "tags": [
+            "ULTIMA"
+          ]
+        }
+      ],
+      "prices": {
+        "payment": {
+          "value": 0.0,
+          "currencyId": "RUR"
+        },
+        "subsidy": {
+          "value": 0.0,
+          "currencyId": "RUR"
+        },
+        "cashback": {
+          "value": 0.0,
+          "currencyId": "RUR"
+        },
+        "delivery": {
+          "payment": {
+            "value": 0.0,
+            "currencyId": "RUR"
+          },
+          "subsidy": {
+            "value": 0.0,
+            "currencyId": "RUR"
+          },
+          "vat": "NO_VAT"
+        }
+      },
+      "delivery": {
+        "type": "DELIVERY",
+        "serviceName": "string",
+        "deliveryServiceId": 0,
+        "warehouseId": "string",
+        "deliveryPartnerType": "SHOP",
+        "dispatchType": "UNKNOWN",
+        "dates": {
+          "fromDate": "2024-01-01",
+          "toDate": "2024-01-01",
+          "fromTime": "string",
+          "toTime": "string",
+          "realDeliveryDate": "2024-01-01"
+        },
+        "shipment": {
+          "id": 0,
+          "shipmentDate": "2024-01-01",
+          "shipmentTime": "string"
+        },
+        "courier": {
+          "address": {
+            "country": "string",
+            "postcode": "string",
+            "city": "string",
+            "district": "string",
+            "subway": "string",
+            "street": "string",
+            "house": "string",
+            "block": "string",
+            "entrance": "string",
+            "entryphone": "string",
+            "floor": "string",
+            "apartment": "string",
+            "gps": {
+              "latitude": 0.0,
+              "longitude": 0.0
+            }
+          },
+          "region": {
+            "id": 0,
+            "name": "string",
+            "type": "OTHER",
+            "parent": {
+              "id": 0,
+              "name": "string",
+              "type": "OTHER",
+              "parent": {
+                "id": 0,
+                "name": "string",
+                "type": "OTHER",
+                "parent": {}
+              }
+            }
+          }
+        },
+        "pickup": {
+          "address": {
+            "country": "string",
+            "postcode": "string",
+            "city": "string",
+            "district": "string",
+            "subway": "string",
+            "street": "string",
+            "house": "string",
+            "block": "string",
+            "entrance": "string",
+            "entryphone": "string",
+            "floor": "string",
+            "apartment": "string",
+            "gps": {
+              "latitude": 0.0,
+              "longitude": 0.0
+            }
+          },
+          "region": {
+            "id": 0,
+            "name": "string",
+            "type": "OTHER",
+            "parent": {
+              "id": 0,
+              "name": "string",
+              "type": "OTHER",
+              "parent": {
+                "id": 0,
+                "name": "string",
+                "type": "OTHER",
+                "parent": {}
+              }
+            }
+          },
+          "logisticPointId": 1,
+          "outletCode": "string",
+          "outletStorageLimitDate": "2024-01-01"
+        },
+        "transfer": {
+          "courier": {
+            "fullName": "string",
+            "phone": "string",
+            "phoneExtension": "string",
+            "vehicleNumber": "string",
+            "vehicleDescription": "string"
+          },
+          "eac": {
+            "eacType": "MERCHANT_TO_COURIER",
+            "eacCode": "string"
+          }
+        },
+        "boxesLayout": [
+          {
+            "items": [
+              {
+                "id": 0,
+                "fullCount": 1,
+                "partialCount": {},
+                "instances": []
+              }
+            ],
+            "boxId": 0,
+            "barcode": "string"
+          }
+        ],
+        "tracks": [
+          {
+            "trackCode": "string",
+            "deliveryServiceId": 0
+          }
+        ],
+        "estimated": false
+      },
+      "services": {
+        "liftType": "NOT_NEEDED"
+      },
+      "buyerType": "PERSON",
+      "notes": "string",
+      "cancelRequested": false,
+      "sourcePlatform": "MARKET"
+    }
+  ],
+  "paging": {
+    "nextPageToken": "string"
+  }
+}

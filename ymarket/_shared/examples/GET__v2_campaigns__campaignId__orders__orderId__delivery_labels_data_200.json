@@ -1,0 +1,25 @@
+{
+  "status": "OK",
+  "result": {
+    "orderId": 0,
+    "placesNumber": 0,
+    "url": "string",
+    "parcelBoxLabels": [
+      {
+        "url": "string",
+        "supplierName": "string",
+        "deliveryServiceName": "string",
+        "orderId": 0,
+        "orderNum": "string",
+        "recipientName": "string",
+        "boxId": 0,
+        "fulfilmentId": "string",
+        "place": "string",
+        "weight": "string",
+        "deliveryServiceId": "string",
+        "deliveryAddress": "string",
+        "shipmentDate": "string"
+      }
+    ]
+  }
+}

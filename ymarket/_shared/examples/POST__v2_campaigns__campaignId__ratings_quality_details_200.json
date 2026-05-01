@@ -1,0 +1,12 @@
+{
+  "status": "OK",
+  "result": {
+    "affectedOrders": [
+      {
+        "orderId": 0,
+        "description": "string",
+        "componentType": "DBS_CANCELLATION_RATE"
+      }
+    ]
+  }
+}

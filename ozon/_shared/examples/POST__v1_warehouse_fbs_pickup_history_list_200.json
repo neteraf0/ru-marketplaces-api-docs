@@ -1,0 +1,15 @@
+{
+  "result": {
+    "cursor": "string",
+    "history": [
+      {
+        "planned_date": "string",
+        "status": "string",
+        "updated_at": "2024-01-01T00:00:00Z",
+        "warehouse_id": 0,
+        "warehouse_name": "string",
+        "was_planned": false
+      }
+    ]
+  }
+}

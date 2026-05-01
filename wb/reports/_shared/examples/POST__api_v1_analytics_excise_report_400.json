@@ -1,0 +1,6 @@
+{
+  "detail": "request body has an error: doesn't match schema #/components/schemas/ExciseReportRequest: Error at \"/countries/0\": value is not one of the allowed values [\"AM\",\"BY\",\"KG\",\"KZ\",\"RU\",\"UZ\"]",
+  "origin": "tariffs",
+  "requestId": "8bbd7db59522d09926dd059892dbeff0",
+  "title": "Bad Request"
+}

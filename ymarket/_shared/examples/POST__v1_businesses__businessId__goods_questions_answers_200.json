@@ -1,0 +1,45 @@
+{
+  "status": "OK",
+  "result": {
+    "answers": [
+      {
+        "id": 1,
+        "text": "string",
+        "canModify": false,
+        "author": {
+          "type": "USER",
+          "name": "string"
+        },
+        "status": "PUBLISHED",
+        "questionId": 1,
+        "createdAt": "2024-01-01T00:00:00Z",
+        "votes": {
+          "likes": 0,
+          "dislikes": 0
+        },
+        "comments": [
+          {
+            "id": 1,
+            "text": "string",
+            "canModify": false,
+            "parentId": 1,
+            "author": {
+              "type": "USER",
+              "name": "string"
+            },
+            "status": "PUBLISHED",
+            "answerId": 1,
+            "createdAt": "2024-01-01T00:00:00Z",
+            "votes": {
+              "likes": 0,
+              "dislikes": 0
+            }
+          }
+        ]
+      }
+    ],
+    "paging": {
+      "nextPageToken": "string"
+    }
+  }
+}

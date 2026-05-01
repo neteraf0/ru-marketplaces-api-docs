@@ -1,0 +1,26 @@
+{
+  "posting_number": "string",
+  "products": [
+    {
+      "exemplars": [
+        {
+          "exemplar_id": 0,
+          "gtd": "string",
+          "gtd_check_status": "string",
+          "gtd_error_codes": [],
+          "is_gtd_absent": false,
+          "is_rnpt_absent": false,
+          "marks": [],
+          "rnpt": "string",
+          "rnpt_check_status": "string",
+          "rnpt_error_codes": [],
+          "weight": 0.0,
+          "weight_check_status": "string",
+          "weight_error_codes": []
+        }
+      ],
+      "product_id": 0
+    }
+  ],
+  "status": "string"
+}

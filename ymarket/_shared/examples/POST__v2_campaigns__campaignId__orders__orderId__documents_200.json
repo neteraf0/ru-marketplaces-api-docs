@@ -1,0 +1,30 @@
+{
+  "status": "OK",
+  "result": {
+    "upd": {
+      "status": "READY",
+      "number": "string",
+      "date": "2024-01-01"
+    },
+    "ukd": {
+      "status": "READY",
+      "number": "string",
+      "date": "2024-01-01"
+    },
+    "torgTwelve": {
+      "status": "READY",
+      "number": "string",
+      "date": "2024-01-01"
+    },
+    "sf": {
+      "status": "READY",
+      "number": "string",
+      "date": "2024-01-01"
+    },
+    "ksf": {
+      "status": "READY",
+      "number": "string",
+      "date": "2024-01-01"
+    }
+  }
+}

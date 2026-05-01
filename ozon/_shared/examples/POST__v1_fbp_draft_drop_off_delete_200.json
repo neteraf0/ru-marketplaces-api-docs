@@ -1,0 +1,10 @@
+{
+  "cancellation_state": {
+    "cancellation_error": {
+      "error_code": "NO_RESPONSE_FROM_3PF",
+      "message": "string"
+    },
+    "cancellation_status": "CONFIRMATION"
+  },
+  "row_version": 0
+}

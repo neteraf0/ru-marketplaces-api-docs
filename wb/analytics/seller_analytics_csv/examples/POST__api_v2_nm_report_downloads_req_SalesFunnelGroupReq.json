@@ -1,0 +1,21 @@
+{
+  "id": "06eea887-9d9f-491f-b16a-bb1766fcb8d2",
+  "reportType": "GROUPED_HISTORY_REPORT",
+  "userReportName": "Subject report",
+  "params": {
+    "subjectIds": [
+      1234567
+    ],
+    "brandNames": [
+      "Name"
+    ],
+    "tagIds": [
+      1234567
+    ],
+    "startDate": "2024-06-21",
+    "endDate": "2024-06-23",
+    "timezone": "Europe/Moscow",
+    "aggregationLevel": "day",
+    "skipDeletedNm": false
+  }
+}

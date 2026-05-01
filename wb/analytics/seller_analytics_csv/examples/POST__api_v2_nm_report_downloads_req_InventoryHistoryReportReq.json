@@ -1,0 +1,30 @@
+{
+  "id": "06eae887-9d9f-491f-b16a-bb1766fcb8d2",
+  "reportType": "STOCK_HISTORY_DAILY_CSV",
+  "userReportName": "Inventory report",
+  "params": {
+    "nmIds": [
+      111222333,
+      444555666
+    ],
+    "subjectIds": [
+      123,
+      456
+    ],
+    "brandNames": [
+      "ЭгКа",
+      "Stock"
+    ],
+    "tagIds": [
+      3,
+      4,
+      5
+    ],
+    "currentPeriod": {
+      "start": "2025-12-13",
+      "end": "2025-12-15"
+    },
+    "stockType": "",
+    "skipDeletedNm": true
+  }
+}

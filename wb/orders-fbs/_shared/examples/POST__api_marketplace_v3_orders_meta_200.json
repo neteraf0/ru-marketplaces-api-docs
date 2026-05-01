@@ -1,0 +1,35 @@
+{
+  "orders": [
+    {
+      "id": 0,
+      "metaDetails": [
+        {
+          "key": "uin",
+          "decision": "uinMaySell"
+        }
+      ],
+      "meta": {
+        "imei": {
+          "value": "123456789012345"
+        },
+        "uin": {
+          "value": "123456789012345"
+        },
+        "gtin": {
+          "value": "123456789012345"
+        },
+        "sgtin": {
+          "value": [
+            "123456789012345"
+          ]
+        },
+        "expiration": {
+          "value": "12.09.2030"
+        },
+        "customsDeclaration": {
+          "value": "10704010/010624/0000302"
+        }
+      }
+    }
+  ]
+}

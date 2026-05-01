@@ -1,0 +1,33 @@
+{
+  "result": {
+    "certificates": [
+      {
+        "certificate_id": 1120593,
+        "certificate_name": "Test comment DS. Post-script prod2stg",
+        "certificate_number": "ЕАЭС RU С-CN.НВ46.В.00413/21",
+        "type_code": "certificate_of_conformity",
+        "status_code": "approved",
+        "accordance_type_code": "technical_regulations_cu",
+        "rejection_reason_code": "",
+        "issue_date": "2021-08-12T03:00:00Z",
+        "expire_date": "2024-08-11T03:00:00Z",
+        "products_count": 0,
+        "verification_comment": ""
+      },
+      {
+        "certificate_id": 624047,
+        "certificate_name": "Test comment DS. Post-script prod2stg",
+        "certificate_number": "ЕАЭС N RU Д-CN.НВ25.В.11796/20",
+        "type_code": "declaration",
+        "status_code": "approved",
+        "accordance_type_code": "technical_regulations_cu",
+        "rejection_reason_code": "",
+        "issue_date": "2020-07-03T03:00:00Z",
+        "expire_date": "2023-07-02T03:00:00Z",
+        "products_count": 1,
+        "verification_comment": ""
+      }
+    ],
+    "page_count": 7
+  }
+}

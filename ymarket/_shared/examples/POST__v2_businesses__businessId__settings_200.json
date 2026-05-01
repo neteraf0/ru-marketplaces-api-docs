@@ -1,0 +1,13 @@
+{
+  "status": "OK",
+  "result": {
+    "info": {
+      "id": 1,
+      "name": "string"
+    },
+    "settings": {
+      "onlyDefaultPrice": false,
+      "currency": "RUR"
+    }
+  }
+}

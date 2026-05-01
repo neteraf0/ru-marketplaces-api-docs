@@ -1,0 +1,5 @@
+{
+  "data": null,
+  "error": true,
+  "errorText": "Check the field values in the WB Club Discount column. Field format: a whole number between {{.WbClubMinDiscount}} and {{.WbClubMaxDiscount}}, without dots or commas"
+}

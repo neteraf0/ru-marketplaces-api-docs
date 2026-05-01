@@ -1,0 +1,12 @@
+{
+  "types": [
+    {
+      "description": "string",
+      "seller_endpoint": {
+        "id": 0,
+        "url": "string"
+      },
+      "type": "TYPE_NEW_MESSAGE"
+    }
+  ]
+}

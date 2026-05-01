@@ -1,0 +1,38 @@
+{
+  "bids": [
+    {
+      "bids": [
+        {
+          "type": "combined",
+          "value": 155
+        },
+        {
+          "type": "search",
+          "value": 250
+        },
+        {
+          "type": "recommendation",
+          "value": 250
+        }
+      ],
+      "nm_id": 12345678
+    },
+    {
+      "bids": [
+        {
+          "type": "combined",
+          "value": 155
+        },
+        {
+          "type": "search",
+          "value": 250
+        },
+        {
+          "type": "recommendation",
+          "value": 250
+        }
+      ],
+      "nm_id": 87654321
+    }
+  ]
+}

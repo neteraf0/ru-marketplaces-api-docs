@@ -1,0 +1,15 @@
+{
+  "clusters": [
+    {
+      "id": 0,
+      "logistic_clusters": [
+        {
+          "warehouses": []
+        }
+      ],
+      "macrolocal_cluster_id": 0,
+      "name": "string",
+      "type": "CLUSTER_TYPE_OZON"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "result": [
+    {
+      "name": "ГОСТ",
+      "value": "gost"
+    },
+    {
+      "name": "Технический регламент РФ",
+      "value": "technical_regulations_rf"
+    },
+    {
+      "name": "Технический регламент ТС",
+      "value": "technical_regulations_cu"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "status": "OK",
+  "result": {
+    "entity": {
+      "id": 1,
+      "type": "QUESTION"
+    }
+  }
+}

@@ -1,0 +1,12 @@
+[
+  {
+    "code": "NotFound",
+    "message": "Not found",
+    "data": [
+      {
+        "sku": "skuTest4",
+        "amount": 10
+      }
+    ]
+  }
+]

@@ -1,0 +1,21 @@
+{
+  "data": {
+    "items": [
+      {
+        "nmID": 123456789,
+        "isDeleted": false,
+        "subjectName": "Принтеры",
+        "name": "Печатник 3000",
+        "vendorCode": "pechatnik3000",
+        "brandName": "Компик",
+        "mainPhoto": "https://basket-12.wbbasket.ru/vol1788/part178840/178840836/images/c246x328/1.webp",
+        "hasSizes": true,
+        "metrics": {
+          "currentPrice": {},
+          "availability": "deficient"
+        }
+      }
+    ],
+    "currency": "RUB"
+  }
+}

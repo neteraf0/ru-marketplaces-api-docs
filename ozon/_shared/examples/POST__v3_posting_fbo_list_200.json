@@ -1,0 +1,113 @@
+{
+  "postings": [
+    {
+      "order_id": 123456789,
+      "order_number": "12345-1",
+      "posting_number": "42776709-0200-5",
+      "status": "awaiting_packaging",
+      "substatus": "Ожидает упаковки",
+      "cancel_reason_id": 0,
+      "created_at": "2026-02-08T13:56:07.751Z",
+      "in_process_at": "2026-02-08T13:56:07.751Z",
+      "legal_info": {
+        "company_name": "ООО \"Покупатель\"",
+        "inn": "770123456789",
+        "kpp": "770101001"
+      },
+      "products": [
+        {
+          "sku": 123456,
+          "name": "Смартфон Samsung Galaxy A54",
+          "quantity": 1,
+          "offer_id": "SM-GALAXY-A54-128",
+          "price": "29990.00",
+          "currency": "RUB",
+          "digital_codes": [
+            "CODE123456",
+            "CODE789012"
+          ],
+          "is_marketplace_buyout": false
+        },
+        {
+          "sku": 789012,
+          "name": "Чехол для Samsung Galaxy A54",
+          "quantity": 2,
+          "offer_id": "CASE-GALAXY-A54-BLACK",
+          "price": "890.00",
+          "currency": "RUB",
+          "digital_codes": [],
+          "is_marketplace_buyout": false
+        }
+      ],
+      "analytics_data": {
+        "city": "Москва",
+        "delivery_type": "courier",
+        "is_premium": false,
+        "payment_type_group_name": "card_online",
+        "warehouse_id": 123,
+        "warehouse_name": "Основной склад Москва",
+        "is_legal": false,
+        "client_delivery_date_begin": "2026-02-10T09:00:00.751Z",
+        "client_delivery_date_end": "2026-02-12T18:00:00.751Z"
+      },
+      "financial_data": {
+        "products": [
+          {
+            "product_id": 123456,
+            "commission": {
+              "amount": 299.9,
+              "percent": 1,
+              "currency": "RUB"
+            },
+            "payout": 26690.1,
+            "price": 29990,
+            "old_price": 32990,
+            "total_discount_value": 3000,
+            "total_discount_percent": 9.09,
+            "actions": [
+              "promo_summer",
+              "new_user_discount"
+            ]
+          },
+          {
+            "product_id": 789012,
+            "commission": {
+              "amount": 44.5,
+              "percent": 5,
+              "currency": "RUB"
+            },
+            "payout": 845.5,
+            "price": 890,
+            "old_price": 990,
+            "total_discount_value": 100,
+            "total_discount_percent": 10.1,
+            "actions": [
+              "season_sale"
+            ]
+          }
+        ],
+        "cluster_from": "MOW",
+        "cluster_to": "SPB"
+      },
+      "cancellation": {
+        "cancel_reason": "Отмена по инициативе покупателя",
+        "cancellation_type": "customer",
+        "cancellation_initiator": "Клиент"
+      },
+      "ext_type": "external_shop",
+      "platform_name": "Внешний магазин",
+      "additional_data": [
+        {
+          "key": "source",
+          "value": "mobile_app"
+        },
+        {
+          "key": "delivery_instructions",
+          "value": "Позвонить за час"
+        }
+      ]
+    }
+  ],
+  "cursor": "eyJpdiI6IjUzUUhVeDlGZ0p3PT0iLCJ2YWx1ZSI6IlVxIn0=",
+  "has_next": true
+}

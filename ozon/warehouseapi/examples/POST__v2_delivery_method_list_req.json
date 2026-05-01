@@ -1,0 +1,19 @@
+{
+  "cursor": "string",
+  "filter": {
+    "delivery_method_ids": [
+      "string"
+    ],
+    "provider_ids": [
+      "string"
+    ],
+    "status": [
+      "NEW"
+    ],
+    "warehouse_ids": [
+      "string"
+    ]
+  },
+  "limit": 1,
+  "sort_dir": "ASC"
+}

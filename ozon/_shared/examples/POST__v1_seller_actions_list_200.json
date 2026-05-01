@@ -1,0 +1,38 @@
+{
+  "actions": [
+    {
+      "action_id": 0,
+      "action_parameters": {
+        "addresses": [
+          "string"
+        ],
+        "auto_stop_action_reason": "UNSPECIFIED",
+        "budget": 0.0,
+        "budget_spent": 0.0,
+        "date_end": "2024-01-01T00:00:00Z",
+        "date_start": "2024-01-01T00:00:00Z",
+        "discount_levels": [],
+        "discount_type": "UNSPECIFIED",
+        "discount_value": 0.0,
+        "is_legal_entities_segment": false,
+        "min_action_percent": 0.0,
+        "min_order_amount": 0.0,
+        "picked_segments": [],
+        "status": "ACTIVE",
+        "title": "string",
+        "type": "DISCOUNT",
+        "voucher_parameters": {},
+        "warehouses": [
+          "string"
+        ]
+      },
+      "allow_delete": false,
+      "highlight_url": "string",
+      "is_editable": false,
+      "is_participated": false,
+      "is_turn_on": false,
+      "sku_count": 0
+    }
+  ],
+  "total": 0
+}

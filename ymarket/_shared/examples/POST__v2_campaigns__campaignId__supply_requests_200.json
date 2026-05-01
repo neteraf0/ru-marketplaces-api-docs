@@ -1,0 +1,77 @@
+{
+  "status": "OK",
+  "result": {
+    "requests": [
+      {
+        "id": {
+          "id": 1,
+          "marketplaceRequestId": "string",
+          "warehouseRequestId": "string"
+        },
+        "type": "SUPPLY",
+        "subtype": "DEFAULT",
+        "status": "CREATED",
+        "updatedAt": "2024-01-01T00:00:00Z",
+        "counters": {
+          "planCount": 0,
+          "factCount": 0,
+          "undefinedCount": 0,
+          "surplusCount": 0,
+          "shortageCount": 0,
+          "defectCount": 0,
+          "acceptableCount": 0,
+          "unacceptableCount": 0,
+          "actualPalletsCount": 0,
+          "actualBoxCount": 0
+        },
+        "parentLink": {
+          "id": {
+            "id": 1,
+            "marketplaceRequestId": "string",
+            "warehouseRequestId": "string"
+          },
+          "type": "VIRTUAL_DISTRIBUTION"
+        },
+        "childrenLinks": [
+          {
+            "id": {
+              "id": 1,
+              "marketplaceRequestId": "string",
+              "warehouseRequestId": "string"
+            },
+            "type": "VIRTUAL_DISTRIBUTION"
+          }
+        ],
+        "targetLocation": {
+          "requestedDate": "2024-01-01T00:00:00Z",
+          "serviceId": 0,
+          "name": "string",
+          "address": {
+            "fullAddress": "string",
+            "gps": {
+              "latitude": 0.0,
+              "longitude": 0.0
+            }
+          },
+          "type": "FULFILLMENT"
+        },
+        "transitLocation": {
+          "requestedDate": "2024-01-01T00:00:00Z",
+          "serviceId": 0,
+          "name": "string",
+          "address": {
+            "fullAddress": "string",
+            "gps": {
+              "latitude": 0.0,
+              "longitude": 0.0
+            }
+          },
+          "type": "FULFILLMENT"
+        }
+      }
+    ],
+    "paging": {
+      "nextPageToken": "string"
+    }
+  }
+}

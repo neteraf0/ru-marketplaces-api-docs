@@ -1,0 +1,7 @@
+{
+  "error": false,
+  "errorText": "string",
+  "additionalErrors": {
+    "string": "string"
+  }
+}

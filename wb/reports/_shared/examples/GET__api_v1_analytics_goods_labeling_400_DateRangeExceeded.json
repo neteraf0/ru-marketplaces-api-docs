@@ -1,0 +1,6 @@
+{
+  "detail": "difference between dateFrom and dateTo should be less or equal 31 days",
+  "origin": "api-statistics",
+  "requestId": "d5a7c02990f5e611728c29293fb6c366",
+  "title": "Bad Request"
+}

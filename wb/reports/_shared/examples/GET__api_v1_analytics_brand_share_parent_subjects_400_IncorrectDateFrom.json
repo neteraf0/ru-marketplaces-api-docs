@@ -1,0 +1,6 @@
+{
+  "detail": "date cannot be earlier than 2022-11-01",
+  "origin": "api-statistics",
+  "requestId": "68472ed47542fb51572de64273075bc0",
+  "title": "Bad Request"
+}

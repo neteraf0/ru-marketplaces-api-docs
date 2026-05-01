@@ -1,0 +1,21 @@
+[
+  {
+    "rrdId": 1232610467,
+    "reportId": 1234567,
+    "acqDate": "2026-03-21",
+    "acquiringBank": "Тинькофф",
+    "tin": "010101010101",
+    "taxRegistrationReasonCode": "7701123301",
+    "saleDate": "2026-03-21",
+    "srid": "D0.r3f80c3eec6f845c6840128b4c19986f9.0.0",
+    "docTypeName": "Продажа",
+    "nmId": 1234567,
+    "retailAmount": "367",
+    "acquiringFee": "14.89",
+    "acquiringFeeVat": "4.06",
+    "invoiceNumber": "С/Ф 123",
+    "invoiceDate": "2026-03-20",
+    "shkId": 1239159661,
+    "currency": "RUB"
+  }
+]

@@ -1,0 +1,13 @@
+{
+  "orders": [
+    {
+      "deliveryDate": "2024-01-01T00:00:00Z",
+      "statuses": [
+        {
+          "code": "SORTED"
+        }
+      ],
+      "orderID": 123456789
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+[
+  {
+    "data": [
+      {
+        "sku": "",
+        "chrtId": 123456789,
+        "amount": 10
+      }
+    ],
+    "code": "DeliveryTypeRestriction",
+    "message": "This product category is not available for sale under this delivery type."
+  }
+]

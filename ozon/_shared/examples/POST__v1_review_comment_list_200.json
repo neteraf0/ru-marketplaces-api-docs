@@ -1,0 +1,18 @@
+{
+  "comments": [
+    {
+      "id": "1234-5678",
+      "text": "comment text",
+      "parent_comment_id": "3333-3333",
+      "is_owner": true,
+      "is_official": false,
+      "is_published": true,
+      "is_rejected": true,
+      "likes_amount": 0,
+      "dislikes_amount": 0,
+      "deviation_reason": "string",
+      "published_at": "2021-09-03T07:04:53.220Z"
+    }
+  ],
+  "offset": 124
+}

@@ -1,0 +1,28 @@
+{
+  "result": [
+    {
+      "id": 352,
+      "title": "Товар закончился на складе продавца",
+      "type_id": "seller",
+      "is_available_for_cancellation": true
+    },
+    {
+      "id": 401,
+      "title": "Продавец отклонил арбитраж",
+      "type_id": "seller",
+      "is_available_for_cancellation": false
+    },
+    {
+      "id": 402,
+      "title": "Другое (вина продавца)",
+      "type_id": "seller",
+      "is_available_for_cancellation": true
+    },
+    {
+      "id": 666,
+      "title": "Возврат из службы доставки: нет доставки в указанный регион",
+      "type_id": "seller",
+      "is_available_for_cancellation": false
+    }
+  ]
+}

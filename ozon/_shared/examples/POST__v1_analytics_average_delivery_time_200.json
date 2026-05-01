@@ -1,0 +1,82 @@
+{
+  "data": [
+    {
+      "clusters_data": [
+        {
+          "another_delivery_time": [],
+          "cluster_id": 147,
+          "delivery_time_FBO": 60,
+          "delivery_time_FBS": 60,
+          "delivery_time_status": "Medium",
+          "orders_count": 1,
+          "orders_percent": 2
+        },
+        {
+          "another_delivery_time": [
+            {
+              "delivery_time": 28,
+              "orders_count": 30,
+              "orders_percent": 76,
+              "delivery_time_status": "Fast"
+            }
+          ],
+          "cluster_id": 154,
+          "delivery_time_FBO": 60,
+          "delivery_time_FBS": 60,
+          "delivery_time_status": "Medium",
+          "orders_count": 39,
+          "orders_percent": 84
+        }
+      ],
+      "delivery_cluster_id": 150,
+      "metrics": {
+        "average_delivery_time": 46,
+        "average_delivery_time_status": "Medium",
+        "recommended_supply": 957,
+        "orders_count": {
+          "total": 46,
+          "fast": {
+            "value": 12,
+            "percent": 26
+          },
+          "medium": {
+            "value": 34,
+            "percent": 73
+          },
+          "long": {
+            "value": 0,
+            "percent": 0
+          }
+        },
+        "impact_share": 30,
+        "exact_impact_share": "13.9257",
+        "attention_level": "ATTENTION_HI",
+        "lost_profit": 1763110
+      }
+    }
+  ],
+  "total": {
+    "average_delivery_time": 45,
+    "average_delivery_time_status": "Medium",
+    "recommended_supply": 18579,
+    "orders_count": {
+      "total": 201,
+      "fast": {
+        "value": 105,
+        "percent": 52
+      },
+      "medium": {
+        "value": 78,
+        "percent": 38
+      },
+      "long": {
+        "value": 18,
+        "percent": 8
+      }
+    },
+    "impact_share": 100,
+    "exact_impact_share": "13.9257",
+    "attention_level": "ATTENTION_LOW",
+    "lost_profit": 5877036
+  }
+}

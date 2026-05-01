@@ -1,0 +1,7 @@
+{
+  "detail": "invalid payment_type value",
+  "origin": "camp-api-public-cache",
+  "request_id": "7e5cb1f106cc6e85b5b29eb2e8815da2",
+  "status": 400,
+  "title": "invalid payload"
+}

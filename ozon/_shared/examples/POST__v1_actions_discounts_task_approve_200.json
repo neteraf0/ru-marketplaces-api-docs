@@ -1,0 +1,12 @@
+{
+  "result": {
+    "fail_details": [
+      {
+        "task_id": 78901,
+        "error_for_user": "Скидка отклонена"
+      }
+    ],
+    "success_count": 5,
+    "fail_count": 1
+  }
+}

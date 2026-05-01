@@ -1,0 +1,19 @@
+{
+  "status": "OK",
+  "result": {
+    "deliveryIntervals": {
+      "availableDeliveryIntervals": [
+        {
+          "deliveryDateInterval": {
+            "fromDate": "2024-01-01",
+            "toDate": "2024-01-01"
+          },
+          "deliveryTimeInterval": {
+            "fromTime": "string",
+            "toTime": "string"
+          }
+        }
+      ]
+    }
+  }
+}

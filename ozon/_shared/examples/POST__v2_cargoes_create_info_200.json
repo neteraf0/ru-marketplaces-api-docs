@@ -1,0 +1,24 @@
+{
+  "errors": {
+    "error_reasons": [
+      "ERROR_REASON_UNSPECIFIED"
+    ],
+    "items_validation": [
+      {
+        "cargo_key": "string",
+        "item": "string",
+        "quant": 0,
+        "type": "SUPPLY_ITEM_NOT_FOUND"
+      }
+    ]
+  },
+  "result": {
+    "cargoes": [
+      {
+        "key": "string",
+        "value": {}
+      }
+    ]
+  },
+  "status": "STATUS_UNSPECIFIED"
+}

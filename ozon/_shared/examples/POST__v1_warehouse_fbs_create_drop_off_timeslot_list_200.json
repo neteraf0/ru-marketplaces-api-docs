@@ -1,0 +1,11 @@
+{
+  "timeslots": [
+    {
+      "acceptance_end_time_local": "string",
+      "acceptance_start_time_local": "string",
+      "from": "string",
+      "id": 0,
+      "to": "string"
+    }
+  ]
+}

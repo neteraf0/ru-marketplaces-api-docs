@@ -1,0 +1,9 @@
+{
+  "statuses": [
+    {
+      "expired_at": "2024-01-01T00:00:00Z",
+      "min_price_for_auto_actions_enabled": false,
+      "product_id": 0
+    }
+  ]
+}

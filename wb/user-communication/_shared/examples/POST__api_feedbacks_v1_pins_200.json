@@ -1,0 +1,26 @@
+{
+  "data": [
+    {
+      "feedbackId": "VlbkVVl7mtw37wуWkJZz",
+      "pinId": 18577062,
+      "pinMethod": "subscription",
+      "pinOn": "imt",
+      "isErrors": false
+    },
+    {
+      "feedbackId": "DibuRAImknLyiqgzvGcU",
+      "pinMethod": "tariff",
+      "pinOn": "imt",
+      "isErrors": true,
+      "errors": [
+        {
+          "status": "itemNotFound",
+          "title": "item not found",
+          "detail": "item not found or does not belong to seller",
+          "requestId": "0414dc48df701618e0a3bfc414fe3136",
+          "origin": "pin-open-api"
+        }
+      ]
+    }
+  ]
+}

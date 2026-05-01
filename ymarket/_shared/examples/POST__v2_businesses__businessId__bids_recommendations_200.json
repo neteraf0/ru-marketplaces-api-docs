@@ -1,0 +1,26 @@
+{
+  "status": "OK",
+  "result": {
+    "recommendations": [
+      {
+        "sku": "string",
+        "bid": 570,
+        "bidRecommendations": [
+          {
+            "bid": 570,
+            "showPercent": 0,
+            "benefits": [
+              "BESTS"
+            ]
+          }
+        ],
+        "priceRecommendations": [
+          {
+            "campaignId": 1,
+            "price": 1
+          }
+        ]
+      }
+    ]
+  }
+}

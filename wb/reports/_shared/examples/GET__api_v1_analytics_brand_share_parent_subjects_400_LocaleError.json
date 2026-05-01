@@ -1,0 +1,6 @@
+{
+  "detail": "parameter \"locale\" in query has an error: value is not one of the allowed values [\"ru\",\"en\",\"zh\"]",
+  "origin": "api-statistics",
+  "requestId": "af5b14cceb985597464ce500137bc1af",
+  "title": "Bad Request"
+}

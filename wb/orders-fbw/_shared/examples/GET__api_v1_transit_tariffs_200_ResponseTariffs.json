@@ -1,0 +1,27 @@
+[
+  {
+    "transitWarehouseName": "Обухово",
+    "destinationWarehouseName": "Краснодар",
+    "activeFrom": "2024-11-03T21:01:00Z",
+    "boxTariff": null,
+    "palletTariff": 7500
+  },
+  {
+    "transitWarehouseName": "СЦ Гомель 2",
+    "destinationWarehouseName": "Краснодар (Тихорецкая)",
+    "activeFrom": "2025-04-08T21:00:48.019Z",
+    "boxTariff": [
+      {
+        "from": 0,
+        "to": 1500,
+        "value": 5.3
+      },
+      {
+        "from": 1500,
+        "to": 0,
+        "value": 3.9
+      }
+    ],
+    "palletTariff": 6500
+  }
+]

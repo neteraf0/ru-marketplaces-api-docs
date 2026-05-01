@@ -1,0 +1,25 @@
+{
+  "splits": [
+    {
+      "delivery_method": {
+        "delivery_time_zone_offset": 0,
+        "delivery_type": "UNSPECIFIED",
+        "id": 0,
+        "name": "string",
+        "timeslots": [],
+        "unavailable_reason": "UNSPECIFIED",
+        "warehouse_time_zone_offset": 0
+      },
+      "delivery_schema": "UNSPECIFIED",
+      "items": [
+        {
+          "offer_id": "string",
+          "quantity": 0,
+          "sku": 0
+        }
+      ],
+      "unavailable_reason": "UNSPECIFIED",
+      "warehouse_id": 0
+    }
+  ]
+}

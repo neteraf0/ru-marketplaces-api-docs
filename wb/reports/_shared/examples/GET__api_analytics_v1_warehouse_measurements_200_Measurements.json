@@ -1,0 +1,37 @@
+{
+  "data": {
+    "reports": [
+      {
+        "nmId": 9234567089,
+        "subjectName": "Чемоданы",
+        "dimId": 4983331,
+        "volume": 16.25,
+        "width": 26,
+        "length": 25,
+        "height": 25,
+        "photoUrls": [
+          "https://static-basket-03.wb.ru/vol54/handheld-goods-measurements-photo/282504229_98bd4653-cc2e-496c-7aee-e035c2329ac0.jpg",
+          "https://static-basket-03.wb.ru/vol54/handheld-goods-measurements-photo/282504229_55f71345-58d9-48ef-6ae8-548e34abefc9.jpg",
+          "https://static-basket-03.wb.ru/vol54/handheld-goods-measurements-photo/282504229_576b1f5b-5245-4e55-4ff4-351fc7a77f72.jpg"
+        ],
+        "dt": "2025-06-05T00:00:00Z"
+      },
+      {
+        "nmId": 9234560789,
+        "subjectName": "Платья",
+        "dimId": 86840305,
+        "volume": 39.2,
+        "width": 66,
+        "length": 54,
+        "height": 11,
+        "photoUrls": [
+          "https://static-basket-03.wb.ru/vol54/handheld-goods-measurements-photo/8906416_a9f839da-c3b7-4ea6-737c-a9e731250fb0.jpg",
+          "https://static-basket-03.wb.ru/vol54/handheld-goods-measurements-photo/8906416_2aac23b7-c8f9-42db-74e9-b4a9c916017c.jpg",
+          "https://static-basket-03.wb.ru/vol54/handheld-goods-measurements-photo/8906416_ff93b7c4-19d6-e0a2-4dba-7c2f09f06b3.jpg"
+        ],
+        "dt": "2025-04-01T00:06:00Z"
+      }
+    ],
+    "total": 2
+  }
+}

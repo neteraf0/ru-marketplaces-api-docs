@@ -1,0 +1,30 @@
+{
+  "advertId": 987654321,
+  "base": {
+    "competitiveBid": {
+      "bidKopecks": 39500
+    },
+    "leadersBid": {
+      "bidKopecks": 66900
+    },
+    "top2": {
+      "bidKopecks": 0
+    }
+  },
+  "nmId": 123456789,
+  "normQueries": [
+    {
+      "normQuery": "футболка",
+      "reachMax": {
+        "bidKopecks": 50500,
+        "bidKopecksMin": 49500
+      },
+      "reachMedium": {
+        "bidKopecks": 32000
+      },
+      "reachMin": {
+        "bidKopecks": 32000
+      }
+    }
+  ]
+}

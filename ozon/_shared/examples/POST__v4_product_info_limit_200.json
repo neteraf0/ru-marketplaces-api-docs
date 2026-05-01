@@ -1,0 +1,16 @@
+{
+  "daily_create": {
+    "limit": 0,
+    "reset_at": "2024-01-01T00:00:00Z",
+    "usage": 0
+  },
+  "daily_update": {
+    "limit": 0,
+    "reset_at": "2024-01-01T00:00:00Z",
+    "usage": 0
+  },
+  "total": {
+    "limit": 0,
+    "usage": 0
+  }
+}

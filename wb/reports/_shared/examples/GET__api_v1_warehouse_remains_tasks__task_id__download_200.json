@@ -1,0 +1,33 @@
+[
+  {
+    "brand": "Wonderful",
+    "subjectName": "Фотоальбомы",
+    "vendorCode": "41058/прозрачный",
+    "nmId": 183804172,
+    "barcode": "2037031652319",
+    "techSize": "0",
+    "volume": 1.33,
+    "warehouses": [
+      {
+        "warehouseName": "В пути до получателей",
+        "quantity": 14
+      },
+      {
+        "warehouseName": "В пути возвраты на склад WB",
+        "quantity": 4
+      },
+      {
+        "warehouseName": "Всего находится на складах",
+        "quantity": 267
+      },
+      {
+        "warehouseName": "Невинномысск",
+        "quantity": 134
+      },
+      {
+        "warehouseName": "Коледино",
+        "quantity": 133
+      }
+    ]
+  }
+]

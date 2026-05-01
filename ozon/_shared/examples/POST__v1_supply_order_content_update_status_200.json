@@ -1,0 +1,7 @@
+{
+  "errors": [
+    "INVALID_DRAFT_BUNDLE_ID"
+  ],
+  "new_bundle_id": "string",
+  "status": "SUCCESS"
+}

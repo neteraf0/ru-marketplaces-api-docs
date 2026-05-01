@@ -1,0 +1,15 @@
+{
+  "items": [
+    {
+      "ads": 0.0,
+      "current_stock": 0,
+      "idc": 0.0,
+      "idc_grade": "GRADES_NONE",
+      "name": "string",
+      "offer_id": "string",
+      "sku": 0,
+      "turnover": 0.0,
+      "turnover_grade": "GRADES_NONE"
+    }
+  ]
+}

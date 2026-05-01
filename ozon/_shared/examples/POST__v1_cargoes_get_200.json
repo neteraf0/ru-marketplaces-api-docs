@@ -1,0 +1,14 @@
+{
+  "supply": [
+    {
+      "bundle_id": "string",
+      "cargoes": [
+        {
+          "bundle_id": "string",
+          "cargo_id": 0
+        }
+      ],
+      "supply_id": 0
+    }
+  ]
+}

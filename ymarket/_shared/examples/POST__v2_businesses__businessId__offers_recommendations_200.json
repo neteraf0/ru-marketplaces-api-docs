@@ -1,0 +1,34 @@
+{
+  "status": "OK",
+  "result": {
+    "paging": {
+      "nextPageToken": "string"
+    },
+    "offerRecommendations": [
+      {
+        "offer": {
+          "offerId": "string",
+          "price": {
+            "value": 0,
+            "currencyId": "RUR"
+          },
+          "competitiveness": "OPTIMAL",
+          "shows": 0
+        },
+        "recommendation": {
+          "offerId": "string",
+          "competitivenessThresholds": {
+            "optimalPrice": {
+              "value": 0,
+              "currencyId": "RUR"
+            },
+            "averagePrice": {
+              "value": 0,
+              "currencyId": "RUR"
+            }
+          }
+        }
+      }
+    ]
+  }
+}

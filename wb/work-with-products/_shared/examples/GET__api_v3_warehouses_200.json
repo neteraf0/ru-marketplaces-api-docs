@@ -1,0 +1,11 @@
+[
+  {
+    "name": "Kosmonavtov 14",
+    "officeId": 15,
+    "id": 1,
+    "cargoType": 1,
+    "deliveryType": 1,
+    "isDeleting": false,
+    "isProcessing": true
+  }
+]

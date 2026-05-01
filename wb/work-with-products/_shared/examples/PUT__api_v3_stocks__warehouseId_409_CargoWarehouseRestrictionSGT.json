@@ -1,0 +1,12 @@
+[
+  {
+    "code": "CargoWarehouseRestrictionSGT",
+    "message": "The selected warehouse is not suitable for goods with the type \"ODC\". Upload the balances to the warehouse marked - ODC",
+    "data": [
+      {
+        "sku": "2042688657617",
+        "amount": 0
+      }
+    ]
+  }
+]

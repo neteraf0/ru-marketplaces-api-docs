@@ -1,0 +1,21 @@
+{
+  "status": "OK",
+  "result": {
+    "chatId": 1,
+    "orderId": 1,
+    "context": {
+      "type": "ORDER",
+      "customer": {
+        "name": "string",
+        "publicId": "string"
+      },
+      "campaignId": 1,
+      "orderId": 1,
+      "returnId": 1
+    },
+    "type": "CHAT",
+    "status": "NEW",
+    "createdAt": "2017-11-21T00:00:00+03:00",
+    "updatedAt": "2017-11-21T00:00:00+03:00"
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "data": [
+    {
+      "clusters_data": [
+        {
+          "another_delivery_time": [],
+          "cluster_id": 154,
+          "delivery_time_FBO": 0,
+          "delivery_time_FBS": 0,
+          "delivery_time_status": "Fast",
+          "orders_count": 1,
+          "orders_percent": 100
+        }
+      ],
+      "item": {
+        "name": "Мяч надувной для детей (набор: футбольный, баскетбольный, регби) с насосом",
+        "delivery_schema": "ALL",
+        "sku": 1423433655,
+        "offer_id": "59704000"
+      },
+      "metrics": {
+        "average_delivery_time": 31,
+        "average_delivery_time_status": "Fast",
+        "recommended_supply": 0,
+        "orders_count": {
+          "total": 1,
+          "fast": {
+            "value": 1,
+            "percent": 100
+          },
+          "medium": {
+            "value": 0,
+            "percent": 0
+          },
+          "long": {
+            "value": 0,
+            "percent": 0
+          }
+        },
+        "impact_share": 0,
+        "exact_impact_share": "13.9257",
+        "attention_level": "LOW",
+        "lost_profit": 0
+      }
+    }
+  ],
+  "total_rows": 10
+}

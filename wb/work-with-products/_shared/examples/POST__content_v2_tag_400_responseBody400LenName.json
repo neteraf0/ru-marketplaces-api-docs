@@ -1,0 +1,8 @@
+{
+  "data": null,
+  "error": true,
+  "errorText": "Invalid tag name value",
+  "additionalErrors": {
+    "description": "Tag name too long. No more than 15 characters allowed"
+  }
+}

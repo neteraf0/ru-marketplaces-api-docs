@@ -1,0 +1,36 @@
+{
+  "settings": {
+    "countryRegion": 0,
+    "shopName": "string",
+    "showInContext": false,
+    "showInPremium": false,
+    "useOpenStat": false,
+    "localRegion": {
+      "id": 0,
+      "name": "string",
+      "type": "OTHER",
+      "deliveryOptionsSource": "WEB",
+      "delivery": {
+        "schedule": {
+          "availableOnHolidays": false,
+          "customHolidays": [
+            "23-09-2022"
+          ],
+          "customWorkingDays": [
+            "23-09-2022"
+          ],
+          "period": {
+            "fromDate": "23-09-2022",
+            "toDate": "23-09-2022"
+          },
+          "totalHolidays": [
+            "23-09-2022"
+          ],
+          "weeklyHolidays": [
+            1
+          ]
+        }
+      }
+    }
+  }
+}

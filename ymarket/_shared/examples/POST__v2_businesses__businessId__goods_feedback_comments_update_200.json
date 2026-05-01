@@ -1,0 +1,15 @@
+{
+  "status": "OK",
+  "result": {
+    "id": 0,
+    "text": "string",
+    "canModify": false,
+    "parentId": 0,
+    "author": {
+      "type": "USER",
+      "name": "string"
+    },
+    "status": "PUBLISHED",
+    "feedbackId": 0
+  }
+}

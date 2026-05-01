@@ -1,0 +1,11 @@
+{
+  "brands": [
+    {
+      "id": 9007199254,
+      "logoUrl": "string",
+      "name": "Brand"
+    }
+  ],
+  "next": 1212,
+  "total": 344534
+}

@@ -1,0 +1,25 @@
+{
+  "report": [
+    {
+      "barcode": "1680063403480",
+      "brand": "dub",
+      "completedDt": "2025-03-31T11:33:53",
+      "dstOfficeAddress": "Жуковский Улица Маяковского 19",
+      "dstOfficeId": 310105,
+      "expiredDt": "2025-03-31T11:33:53",
+      "isStatusActive": 0,
+      "nmId": 12862181,
+      "orderDt": "2024-08-26",
+      "orderId": 2034240826,
+      "readyToReturnDt": "2025-01-31T08:33:50",
+      "reason": "Цвет",
+      "returnType": "Возврат заблокированного товара",
+      "shkId": 23411783472,
+      "srid": "ad3817664d3046c5a8d55054d8be96d6",
+      "status": "В пути в пвз",
+      "stickerId": "33811984302",
+      "subjectName": "Багажные бирки",
+      "techSize": "0"
+    }
+  ]
+}

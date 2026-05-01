@@ -1,0 +1,57 @@
+{
+  "status": "OK",
+  "result": {
+    "paging": {
+      "nextPageToken": "string"
+    },
+    "returns": [
+      {
+        "id": 0,
+        "orderId": 0,
+        "creationDate": "2020-02-02T14:30:30+03:00",
+        "updateDate": "2020-02-02T14:30:30+03:00",
+        "refundStatus": "STARTED_BY_USER",
+        "logisticPickupPoint": {
+          "id": 0,
+          "name": "string",
+          "address": {
+            "country": "Россия",
+            "city": "Москва",
+            "street": "Стрелецкая улица",
+            "house": "9к2",
+            "postcode": "123518"
+          },
+          "instruction": "string",
+          "type": "WAREHOUSE",
+          "logisticPartnerId": 0
+        },
+        "pickupTillDate": "2020-02-02T14:30:30+03:00",
+        "shipmentRecipientType": "SHOP",
+        "shipmentStatus": "CREATED",
+        "refundAmount": 0,
+        "amount": {
+          "value": 0.0,
+          "currencyId": "RUR"
+        },
+        "items": [
+          {
+            "marketSku": 1,
+            "shopSku": "string",
+            "count": 0,
+            "decisions": [
+              {}
+            ],
+            "instances": [
+              {}
+            ],
+            "tracks": [
+              {}
+            ]
+          }
+        ],
+        "returnType": "UNREDEEMED",
+        "fastReturn": false
+      }
+    ]
+  }
+}

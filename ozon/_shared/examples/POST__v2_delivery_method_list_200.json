@@ -1,0 +1,20 @@
+{
+  "cursor": "string",
+  "has_next": false,
+  "delivery_methods": [
+    {
+      "created_at": "2024-01-01T00:00:00Z",
+      "cutoff": "string",
+      "id": 0,
+      "is_express": false,
+      "name": "string",
+      "provider_id": 0,
+      "sla_cut_in": 0,
+      "status": "string",
+      "template_id": 0,
+      "tpl_integration_type": "string",
+      "updated_at": "2024-01-01T00:00:00Z",
+      "warehouse_id": 0
+    }
+  ]
+}

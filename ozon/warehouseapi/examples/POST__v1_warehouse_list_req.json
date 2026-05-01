@@ -1,0 +1,7 @@
+{
+  "limit": 1,
+  "offset": 1,
+  "with": {
+    "able_to_set_price": true
+  }
+}

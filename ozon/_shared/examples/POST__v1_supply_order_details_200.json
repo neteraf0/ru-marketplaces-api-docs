@@ -1,0 +1,83 @@
+{
+  "created_date": "2024-01-01T00:00:00Z",
+  "data_filling_deadline_utc": "2024-01-01T00:00:00Z",
+  "dropoff_warehouse_id": 0,
+  "order_id": 0,
+  "order_number": "string",
+  "order_tags": {
+    "is_econom": false,
+    "is_super_fbo": false,
+    "is_virtual": false,
+    "original_supply_id": 0,
+    "product_super_fbo": false
+  },
+  "state": "UNSPECIFIED",
+  "state_updated_date": "2024-01-01T00:00:00Z",
+  "supplies": [
+    {
+      "cancellation_allowability": {
+        "can_not_set_reasons": [],
+        "can_set": false
+      },
+      "content": {
+        "bundle_id": "string",
+        "can_not_set_reasons": [],
+        "can_set": false
+      },
+      "ettn_info": {
+        "contains_valid": false,
+        "is_required": false,
+        "is_uploaded": false
+      },
+      "is_crossdock": false,
+      "overdue_reason": "UNSPECIFIED",
+      "storage_warehouse": {
+        "address": "string",
+        "arrival_date": "2024-01-01T00:00:00Z",
+        "name": "string",
+        "warehouse_id": 0
+      },
+      "macrolocal_cluster_id": 0,
+      "supply_id": 0,
+      "supply_state": "UNSPECIFIED",
+      "supply_tags": {
+        "is_ettn_required": false,
+        "is_evsd_required": false,
+        "is_jewelry": false,
+        "is_marking_possible": false,
+        "is_marking_required": false,
+        "is_utd": false
+      }
+    }
+  ],
+  "timeslot": {
+    "can_not_set_reasons": [
+      "UNSPECIFIED"
+    ],
+    "can_set": false,
+    "value": {
+      "timeslot": {
+        "from": "2024-01-01T00:00:00Z",
+        "to": "2024-01-01T00:00:00Z"
+      },
+      "timezone_info": {
+        "iana_name": "string",
+        "offset": "string"
+      }
+    }
+  },
+  "vehicle": {
+    "can_not_set_reasons": [
+      "UNSPECIFIED"
+    ],
+    "can_set": false,
+    "value": {
+      "driver_is_deleted": false,
+      "driver_name": "string",
+      "driver_phone": "string",
+      "vehicle_is_deleted": false,
+      "vehicle_model": "string",
+      "vehicle_number": "string"
+    }
+  }
+}

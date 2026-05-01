@@ -1,0 +1,43 @@
+{
+  "items": [
+    {
+      "offer_id": "PROD-2023-001",
+      "attributes": [
+        {
+          "complex_id": 1,
+          "id": 1,
+          "values": [
+            {
+              "dictionary_value_id": 1001,
+              "value": "Синий"
+            }
+          ]
+        },
+        {
+          "complex_id": 2,
+          "id": 2,
+          "values": [
+            {
+              "dictionary_value_id": 2001,
+              "value": "42"
+            }
+          ]
+        },
+        {
+          "complex_id": 3,
+          "id": 3,
+          "values": [
+            {
+              "dictionary_value_id": 3001,
+              "value": "Хлопок"
+            },
+            {
+              "dictionary_value_id": 3002,
+              "value": "Полиэстер"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

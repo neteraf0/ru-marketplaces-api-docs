@@ -1,0 +1,6 @@
+{
+  "title": "bad request",
+  "requestId": "7f5a4faf91634812de5e143955ca0371",
+  "origin": "fbapi",
+  "detail": "Неверный синтаксис JSON"
+}

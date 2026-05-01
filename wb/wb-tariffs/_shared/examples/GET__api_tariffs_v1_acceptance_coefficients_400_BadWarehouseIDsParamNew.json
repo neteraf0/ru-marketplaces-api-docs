@@ -1,0 +1,7 @@
+{
+  "status": 400,
+  "title": "bad request",
+  "detail": "Неверный формат warehouseIDs",
+  "requestId": "a6bdc2a4d2fde51c2036fa8af2483886",
+  "origin": "supply-api"
+}

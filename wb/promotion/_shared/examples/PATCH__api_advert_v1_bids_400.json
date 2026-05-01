@@ -1,0 +1,7 @@
+{
+  "detail": "wrong bid value: 3; min: 150",
+  "origin": "camp-api-public-cache",
+  "request_id": "9a929a81ea9dc1601fcc4be81f32c1cb",
+  "status": 400,
+  "title": "invalid payload"
+}

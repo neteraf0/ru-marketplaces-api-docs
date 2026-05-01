@@ -1,0 +1,81 @@
+{
+  "data": {
+    "commonInfo": {
+      "supplierRating": {
+        "current": 5.3,
+        "dynamics": 5.4
+      },
+      "advertisedProducts": {
+        "current": 5,
+        "dynamics": 50
+      },
+      "totalProducts": 150
+    },
+    "positionInfo": {
+      "average": {
+        "current": 5,
+        "dynamics": 50
+      },
+      "median": {
+        "current": 5,
+        "dynamics": 50
+      },
+      "chartItems": [
+        {}
+      ],
+      "clusters": {
+        "firstHundred": {},
+        "secondHundred": {},
+        "below": {}
+      }
+    },
+    "visibilityInfo": {
+      "visibility": {
+        "current": 5,
+        "dynamics": 50
+      },
+      "openCard": {
+        "current": 5,
+        "dynamics": 50
+      },
+      "byDay": [
+        {
+          "visibility": 100,
+          "open": 124
+        }
+      ],
+      "byWeek": [
+        {
+          "visibility": 100,
+          "open": 124
+        }
+      ],
+      "byMonth": [
+        {
+          "visibility": 100,
+          "open": 124
+        }
+      ]
+    },
+    "groups": [
+      {
+        "subjectName": "Phones",
+        "subjectId": 50,
+        "brandName": "Apple",
+        "tagName": "phones",
+        "tagId": 65,
+        "metrics": {
+          "avgPosition": {},
+          "openCard": {},
+          "addToCart": {},
+          "openToCart": {},
+          "orders": {},
+          "cartToOrder": {},
+          "visibility": {}
+        },
+        "items": []
+      }
+    ],
+    "currency": "RUB"
+  }
+}

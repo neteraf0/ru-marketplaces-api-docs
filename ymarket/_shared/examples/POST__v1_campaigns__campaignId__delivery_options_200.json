@@ -1,0 +1,28 @@
+{
+  "status": "OK",
+  "result": {
+    "warehousesDeliveryOptions": [
+      {
+        "warehouseId": 1,
+        "deliveryOptions": {
+          "pickupDelivery": {
+            "pickupOptions": [
+              {}
+            ]
+          },
+          "courierDelivery": {
+            "courierDeliveryOptions": [
+              {}
+            ]
+          }
+        },
+        "items": [
+          {
+            "offerId": "string",
+            "count": 1
+          }
+        ]
+      }
+    ]
+  }
+}

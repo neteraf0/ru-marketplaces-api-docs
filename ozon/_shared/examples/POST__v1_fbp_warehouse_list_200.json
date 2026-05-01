@@ -1,0 +1,22 @@
+{
+  "warehouses": [
+    {
+      "address_detailing": {
+        "city": "string",
+        "country": "string",
+        "house": "string",
+        "region": "string",
+        "street": "string",
+        "zipcode": "string"
+      },
+      "id": 0,
+      "is_bonded": false,
+      "name": "string",
+      "partner_name": "string",
+      "supply_types": [
+        0
+      ],
+      "timezone_name": "string"
+    }
+  ]
+}

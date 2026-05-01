@@ -1,0 +1,13 @@
+{
+  "campaign": {
+    "domain": "string",
+    "id": 1,
+    "clientId": 0,
+    "business": {
+      "id": 1,
+      "name": "string"
+    },
+    "placementType": "FBS",
+    "apiAvailability": "AVAILABLE"
+  }
+}

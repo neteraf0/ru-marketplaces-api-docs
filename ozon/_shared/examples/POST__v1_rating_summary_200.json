@@ -1,0 +1,27 @@
+{
+  "groups": [
+    {
+      "group_name": "string",
+      "items": [
+        {
+          "current_value": 0.0,
+          "name": "string",
+          "past_value": 0.0,
+          "rating": "string",
+          "rating_direction": "string",
+          "status": "string",
+          "value_type": "string"
+        }
+      ]
+    }
+  ],
+  "localization_index": [
+    {
+      "calculation_date": "2024-01-01T00:00:00Z",
+      "localization_percentage": 0
+    }
+  ],
+  "penalty_score_exceeded": false,
+  "premium": false,
+  "premium_plus": false
+}

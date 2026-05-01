@@ -1,0 +1,57 @@
+{
+  "result": [
+    {
+      "assembly_list_availability": false,
+      "can_create_another_carriage": false,
+      "carriage_postings_count": 0,
+      "carriage_quantum_count": 0,
+      "carriages": [
+        {
+          "id": "string",
+          "postings_count": 0,
+          "quantum_count": 0,
+          "status": "string"
+        }
+      ],
+      "cut_in": "2024-01-01T00:00:00Z",
+      "delivery_method_id": 0,
+      "delivery_method_name": "string",
+      "delivery_method_status": "string",
+      "departure_date": "2024-01-01T00:00:00Z",
+      "dropoff_address": "string",
+      "dropoff_change_availability": "string",
+      "dropoff_point_id": 0,
+      "dropoff_point_type": "string",
+      "errors": [
+        {
+          "code": "string",
+          "description": "string",
+          "status": "string"
+        }
+      ],
+      "first_mile_changing": false,
+      "first_mile_type": "string",
+      "has_entrusted_acceptance": false,
+      "integration_type": "string",
+      "is_presort": false,
+      "is_rfbs": false,
+      "recommended_time_local": "string",
+      "recommended_time_utc_offset_in_minutes": 0.0,
+      "cutoff_at": "2024-01-01T00:00:00Z",
+      "mandatory_packaged_count": 0,
+      "mandatory_packaged_quantum_count": 0,
+      "mandatory_postings_count": 0,
+      "mandatory_quantum_count": 0,
+      "optional_packaged_count": 0,
+      "postings_for_another_carriage_count": 0,
+      "quantum_for_another_carriage_count": 0,
+      "timeslot_from": "2024-01-01T00:00:00Z",
+      "timeslot_to": "2024-01-01T00:00:00Z",
+      "tpl_provider_icon_url": "string",
+      "tpl_provider_name": "string",
+      "warehouse_city": "string",
+      "warehouse_id": 0,
+      "warehouse_name": "string"
+    }
+  ]
+}

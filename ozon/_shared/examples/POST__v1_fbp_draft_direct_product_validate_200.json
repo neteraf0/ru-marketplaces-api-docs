@@ -1,0 +1,29 @@
+{
+  "approved_items": [
+    {
+      "barcode": "string",
+      "icon_name": "string",
+      "name": "string",
+      "offer_id": "string",
+      "quantity": 0,
+      "sku": 0,
+      "volume": 0.0
+    }
+  ],
+  "bundle_generated": false,
+  "bundle_id": "string",
+  "rejected_items": [
+    {
+      "barcode": "string",
+      "icon_name": "string",
+      "name": "string",
+      "offer_id": "string",
+      "quantity": 0,
+      "rejection_reasons": [
+        "BUNDLE_ITEM_ERROR_UNSPECIFIED"
+      ],
+      "sku": 0,
+      "volume": 0.0
+    }
+  ]
+}

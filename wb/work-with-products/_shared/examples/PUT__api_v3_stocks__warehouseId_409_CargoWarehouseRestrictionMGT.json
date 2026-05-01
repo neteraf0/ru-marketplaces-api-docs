@@ -1,0 +1,12 @@
+[
+  {
+    "code": "CargoWarehouseRestrictionMGT",
+    "message": "The selected warehouse is not suitable for goods with the type \"LCL (Less than Container Load)\". Upload the balances to the warehouse without the ODC or CD+ mark",
+    "data": [
+      {
+        "sku": "skuTest3",
+        "amount": 10
+      }
+    ]
+  }
+]

@@ -1,0 +1,16 @@
+{
+  "status": "OK",
+  "result": {
+    "messageId": 1,
+    "createdAt": "2017-11-21T00:00:00+03:00",
+    "sender": "PARTNER",
+    "message": "string",
+    "payload": [
+      {
+        "name": "string",
+        "url": "string",
+        "size": 0
+      }
+    ]
+  }
+}

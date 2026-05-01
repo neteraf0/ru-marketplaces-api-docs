@@ -1,0 +1,26 @@
+{
+  "campaigns": [
+    {
+      "domain": "string",
+      "id": 1,
+      "clientId": 0,
+      "business": {
+        "id": 1,
+        "name": "string"
+      },
+      "placementType": "FBS",
+      "apiAvailability": "AVAILABLE"
+    }
+  ],
+  "pager": {
+    "total": 0,
+    "from": 0,
+    "to": 0,
+    "currentPage": 0,
+    "pagesCount": 0,
+    "pageSize": 0
+  },
+  "paging": {
+    "nextPageToken": "string"
+  }
+}

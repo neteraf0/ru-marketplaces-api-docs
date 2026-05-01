@@ -1,0 +1,22 @@
+{
+  "strategy_name": "Новая стратегия",
+  "competitors": [
+    {
+      "competitor_id": 1008426,
+      "coefficient": 1
+    },
+    {
+      "competitor_id": 204,
+      "coefficient": 1
+    },
+    {
+      "competitor_id": 91,
+      "coefficient": 1
+    },
+    {
+      "competitor_id": 48,
+      "coefficient": 1
+    }
+  ],
+  "company_id": 7
+}

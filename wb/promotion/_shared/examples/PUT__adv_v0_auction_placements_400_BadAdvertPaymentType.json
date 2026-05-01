@@ -1,0 +1,7 @@
+{
+  "detail": "advert 12345 has payment type cpc, placements cannot be changed",
+  "origin": "camp-api-public-cache",
+  "request_id": "e53addfabe9274d5b8f77272ca085ac4",
+  "status": 400,
+  "title": "invalid payload"
+}

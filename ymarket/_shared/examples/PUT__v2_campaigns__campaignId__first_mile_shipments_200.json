@@ -1,0 +1,47 @@
+{
+  "status": "OK",
+  "result": {
+    "shipments": [
+      {
+        "id": 1,
+        "planIntervalFrom": "2017-11-21T00:00:00+03:00",
+        "planIntervalTo": "2017-11-21T00:00:00+03:00",
+        "shipmentType": "IMPORT",
+        "warehouse": {
+          "id": 1,
+          "name": "string",
+          "address": "string"
+        },
+        "warehouseTo": {
+          "id": 1,
+          "name": "string",
+          "address": "string"
+        },
+        "externalId": "string",
+        "deliveryService": {
+          "id": 0,
+          "name": "string"
+        },
+        "palletsCount": {
+          "planned": 0,
+          "fact": 0
+        },
+        "orderIds": [
+          1
+        ],
+        "draftCount": 0,
+        "plannedCount": 0,
+        "factCount": 0,
+        "signature": {
+          "signed": false
+        },
+        "status": "OUTBOUND_CREATED",
+        "statusDescription": "string",
+        "statusUpdateTime": "2017-11-21T00:00:00+03:00"
+      }
+    ],
+    "paging": {
+      "nextPageToken": "string"
+    }
+  }
+}

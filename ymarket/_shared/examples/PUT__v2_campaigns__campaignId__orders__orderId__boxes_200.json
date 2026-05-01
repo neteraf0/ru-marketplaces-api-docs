@@ -1,0 +1,18 @@
+{
+  "status": "OK",
+  "result": {
+    "boxes": [
+      {
+        "items": [
+          {
+            "id": 0,
+            "fullCount": 1,
+            "partialCount": {},
+            "instances": []
+          }
+        ],
+        "boxId": 0
+      }
+    ]
+  }
+}

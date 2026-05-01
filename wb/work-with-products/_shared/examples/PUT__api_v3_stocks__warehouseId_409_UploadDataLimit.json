@@ -1,0 +1,12 @@
+[
+  {
+    "code": "UploadDataLimit",
+    "message": "Upload limit exceeded.",
+    "data": [
+      {
+        "sku": "skuTest2",
+        "amount": 100001
+      }
+    ]
+  }
+]

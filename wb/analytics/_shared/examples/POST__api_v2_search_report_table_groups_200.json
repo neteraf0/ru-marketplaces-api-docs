@@ -1,0 +1,24 @@
+{
+  "data": {
+    "groups": [
+      {
+        "subjectName": "Phones",
+        "subjectId": 50,
+        "brandName": "Apple",
+        "tagName": "phones",
+        "tagId": 65,
+        "metrics": {
+          "avgPosition": {},
+          "openCard": {},
+          "addToCart": {},
+          "openToCart": {},
+          "orders": {},
+          "cartToOrder": {},
+          "visibility": {}
+        },
+        "items": []
+      }
+    ],
+    "currency": "RUB"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "status": "OK",
+  "result": {
+    "operation": {
+      "id": "string",
+      "type": "ORDER_RECIPIENT_UPDATE"
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "exemplars_by_sku": [
+    {
+      "exemplar_qty": 3,
+      "not_available_exemplar_qty": 0,
+      "sku": "6605735423",
+      "exemplar_keys": [
+        "4235234234",
+        "431234234",
+        "912382368"
+      ]
+    }
+  ],
+  "posting_number": "33920151-0719-1"
+}

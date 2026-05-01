@@ -1,0 +1,21 @@
+{
+  "orders": [
+    {
+      "supplierStatus": "confirm",
+      "wbStatus": "waiting",
+      "errors": [],
+      "orderId": 123456
+    },
+    {
+      "supplierStatus": "",
+      "wbStatus": "",
+      "errors": [
+        {
+          "code": 404,
+          "detail": "NotFound"
+        }
+      ],
+      "orderId": 789012
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "filter": {
+    "date_from": "2021-08-04",
+    "date_to": "2022-08-04",
+    "integration_type": "ozon",
+    "status": [
+      "delivered"
+    ]
+  },
+  "limit": 50
+}

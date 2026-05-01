@@ -1,0 +1,21 @@
+{
+  "status": "OK",
+  "result": {
+    "offers": [
+      {
+        "offerId": "string",
+        "price": {
+          "minimumForBestseller": 0,
+          "excludedFromBestsellers": false,
+          "value": 0,
+          "currencyId": "RUR",
+          "discountBase": 0,
+          "updatedAt": "2024-01-01T00:00:00Z"
+        }
+      }
+    ],
+    "paging": {
+      "nextPageToken": "string"
+    }
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "result": [
+    {
+      "order_id": 354680487,
+      "order_number": "16965409-0014",
+      "posting_number": "16965409-0014-1",
+      "status": "awaiting_packaging",
+      "cancel_reason_id": 0,
+      "created_at": "2021-09-01T00:23:45.607000Z",
+      "in_process_at": "2021-09-01T00:25:30.120000Z",
+      "waiting_deadline_for_digital_code": "2025-06-16T10:12:00.664Z",
+      "legal_info": {
+        "company_name": "string",
+        "inn": "string",
+        "kpp": "string"
+      },
+      "products": [
+        {
+          "sku": 160249683,
+          "name": "Так говорил Омар Хайям. Жизнеописание. Афоризмы и рубайят. Классика в словах и картинках",
+          "offer_id": "978-5-906864-56-7",
+          "price": "81.00",
+          "required_qty_for_digital_code": 3,
+          "currency_code": "RUB"
+        }
+      ],
+      "analytics_data": {
+        "city": "",
+        "delivery_type": "PVZ",
+        "is_premium": false,
+        "payment_type_group_name": "Карты оплаты",
+        "warehouse_id": 17717042026000,
+        "warehouse_name": "РОСТОВ-НА-ДОНУ_РФЦ",
+        "is_legal": false
+      },
+      "financial_data": {
+        "products": [
+          {
+            "commission_amount": 12.15,
+            "commission_percent": 15,
+            "payout": 68.85,
+            "product_id": 160249683,
+            "currency_code": "RUB",
+            "old_price": 115,
+            "price": 81,
+            "total_discount_value": 34,
+            "total_discount_percent": 29.57,
+            "actions": [
+              "Системная виртуальная скидка селлера"
+            ]
+          }
+        ]
+      },
+      "additional_data": []
+    }
+  ]
+}

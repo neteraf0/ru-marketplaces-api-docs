@@ -1,0 +1,40 @@
+{
+  "clusters": [
+    {
+      "cluster_name": "string",
+      "macrolocal_cluster_id": 0,
+      "supply_type": "CROSSDOCK",
+      "warehouses": [
+        {
+          "bundle_id": "string",
+          "restricted_bundle_id": "string",
+          "supply_tags": [],
+          "total_rank": 0,
+          "total_score": 0.0
+        }
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "error_message": "UNSPECIFIED",
+      "error_reasons": [
+        "UNSPECIFIED"
+      ],
+      "items_validation": [
+        {
+          "macrolocal_cluster_id": 0,
+          "rejected_items": []
+        }
+      ],
+      "macrolocal_cluster_ids": [
+        "string"
+      ],
+      "message": "string",
+      "skus": [
+        "string"
+      ]
+    }
+  ],
+  "status": "UNSPECIFIED"
+}

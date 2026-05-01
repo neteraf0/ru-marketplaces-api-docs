@@ -1,0 +1,26 @@
+{
+  "status": "OK",
+  "result": {
+    "offers": [
+      {
+        "offerId": "string",
+        "status": "AUTO",
+        "params": {
+          "discountParams": {
+            "price": 0,
+            "promoPrice": 0,
+            "maxPromoPrice": 0
+          }
+        },
+        "autoParticipatingDetails": {
+          "campaignIds": [
+            1
+          ]
+        }
+      }
+    ],
+    "paging": {
+      "nextPageToken": "string"
+    }
+  }
+}

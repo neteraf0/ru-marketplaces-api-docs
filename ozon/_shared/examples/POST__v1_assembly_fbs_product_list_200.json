@@ -1,0 +1,19 @@
+{
+  "has_next": false,
+  "products": [
+    {
+      "offer_id": "string",
+      "picture_url": "string",
+      "postings": [
+        {
+          "posting_number": "string",
+          "quantity": 0
+        }
+      ],
+      "product_name": "string",
+      "quantity": 0,
+      "sku": 0
+    }
+  ],
+  "products_count": 0
+}

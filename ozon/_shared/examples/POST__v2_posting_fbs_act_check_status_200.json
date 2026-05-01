@@ -1,0 +1,15 @@
+{
+  "result": {
+    "status": "ready",
+    "added_to_act": [
+      "76673629-0020-1"
+    ],
+    "removed_from_act": [
+      "87784739-0030-1"
+    ],
+    "act_type": "ozon_digital",
+    "is_partial": false,
+    "has_postings_for_next_carriage": false,
+    "partial_num": 0
+  }
+}

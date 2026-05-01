@@ -1,0 +1,33 @@
+{
+  "countries": [
+    {
+      "region": {
+        "id": 0,
+        "name": "string",
+        "type": "OTHER",
+        "parent": {
+          "id": 0,
+          "name": "string",
+          "type": "OTHER",
+          "parent": {
+            "id": 0,
+            "name": "string",
+            "type": "OTHER",
+            "parent": {
+              "id": 0,
+              "name": "string",
+              "type": "OTHER",
+              "parent": {
+                "id": 0,
+                "name": "string",
+                "type": "OTHER",
+                "parent": {}
+              }
+            }
+          }
+        }
+      },
+      "countryCode": "RU"
+    }
+  ]
+}

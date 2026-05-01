@@ -1,0 +1,14 @@
+{
+  "settings": {
+    "courier_details": {
+      "contact_days": 0
+    },
+    "post_office_zipcode": "string",
+    "transport_company_details": {
+      "transport_company_names": [
+        "string"
+      ],
+      "zipcode": "string"
+    }
+  }
+}

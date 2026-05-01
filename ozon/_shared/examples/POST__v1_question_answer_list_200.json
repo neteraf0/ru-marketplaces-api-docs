@@ -1,0 +1,14 @@
+{
+  "answers": [
+    {
+      "author_name": "string",
+      "id": "string",
+      "published_at": "2024-08-14T11:44:35.352Z",
+      "question_id": "string",
+      "sku": 646399170,
+      "status_publication": "",
+      "text": "string"
+    }
+  ],
+  "last_id": "string"
+}

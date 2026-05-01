@@ -1,0 +1,14 @@
+{
+  "items": [
+    {
+      "defect_stock_count": 0,
+      "expiring_stock_count": 0,
+      "name": "string",
+      "offer_id": "string",
+      "sku": 0,
+      "valid_stock_count": 0,
+      "waitingdocs_stock_count": 0,
+      "warehouse_name": "string"
+    }
+  ]
+}

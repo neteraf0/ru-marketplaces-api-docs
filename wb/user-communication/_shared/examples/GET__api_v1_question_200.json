@@ -1,0 +1,26 @@
+{
+  "data": {
+    "id": "TfWOp5QBfEYrrd0AMJau",
+    "text": "Хороший карандаш? Когда еще поставите?",
+    "createdDate": "2025-01-27T11:38:21.202143857Z",
+    "state": "wbRu",
+    "answer": {
+      "text": "На следующей неделе",
+      "editable": true,
+      "createDate": "2025-07-28T08:24:37.187113704Z"
+    },
+    "productDetails": {
+      "imtId": 202306781,
+      "nmId": 224747484,
+      "productName": "Карандаш с ластиком",
+      "supplierArticle": "12113156uw",
+      "supplierName": "",
+      "brandName": "Brand"
+    },
+    "wasViewed": true,
+    "isWarned": false
+  },
+  "error": false,
+  "errorText": "",
+  "additionalErrors": null
+}

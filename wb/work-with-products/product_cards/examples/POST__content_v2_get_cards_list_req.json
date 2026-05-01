@@ -1,0 +1,30 @@
+{
+  "settings": {
+    "sort": {
+      "ascending": false
+    },
+    "filter": {
+      "textSearch": "4603743187500888",
+      "allowedCategoriesOnly": true,
+      "tagIDs": [
+        345,
+        415
+      ],
+      "objectIDs": [
+        235,
+        67
+      ],
+      "brands": [
+        "уллу",
+        "EkkE"
+      ],
+      "imtID": 328632,
+      "withPhoto": -1
+    },
+    "cursor": {
+      "updatedAt": "2023-12-06T11:17:00.96577Z",
+      "nmID": 370870300,
+      "limit": 11
+    }
+  }
+}

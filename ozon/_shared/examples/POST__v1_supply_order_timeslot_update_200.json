@@ -1,0 +1,6 @@
+{
+  "errors": [
+    "UPDATE_TIMESLOT_ERROR_UNSPECIFIED"
+  ],
+  "operation_id": "string"
+}

@@ -1,0 +1,7 @@
+{
+  "title": "access denied",
+  "status": 403,
+  "detail": "abac: access denied",
+  "requestId": "31db50b5-14c0-4f4e-965e-6e1f9607ee78",
+  "origin": "dimension-penalty"
+}

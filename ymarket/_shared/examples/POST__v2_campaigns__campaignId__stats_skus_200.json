@@ -1,0 +1,44 @@
+{
+  "status": "OK",
+  "result": {
+    "shopSkus": [
+      {
+        "shopSku": "string",
+        "marketSku": 1,
+        "name": "string",
+        "price": 0.0,
+        "categoryId": 0,
+        "categoryName": "string",
+        "weightDimensions": {
+          "length": 0.0,
+          "width": 0.0,
+          "height": 0.0,
+          "weight": 0.0
+        },
+        "warehouses": [
+          {
+            "id": 0,
+            "name": "string",
+            "stocks": [
+              {}
+            ]
+          }
+        ],
+        "tariffs": [
+          {
+            "type": "AGENCY_COMMISSION",
+            "percent": 0.0,
+            "amount": 0.0,
+            "currency": "RUR",
+            "parameters": [
+              {}
+            ]
+          }
+        ],
+        "pictures": [
+          "string"
+        ]
+      }
+    ]
+  }
+}
