@@ -1,6 +1,6 @@
 # ru-marketplaces-api-docs
 
-Offline API docs for Russian marketplaces, structured for [Context7]("https://context7.com/neteraf0/ru-marketplaces-api-docs/") / devrag.
+Offline API docs for Russian marketplaces, structured for [Context7](https://context7.com/neteraf0/ru-marketplaces-api-docs/) / devrag.
 
 Each endpoint lives in its own Markdown file — one file, one API call, no noise.
 
